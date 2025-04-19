@@ -164,7 +164,7 @@ export default function Header() {
             router.push('/404'); // atau bisa juga window.location.href = '/404';
           }
           
-        setHeader(data);
+        setHeader(data.data);
       } catch (error) {
         console.error("Gagal fetch header:", error);
         router.push("/404");
