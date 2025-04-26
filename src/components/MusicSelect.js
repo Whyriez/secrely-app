@@ -47,6 +47,7 @@ const CustomSingleValue = (props) => {
   );
 };
 
+
 export default function MusicSelect({ value, onChange }) {
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -176,6 +177,12 @@ export default function MusicSelect({ value, onChange }) {
             boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
             overflow: "hidden",
           }),
+          menuList: (base) => ({
+            ...base,
+            maxHeight: "200px",
+            overflow: "auto"
+          }),
+          menuPortal: (base) => ({ ...base, zIndex: 9999 }),
         }}
       />
     </>
