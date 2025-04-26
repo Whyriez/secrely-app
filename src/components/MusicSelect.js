@@ -47,7 +47,6 @@ const CustomSingleValue = (props) => {
   );
 };
 
-
 export default function MusicSelect({ value, onChange }) {
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +72,9 @@ export default function MusicSelect({ value, onChange }) {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/searchTrack?q=${encodeURIComponent(
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }/searchTrack?q=${encodeURIComponent(
             debouncedQuery
           )}&limit=${LIMIT}&offset=${(page - 1) * LIMIT + 1}`
         );
@@ -128,6 +129,10 @@ export default function MusicSelect({ value, onChange }) {
         onMenuScrollToBottom={handleMenuScrollToBottom}
         isLoading={isLoading}
         placeholder="🎵 Pilih Musik"
+        menuPortalTarget={
+          typeof window !== "undefined" ? document.body : undefined
+        }
+        menuPosition="fixed"
         components={{
           Option: CustomOption,
           SingleValue: CustomSingleValue,
@@ -180,7 +185,7 @@ export default function MusicSelect({ value, onChange }) {
           menuList: (base) => ({
             ...base,
             maxHeight: "200px",
-            overflow: "auto"
+            overflow: "auto",
           }),
           menuPortal: (base) => ({ ...base, zIndex: 9999 }),
         }}
