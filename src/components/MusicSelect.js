@@ -109,9 +109,14 @@ export default function MusicSelect({ value, onChange }) {
 
   // Handle scroll to load more
   const handleMenuScrollToBottom = () => {
-    if (!isLoading && hasMore) {
+    const { scrollTop, scrollHeight, clientHeight } = event.target;
+
+    if (!isLoading && hasMore && scrollHeight - scrollTop - clientHeight < 20) {
       setPage((prev) => prev + 1);
     }
+    // if (!isLoading && hasMore) {
+    //   setPage((prev) => prev + 1);
+    // }
   };
 
   // Handle input change
@@ -184,8 +189,9 @@ export default function MusicSelect({ value, onChange }) {
           }),
           menuList: (base) => ({
             ...base,
-            maxHeight: "200px",
+            maxHeight: "50vh",
             overflow: "auto",
+            WebkitOverflowScrolling: "touch",
           }),
           menuPortal: (base) => ({ ...base, zIndex: 9999 }),
         }}
