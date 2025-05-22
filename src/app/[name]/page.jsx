@@ -122,22 +122,25 @@ export default function Header() {
 
       const data = await res.json();
 
-      
-
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/send-fcm`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          token: header.token,
-          title: "Pesan Baru!",
-          body: "Ada pesan masuk buat kamu!",
-          data: {
-            type: "refresh",
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/send-fcm`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        }),
-      });
+          body: JSON.stringify({
+            token: header.token,
+            title: "Pesan Baru!",
+            body: "Ada pesan masuk buat kamu!",
+            data: {
+              type: "refresh",
+            },
+          }),
+        }
+      );
+
+      console.log(response);
 
       alert("Pesan berhasil dikirim!");
       setMessage(""); // reset pesan
