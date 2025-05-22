@@ -140,7 +140,6 @@ export default function Header() {
         }
       );
 
-      console.log(response);
 
       alert("Pesan berhasil dikirim!");
       setMessage(""); // reset pesan
