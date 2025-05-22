@@ -104,26 +104,41 @@ export default function Header() {
     setIsSending(true);
 
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/messages`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            headerId: header.id,
-            musicId: selectedMusic?.value || "",
-            message: message.trim(),
-            canReply: isAllowReply,
-            senderId: isAllowReply ? userId : null
-          }),
-        }
-      );
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          headerId: header.id,
+          musicId: selectedMusic?.value || "",
+          message: message.trim(),
+          canReply: isAllowReply,
+          senderId: isAllowReply ? userId : null,
+        }),
+      });
 
       if (!res.ok) {
         throw new Error("Gagal mengirim pesan.");
       }
 
       const data = await res.json();
+
+      
+
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/send-fcm`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          token: header.token,
+          title: "Pesan Baru!",
+          body: "Ada pesan masuk buat kamu!",
+          data: {
+            type: "refresh",
+          },
+        }),
+      });
+
       alert("Pesan berhasil dikirim!");
       setMessage(""); // reset pesan
       setSelectedMusic(null); // reset music
@@ -161,9 +176,8 @@ export default function Header() {
         );
         const data = await res.json();
         if (!data || data.error) {
-            router.push('/404'); // atau bisa juga window.location.href = '/404';
-          }
-          
+          router.push("/404"); // atau bisa juga window.location.href = '/404';
+        }
         setHeader(data.data);
       } catch (error) {
         console.error("Gagal fetch header:", error);
