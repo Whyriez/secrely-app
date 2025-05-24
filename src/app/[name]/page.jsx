@@ -112,7 +112,7 @@ export default function Header() {
           musicId: selectedMusic?.value || "",
           message: message.trim(),
           canReply: isAllowReply,
-          senderId: isAllowReply ? userId : null,
+          senderId: isAllowReply ? user.uid : null,
         }),
       });
 
@@ -166,6 +166,8 @@ export default function Header() {
       setUser(user);
     });
 
+   
+
     return () => unsubscribe();
   }, []);
 
@@ -193,6 +195,7 @@ export default function Header() {
       fetchHeader();
     }
   }, [name]);
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-pink-100 flex items-center justify-center px-4 py-12">
