@@ -11,6 +11,7 @@ import {
 import { auth } from "../../utils/firebase";
 
 import dynamic from "next/dynamic";
+import { getAuthToken, removeAuthToken, setAuthToken } from "../../helper/localStorage";
 const MusicSelect = dynamic(() => import("../../components/MusicSelect"), {
   ssr: false,
   loading: () => (
@@ -56,28 +57,44 @@ export default function Header() {
   const handleLogin = async () => {
     setIsLoginLoading(true);
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Login gagal.");
+      }
+      setAuthToken(data.token);
+      setUser({ userId: data.userId, email: data.email, name: data.name });
+      setIsLoggedIn(true);
       alert("Login berhasil!");
       setIsModalOpen(false);
       setIsAllowReply(true);
+
     } catch (error) {
       console.error("Login gagal:", error);
-      alert("Email atau password salah!");
+      alert(error.message || "Email atau password salah!");
     } finally {
       setIsLoginLoading(false);
     }
   };
 
+
+
+
   const handleLogout = async () => {
     try {
-      await signOut(auth);
-      alert("Logout berhasil!");
+      // Hapus token dari localStorage
+      removeAuthToken();
+      // Reset state user
+      setUser(null);
+      setIsLoggedIn(false);
       setIsAllowReply(false);
-      setUser([]);
+      alert("Logout berhasil!");
     } catch (error) {
       console.error("Gagal logout:", error);
       alert("Terjadi kesalahan saat logout.");
@@ -112,10 +129,11 @@ export default function Header() {
           musicId: selectedMusic?.value || "",
           message: message.trim(),
           canReply: isAllowReply,
-          senderId: isAllowReply ? user.uid : null,
+          senderId: isAllowReply ? user.userId : null,
         }),
       });
 
+      console.log(res);
       if (!res.ok) {
         throw new Error("Gagal mengirim pesan.");
       }
@@ -161,14 +179,39 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoggedIn(!!user);
-      setUser(user);
-    });
+    const checkLoginStatus = async () => {
+      const token = getAuthToken();
+      if (token) {
+        try {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/me`, {
+            method: "GET",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+            },
+          });
 
-   
+          if (res.ok) {
+            const data = await res.json();
+            setUser({ userId: data.userId, email: data.email, name: data.name });
+            setIsLoggedIn(true);
+          } else {
+            removeAuthToken(); 
+            setUser(null);
+            setIsLoggedIn(false);
+          }
+        } catch (error) {
+          console.error("Gagal verifikasi token:", error);
+          removeAuthToken(); 
+          setUser(null);
+          setIsLoggedIn(false);
+        }
+      } else {
+        setUser(null);
+        setIsLoggedIn(false);
+      }
+    };
 
-    return () => unsubscribe();
+    checkLoginStatus();
   }, []);
 
   useEffect(() => {
@@ -180,12 +223,12 @@ export default function Header() {
         );
         const data = await res.json();
         if (!data || data.error) {
-          router.push("/404"); // atau bisa juga window.location.href = '/404';
+          router.push("/404");
         }
         setHeader(data.data);
       } catch (error) {
         console.error("Gagal fetch header:", error);
-        router.push("/404");
+        // router.push("/404");
       } finally {
         setIsHeaderLoading(false);
       }

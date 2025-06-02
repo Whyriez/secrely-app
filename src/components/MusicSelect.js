@@ -74,7 +74,7 @@ export default function MusicSelect({ value, onChange }) {
         const res = await fetch(
           `${
             process.env.NEXT_PUBLIC_BASE_URL
-          }/searchTrack?q=${encodeURIComponent(
+          }/music/searchTrack?q=${encodeURIComponent(
             debouncedQuery
           )}&limit=${LIMIT}&offset=${(page - 1) * LIMIT + 1}`
         );
