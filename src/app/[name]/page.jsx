@@ -141,7 +141,7 @@ export default function Header() {
       const data = await res.json();
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/send-fcm`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/notification/send-fcm`,
         {
           method: "POST",
           headers: {
