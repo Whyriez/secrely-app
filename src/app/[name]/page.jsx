@@ -222,7 +222,7 @@ export default function Header() {
           `${process.env.NEXT_PUBLIC_BASE_URL}/headers/${name}`
         );
         const data = await res.json();
-        if (!data || data.error) {
+        if (!data || data.error || data.data.isActive === false) {
           router.push("/404");
         }
         setHeader(data.data);
