@@ -126,8 +126,8 @@ export default function Header() {
 
     try {
       const aesKey = await crypto.subtle.generateKey(
-        { name: "AES-GCM", length: 256 }, // AES-256 GCM
-        true, // extractable
+        { name: "AES-GCM", length: 256 }, 
+        true,
         ["encrypt", "decrypt"]
       );
       const aesKeyExported = await crypto.subtle.exportKey("raw", aesKey);
@@ -136,36 +136,32 @@ export default function Header() {
         c.charCodeAt(0)
       ).buffer;
       const rsaPublicKey = await crypto.subtle.importKey(
-        "spki", // SubjectPublicKeyInfo format
+        "spki",
         publicKeyBuffer,
-        { name: "RSA-OAEP", hash: "SHA-256" }, // Algoritma dan hash
-        false, // not extractable
+        { name: "RSA-OAEP", hash: "SHA-256" },
+        false,
         ["encrypt"]
       );
 
       const encryptedAesKey = await crypto.subtle.encrypt(
         { name: "RSA-OAEP" },
         rsaPublicKey,
-        aesKeyExported // Kunci AES yang sudah di-export
+        aesKeyExported 
       );
-      // Konversi hasil enkripsi ke Base64 String
       const encryptedAesKeyBase64 = btoa(
         String.fromCharCode(...new Uint8Array(encryptedAesKey))
       );
 
-      // --- Langkah 5: Generate Initialization Vector (IV) untuk AES-GCM ---
-      const iv = crypto.getRandomValues(new Uint8Array(12)); // AES-GCM IV should be 12 bytes
-      const ivBase64 = btoa(String.fromCharCode(...iv)); // Konversi IV ke Base64 String
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const ivBase64 = btoa(String.fromCharCode(...iv)); 
 
-      // --- Langkah 6: Enkripsi Pesan Aktual dengan Kunci AES dan IV ---
       const encoder = new TextEncoder();
-      const encodedMessage = encoder.encode(message.trim()); // Encode pesan ke ByteArray
+      const encodedMessage = encoder.encode(message.trim()); 
       const encryptedMessage = await crypto.subtle.encrypt(
-        { name: "AES-GCM", iv: iv }, // Gunakan AES-GCM dan IV
+        { name: "AES-GCM", iv: iv }, 
         aesKey,
         encodedMessage
       );
-      // Konversi hasil enkripsi ke Base64 String
       const encryptedMessageBase64 = btoa(
         String.fromCharCode(...new Uint8Array(encryptedMessage))
       );
@@ -415,8 +411,8 @@ export default function Header() {
 
           <button
             type="submit"
-           disabled={isSending} 
-          //  disabled={isSending || !recipientPublicKey} 
+          //  disabled={isSending} 
+           disabled={isSending || !recipientPublicKey} 
             className="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-md transition duration-200"
           >
             {isSending ? "Mengirim..." : "🚀 Kirim Pesan Sekarang"}
