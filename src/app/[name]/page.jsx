@@ -3,15 +3,13 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import {
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
-import { auth } from "../../utils/firebase";
 
 import dynamic from "next/dynamic";
-import { getAuthToken, removeAuthToken, setAuthToken } from "../../helper/localStorage";
+import {
+  getAuthToken,
+  removeAuthToken,
+  setAuthToken,
+} from "../../helper/localStorage";
 const MusicSelect = dynamic(() => import("../../components/MusicSelect"), {
   ssr: false,
   loading: () => (
@@ -40,7 +38,8 @@ export default function Header() {
   const [isHeaderLoading, setIsHeaderLoading] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
 
-  const [header, setHeader] = useState("");
+  const [header, setHeader] = useState(null);
+  const [recipientPublicKey, setRecipientPublicKey] = useState(null);
 
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
@@ -57,11 +56,14 @@ export default function Header() {
   const handleLogin = async () => {
     setIsLoginLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await res.json();
 
@@ -74,7 +76,6 @@ export default function Header() {
       alert("Login berhasil!");
       setIsModalOpen(false);
       setIsAllowReply(true);
-
     } catch (error) {
       console.error("Login gagal:", error);
       alert(error.message || "Email atau password salah!");
@@ -82,9 +83,6 @@ export default function Header() {
       setIsLoginLoading(false);
     }
   };
-
-
-
 
   const handleLogout = async () => {
     try {
@@ -118,16 +116,70 @@ export default function Header() {
       return;
     }
 
+    if (!recipientPublicKey) {
+      alert("Kunci publik penerima tidak tersedia. Mohon coba lagi.");
+      console.error("Recipient public key is missing.");
+      return;
+    }
+
     setIsSending(true);
 
     try {
+      const aesKey = await crypto.subtle.generateKey(
+        { name: "AES-GCM", length: 256 }, // AES-256 GCM
+        true, // extractable
+        ["encrypt", "decrypt"]
+      );
+      const aesKeyExported = await crypto.subtle.exportKey("raw", aesKey);
+
+      const publicKeyBuffer = Uint8Array.from(atob(recipientPublicKey), (c) =>
+        c.charCodeAt(0)
+      ).buffer;
+      const rsaPublicKey = await crypto.subtle.importKey(
+        "spki", // SubjectPublicKeyInfo format
+        publicKeyBuffer,
+        { name: "RSA-OAEP", hash: "SHA-256" }, // Algoritma dan hash
+        false, // not extractable
+        ["encrypt"]
+      );
+
+      const encryptedAesKey = await crypto.subtle.encrypt(
+        { name: "RSA-OAEP" },
+        rsaPublicKey,
+        aesKeyExported // Kunci AES yang sudah di-export
+      );
+      // Konversi hasil enkripsi ke Base64 String
+      const encryptedAesKeyBase64 = btoa(
+        String.fromCharCode(...new Uint8Array(encryptedAesKey))
+      );
+
+      // --- Langkah 5: Generate Initialization Vector (IV) untuk AES-GCM ---
+      const iv = crypto.getRandomValues(new Uint8Array(12)); // AES-GCM IV should be 12 bytes
+      const ivBase64 = btoa(String.fromCharCode(...iv)); // Konversi IV ke Base64 String
+
+      // --- Langkah 6: Enkripsi Pesan Aktual dengan Kunci AES dan IV ---
+      const encoder = new TextEncoder();
+      const encodedMessage = encoder.encode(message.trim()); // Encode pesan ke ByteArray
+      const encryptedMessage = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv: iv }, // Gunakan AES-GCM dan IV
+        aesKey,
+        encodedMessage
+      );
+      // Konversi hasil enkripsi ke Base64 String
+      const encryptedMessageBase64 = btoa(
+        String.fromCharCode(...new Uint8Array(encryptedMessage))
+      );
+
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/messages`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           headerId: header.id,
           musicId: selectedMusic?.value || "",
-          message: message.trim(),
+          message: encryptedMessageBase64,
+          encryptedSymmetricKey: encryptedAesKeyBase64,
+          iv: ivBase64,
+          isEncrypted: true,
           canReply: isAllowReply,
           senderId: isAllowReply ? user.userId : null,
         }),
@@ -158,7 +210,6 @@ export default function Header() {
         }
       );
 
-
       alert("Pesan berhasil dikirim!");
       setMessage(""); // reset pesan
       setSelectedMusic(null); // reset music
@@ -183,25 +234,32 @@ export default function Header() {
       const token = getAuthToken();
       if (token) {
         try {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/users/me`, {
-            method: "GET",
-            headers: {
-              "Authorization": `Bearer ${token}`,
-            },
-          });
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/users/me`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
           if (res.ok) {
             const data = await res.json();
-            setUser({ userId: data.userId, email: data.email, name: data.name });
+            setUser({
+              userId: data.userId,
+              email: data.email,
+              name: data.name,
+            });
             setIsLoggedIn(true);
           } else {
-            removeAuthToken(); 
+            removeAuthToken();
             setUser(null);
             setIsLoggedIn(false);
           }
         } catch (error) {
           console.error("Gagal verifikasi token:", error);
-          removeAuthToken(); 
+          removeAuthToken();
           setUser(null);
           setIsLoggedIn(false);
         }
@@ -226,6 +284,14 @@ export default function Header() {
           router.push("/404");
         }
         setHeader(data.data);
+
+        if (data.data.userPublicKey) {
+          setRecipientPublicKey(data.data.userPublicKey);
+        } else {
+          console.warn(
+            "Public key not found for this header. Messages may not be end-to-end encrypted."
+          );
+        }
       } catch (error) {
         console.error("Gagal fetch header:", error);
         // router.push("/404");
@@ -238,7 +304,6 @@ export default function Header() {
       fetchHeader();
     }
   }, [name]);
-
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-pink-100 flex items-center justify-center px-4 py-12">
@@ -350,7 +415,8 @@ export default function Header() {
 
           <button
             type="submit"
-            disabled={isSending}
+           disabled={isSending} 
+          //  disabled={isSending || !recipientPublicKey} 
             className="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-md transition duration-200"
           >
             {isSending ? "Mengirim..." : "🚀 Kirim Pesan Sekarang"}
