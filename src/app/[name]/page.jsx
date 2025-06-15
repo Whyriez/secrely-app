@@ -3,6 +3,7 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { load } from "@fingerprintjs/fingerprintjs";
 
 import dynamic from "next/dynamic";
 import {
@@ -43,6 +44,9 @@ export default function Header() {
 
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+
+  const [senderFingerprint, setSenderFingerprint] = useState(null); //
+  const [isFingerprintLoading, setIsFingerprintLoading] = useState(true);
 
   const handleCheckboxChange = (e) => {
     const checked = e.target.checked;
@@ -126,7 +130,7 @@ export default function Header() {
 
     try {
       const aesKey = await crypto.subtle.generateKey(
-        { name: "AES-GCM", length: 256 }, 
+        { name: "AES-GCM", length: 256 },
         true,
         ["encrypt", "decrypt"]
       );
@@ -146,19 +150,19 @@ export default function Header() {
       const encryptedAesKey = await crypto.subtle.encrypt(
         { name: "RSA-OAEP" },
         rsaPublicKey,
-        aesKeyExported 
+        aesKeyExported
       );
       const encryptedAesKeyBase64 = btoa(
         String.fromCharCode(...new Uint8Array(encryptedAesKey))
       );
 
       const iv = crypto.getRandomValues(new Uint8Array(12));
-      const ivBase64 = btoa(String.fromCharCode(...iv)); 
+      const ivBase64 = btoa(String.fromCharCode(...iv));
 
       const encoder = new TextEncoder();
-      const encodedMessage = encoder.encode(message.trim()); 
+      const encodedMessage = encoder.encode(message.trim());
       const encryptedMessage = await crypto.subtle.encrypt(
-        { name: "AES-GCM", iv: iv }, 
+        { name: "AES-GCM", iv: iv },
         aesKey,
         encodedMessage
       );
@@ -170,6 +174,7 @@ export default function Header() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ownerId: header.userId,
           headerId: header.id,
           musicId: selectedMusic?.value || "",
           message: encryptedMessageBase64,
@@ -178,12 +183,25 @@ export default function Header() {
           isEncrypted: true,
           canReply: isAllowReply,
           senderId: isAllowReply ? user.userId : null,
+          senderFingerprint: senderFingerprint,
         }),
       });
 
       console.log(res);
       if (!res.ok) {
-        throw new Error("Gagal mengirim pesan.");
+        const errorData = await res.json(); 
+        let errorMessage = "Terjadi kesalahan saat mengirim pesan.";
+
+        if (res.status === 403) {
+          errorMessage =
+            errorData.message || "Anda diblokir oleh pengguna ini.";
+        } else if (res.status === 400) {
+          errorMessage = errorData.message || "Permintaan tidak valid.";
+        } else if (res.status === 404) {
+          errorMessage = errorData.message || "Penerima tidak ditemukan.";
+        }
+
+        throw new Error(errorMessage); 
       }
 
       const data = await res.json();
@@ -212,7 +230,7 @@ export default function Header() {
       setIsAllowReply(false); // reset toggle
     } catch (err) {
       console.error(err);
-      alert("Terjadi kesalahan saat mengirim pesan.");
+      alert(err.message);
     } finally {
       setIsSending(false);
     }
@@ -266,6 +284,24 @@ export default function Header() {
     };
 
     checkLoginStatus();
+  }, []);
+
+  useEffect(() => {
+    const getFingerprint = async () => {
+      try {
+        setIsFingerprintLoading(true);
+        const fp = await load();
+        const result = await fp.get();
+        setSenderFingerprint(result.visitorId);
+        console.log("Fingerprint collected:", result.visitorId);
+      } catch (error) {
+        console.error("Error collecting fingerprint:", error);
+      } finally {
+        setIsFingerprintLoading(false);
+      }
+    };
+
+    getFingerprint();
   }, []);
 
   useEffect(() => {
@@ -411,8 +447,8 @@ export default function Header() {
 
           <button
             type="submit"
-          //  disabled={isSending} 
-           disabled={isSending || !recipientPublicKey} 
+            //  disabled={isSending}
+            disabled={isSending || !recipientPublicKey}
             className="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-semibold shadow-md transition duration-200"
           >
             {isSending ? "Mengirim..." : "🚀 Kirim Pesan Sekarang"}
