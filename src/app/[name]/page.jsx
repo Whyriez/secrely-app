@@ -422,15 +422,6 @@ export default function Header() {
                     <p className="text-richGray-700 text-lg">
                       {header.text || "Kalian mau tanya apa sama aku?"}
                     </p>
-                    <div className="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
-                      {/* These counts would ideally come from header data */}
-                      {/* <span className="px-3 py-1 rounded-full bg-indigo/10 text-indigo text-sm">
-                        ✨ 120 messages
-                      </span>
-                      <span className="px-3 py-1 rounded-full bg-softPink/20 text-richGray-800 text-sm">
-                        🎭 Anonymous enabled
-                      </span> */}
-                    </div>
                   </div>
                 </div>
               </div>

@@ -26,16 +26,15 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 75% 25%, 
-              rgba(255, 221, 238, 0) 0%, 
-              rgba(255, 221, 238, 0.8) 40%),
-            radial-gradient(circle at 25% 75%, 
-              rgba(99, 102, 241, 0) 0%, 
-              rgba(99, 102, 241, 0.4) 40%);
+  background: radial-gradient(circle at 75% 25%,
+              rgba(255, 221, 238, 0) 0%,
+              rgba(230, 210, 235, 0.4) 40%), /* Pink yang lebih kalem/ungu muda, 40% opasitas */
+            radial-gradient(circle at 25% 75%,
+              rgba(99, 102, 241, 0) 0%,
+              rgba(99, 102, 241, 0.4) 40%); /* Indigo tetap 40% opasitas */
   pointer-events: none;
   z-index: -1;
 }
-
 
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
