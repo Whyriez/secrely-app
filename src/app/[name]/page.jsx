@@ -384,10 +384,8 @@ export default function Header() {
   }, [name, router]); // Add router to dependency array
 
   return (
-    <div className="font-inter text-richGray-800 overflow-x-hidden">
-      <div className="gradient-blob w-[min(100vw,500px)] h-[min(100vw,500px)] top-[-10vh] right-[-10vw] md:right-[-5vw]"></div>
-      <div className="gradient-blob w-[min(100vw,600px)] h-[min(100vw,600px)] bottom-[20%] left-[-10vw] md:left-[-30vw]"></div>
-      <div className="gradient-blob w-[min(80vw,400px)] h-[min(80vw,400px)] bottom-[-10vh] right-[10%]"></div>
+    <div className="font-inter text-richGray-800">
+
 
       {/* Particles */}
       <div className="particles">
@@ -534,7 +532,8 @@ export default function Header() {
                   Halaman ini milik @{name}
                 </h2>
                 <p className="text-richGray-700">
-                  {name} ingin mendengar pesan dari Anda. Tanyakan apa saja kepadanya.
+                  {name} ingin mendengar pesan dari Anda. Tanyakan apa saja
+                  kepadanya.
                 </p>
               </div>
             </div>
@@ -888,7 +887,9 @@ export default function Header() {
           <div className="h-20 w-20 rounded-full bg-indigo/10 flex items-center justify-center mx-auto mb-6 floating">
             <span className="text-4xl">✨</span>
           </div>
-          <h2 className="font-space font-bold text-2xl mb-4">Pesan Terkirim!</h2>
+          <h2 className="font-space font-bold text-2xl mb-4">
+            Pesan Terkirim!
+          </h2>
           <p className="text-richGray-700 mb-6">
             Pesan anonim Anda telah berhasil terkirim ke @{name}.
           </p>
