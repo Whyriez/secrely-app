@@ -385,8 +385,6 @@ export default function Header() {
 
   return (
     <div className="font-inter text-richGray-800">
-
-
       {/* Main Content */}
       <main className="pt-10 pb-20 px-6 md:px-12 lg:px-24 min-h-screen">
         <div className="max-w-3xl mx-auto">
@@ -436,11 +434,11 @@ export default function Header() {
               </div>
               <div>
                 <h2 className="font-space font-bold text-xl mb-2">
-                  Halaman ini milik @{name}
+                  Kirimkan Pesan Anda
                 </h2>
                 <p className="text-richGray-700">
-                  {name} ingin mendengar pesan dari Anda. Tanyakan apa saja
-                  kepadanya.
+                  Gunakan kolom di bawah untuk menyampaikan pesan rahasia
+                  kepada {name}.
                 </p>
               </div>
             </div>
@@ -647,8 +645,9 @@ export default function Header() {
                     <span className="text-xs">✓</span>
                   </div>
                   <p className="text-richGray-700">
-                    Kami tidak pernah menyimpan alamat IP atau informasi
-                    pengenal Anda
+                    Kami menjaga platform tetap aman. Untuk mencegah pesan
+                    mengganggu, kami menggunakan informasi teknis perangkat Anda
+                    secara anonim.
                   </p>
                 </li>
               </ul>
