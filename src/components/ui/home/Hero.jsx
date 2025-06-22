@@ -164,7 +164,7 @@ function Hero() {
                   <span className="ml-2 font-bold">Your Secrely Profile</span>
                 </div>
                 <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <h3 className="font-bold mb-2">Alex Johnson</h3>
+                  <h3 className="font-bold mb-2">Sarah</h3>
                   <p className="text-sm text-richGray-700 mb-4">
                     Send me anonymous messages! I promise to reply to the
                     interesting ones 😊
@@ -200,7 +200,7 @@ function Hero() {
                   <div className="flex items-center mb-4">
                     <input
                       type="text"
-                      value="secrely.app/alex_j"
+                      value="secrely.app/sarah"
                       readOnly
                       className="bg-gray-50 rounded-l-lg px-4 py-2 w-full text-sm border border-gray-200 focus:outline-none"
                     />
