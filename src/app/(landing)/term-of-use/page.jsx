@@ -237,7 +237,7 @@ export default function TermOfUse() {
           <h3 className="font-bold text-lg mb-3">3.1 Your Content</h3>
           <p className="mb-4">
             Our Service allows you to post, link, store, share and otherwise
-            make available certain information, text, graphics, videos, or other
+            make available certain information, text, or other
             material ("Content"). You are responsible for the Content that you
             post on or through the Service, including its legality, reliability,
             and appropriateness.

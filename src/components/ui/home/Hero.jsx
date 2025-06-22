@@ -1,4 +1,6 @@
-'use client'
+"use client";
+
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -45,16 +47,20 @@ function Hero() {
                 <div className="glass-card rounded-3xl p-6 shadow-lg max-w-xs mx-auto transform rotate-3 hover:rotate-0 transition-all duration-300">
                   <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold">
-                        S
-                      </div>
+                      <Image
+                        src={"/Logo-circular.png"}
+                        width={50}
+                        height={50}
+                        alt="Logo Secrely"
+                      />
                       <span className="ml-2 font-bold">Secrely</span>
                     </div>
                     <div className="text-sm text-richGray-700">2m ago</div>
                   </div>
                   <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
                     <p className="text-richGray-700">
-                      I've always admired your creativity and how you're not afraid to be yourself. You inspire me more than you know!
+                      I've always admired your creativity and how you're not
+                      afraid to be yourself. You inspire me more than you know!
                     </p>
                   </div>
                   <div className="flex justify-between">
@@ -76,16 +82,20 @@ function Hero() {
                 <div className="absolute top-20 -right-4 glass-card rounded-3xl p-6 shadow-lg max-w-xs transform -rotate-6 hover:rotate-0 transition-all duration-300">
                   <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold">
-                        S
-                      </div>
+                      <Image
+                        src={"/Logo-circular.png"}
+                        width={50}
+                        height={50}
+                        alt="Logo Secrely"
+                      />
                       <span className="ml-2 font-bold">Secrely</span>
                     </div>
                     <div className="text-sm text-richGray-700">5m ago</div>
                   </div>
                   <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
                     <p className="text-richGray-700">
-                      Your presentation yesterday was amazing! You seemed so confident. Any tips?
+                      Your presentation yesterday was amazing! You seemed so
+                      confident. Any tips?
                     </p>
                   </div>
                   <div className="flex justify-between">
@@ -109,15 +119,15 @@ function Hero() {
                 <div className="message-bubble absolute top-[10%] left-[20%] h-16 w-16 rounded-full bg-softPink opacity-40" />
                 <div
                   className="message-bubble absolute top-[60%] left-[70%] h-12 w-12 rounded-full bg-indigo opacity-30"
-                  style={{ animationDelay: '1s' }}
+                  style={{ animationDelay: "1s" }}
                 />
                 <div
                   className="message-bubble absolute top-[30%] left-[80%] h-20 w-20 rounded-full bg-purple-300 opacity-20"
-                  style={{ animationDelay: '2s' }}
+                  style={{ animationDelay: "2s" }}
                 />
                 <div
                   className="message-bubble absolute top-[80%] left-[30%] h-14 w-14 rounded-full bg-blue-300 opacity-30"
-                  style={{ animationDelay: '1.5s' }}
+                  style={{ animationDelay: "1.5s" }}
                 />
               </div>
             </div>
@@ -133,7 +143,8 @@ function Hero() {
               Experience the <span className="text-indigo">Magic</span>
             </h2>
             <p className="text-richGray-700 max-w-2xl mx-auto">
-              See how Secrely transforms anonymous messaging into meaningful connections.
+              See how Secrely transforms anonymous messaging into meaningful
+              connections.
             </p>
           </div>
 
@@ -141,17 +152,22 @@ function Hero() {
             {/* Card 1 */}
             <div
               className="glass-card rounded-3xl p-6 max-w-sm w-full scroll-reveal"
-              style={{ transitionDelay: '0.2s' }}
+              style={{ transitionDelay: "0.2s" }}
             >
               <div className="bg-indigo/10 rounded-xl p-4 mb-6">
                 <div className="flex items-center mb-4">
-                  <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold">S</div>
+                   <Image
+                         src={"/Logo-circular.png"}
+                         width={50}
+                         height={50}
+                         alt="Logo Secrely" />
                   <span className="ml-2 font-bold">Your Secrely Profile</span>
                 </div>
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <h3 className="font-bold mb-2">Alex Johnson</h3>
                   <p className="text-sm text-richGray-700 mb-4">
-                    Send me anonymous messages! I promise to reply to the interesting ones 😊
+                    Send me anonymous messages! I promise to reply to the
+                    interesting ones 😊
                   </p>
                   <div className="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
                     <div className="h-full w-3/4 bg-indigo shimmer"></div>
@@ -169,11 +185,15 @@ function Hero() {
             {/* Card 2 */}
             <div
               className="glass-card rounded-3xl p-6 max-w-sm w-full scroll-reveal"
-              style={{ transitionDelay: '0.4s' }}
+              style={{ transitionDelay: "0.4s" }}
             >
               <div className="bg-indigo/10 rounded-xl p-4 mb-6">
                 <div className="flex items-center mb-4">
-                  <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold">S</div>
+                  <Image
+                        src={"/Logo-circular.png"}
+                        width={50}
+                        height={50}
+                        alt="Logo Secrely" />
                   <span className="ml-2 font-bold">Share Your Link</span>
                 </div>
                 <div className="bg-white rounded-xl p-4 shadow-sm">
@@ -210,7 +230,7 @@ function Hero() {
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

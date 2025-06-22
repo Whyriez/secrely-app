@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 export const navItems = [
   { name: "Home", href: "/" },
@@ -75,9 +76,14 @@ export default function Navbar() {
   return (
     <nav className="glass-card fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
       <div className="flex items-center">
-        <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold text-xl">
+        <Image
+        src={"/Logo-circular.png"}
+        width={50}
+        height={50}
+        alt="Logo Secrely" />
+        {/* <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold text-xl">
           S
-        </div>
+        </div> */}
         <span className="ml-2 font-space font-bold text-xl">Secrely</span>
       </div>
 
