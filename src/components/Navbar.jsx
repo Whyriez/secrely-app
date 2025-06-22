@@ -1,6 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const navItems = [
   { name: "Home", href: "/" },
@@ -13,6 +14,63 @@ export const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const [activeHash, setActiveHash] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["how-it-works", "testimonials"];
+      let currentActiveHash = "";
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (
+            rect.top <= window.innerHeight * 0.2 &&
+            rect.bottom >= window.innerHeight * 0.2
+          ) {
+            currentActiveHash = `#${sectionId}`;
+            break; 
+          }
+        }
+      }
+
+      if (
+        pathname === "/" &&
+        currentActiveHash === "" &&
+        window.scrollY < 100
+      ) {
+        setActiveHash("/");
+      } else {
+        setActiveHash(currentActiveHash);
+      }
+    };
+
+    if (pathname === "/") {
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+    } else {
+      setActiveHash("");
+    }
+
+    return () => {
+      if (pathname === "/") {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [pathname]);
+
+  const isActiveLink = (href) => {
+    if (href === "/") {
+      return pathname === "/" && (activeHash === "" || activeHash === "/");
+    }
+    if (href.includes("#")) {
+      const [baseHref, hash] = href.split("#");
+      return pathname === baseHref && activeHash === `#${hash}`;
+    }
+    return pathname === href;
+  };
 
   return (
     <nav className="glass-card fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
@@ -29,7 +87,11 @@ export default function Navbar() {
           <Link
             key={item.name}
             href={item.href}
-            className="font-medium hover:text-indigo transition-colors"
+            className={`font-medium hover:text-indigo transition-colors ${
+              isActiveLink(item.href)
+                ? "text-indigo border-b-2 border-indigo"
+                : "" // Contoh style untuk active link
+            }`}
           >
             {item.name}
           </Link>
@@ -59,10 +121,11 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Nav with animation */}
       <div
         className={`absolute top-full left-0 right-0 bg-white shadow-md py-4 px-6 md:hidden transition-all duration-300 ease-in-out origin-top transform ${
-          isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"
+          isOpen
+            ? "scale-y-100 opacity-100"
+            : "scale-y-0 opacity-0 pointer-events-none"
         }`}
         style={{ transformOrigin: "top" }}
       >

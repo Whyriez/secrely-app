@@ -516,15 +516,14 @@ export default function TermOfUse() {
             <li>
               Email:
               <a
-                href="mailto:legal@secrely.app"
+                href="mailto:legal-secrely@limapp.my.id"
                 className="text-indigo hover:underline"
               >
-                legal@secrely.app
+                legal-secrely@limapp.my.id
               </a>
             </li>
             <li>
-              Address: Secrely Legal Department, 123 Privacy Way, San Francisco,
-              CA 94107, United States
+              Address: Secrely Legal Department, Jl Kasmat Lahay, Gorontalo, Indonesian
             </li>
           </ul>
 
@@ -665,9 +664,9 @@ export default function TermOfUse() {
                       Our team is here to help you understand our terms and
                       policies.
                     </p>
-                    <button className="neo-button text-white px-8 py-3 rounded-xl font-bold mx-auto">
+                    <a  href="mailto:support-secrely@limapp.my.id" className="neo-button text-white px-8 py-3 rounded-xl font-bold mx-auto">
                       Contact Support
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

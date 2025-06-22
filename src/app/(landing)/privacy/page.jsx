@@ -87,7 +87,7 @@ function Privacy() {
             <ul className="list-disc pl-5 space-y-2">
               <li>Username or display name (which can be anonymous)</li>
               <li>Email address (for account recovery and notifications)</li>
-              <li>Password (always encrypted)</li>
+              <li>Password (stored as a hashed value by Supabase)</li>
             </ul>
           </div>
 
@@ -96,16 +96,15 @@ function Privacy() {
             <ul className="list-disc pl-5 space-y-2">
               <li>The content of messages you send and receive</li>
               <li>Timestamps of when messages are sent</li>
-              <li>Read receipts (if enabled)</li>
+              <li>Read receipts</li>
             </ul>
           </div>
 
           <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Device Information</h3>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Device type and model</li>
+              <li>Device fingerprint (for spam detection and user blocking)</li>
               <li>Operating system</li>
-              <li>IP address (temporarily stored)</li>
               <li>App version</li>
             </ul>
           </div>
@@ -184,12 +183,18 @@ function Privacy() {
             <h3 className="font-bold mb-2">Cloud Infrastructure</h3>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <span className="font-medium">Firebase:</span> For secure data
+                <span className="font-medium">Supabase:</span> For secure data
                 storage and authentication
               </li>
               <li>
-                <span className="font-medium">AWS:</span> For server hosting and
-                content delivery
+                <span className="font-medium">Vercel:</span> For server hosting
+                and content delivery
+              </li>
+              <li>
+                <span className="font-medium">Cloudflare:</span> For web
+                performance, security, and to facilitate secure WebSocket
+                connections, enhancing the stability and speed of our real-time
+                features.
               </li>
             </ul>
           </div>
@@ -198,21 +203,44 @@ function Privacy() {
             <h3 className="font-bold mb-2">Analytics</h3>
             <ul className="list-disc pl-5 space-y-2">
               <li>
-                <span className="font-medium">Google Analytics:</span> To
-                understand app usage patterns
+                <span className="font-medium">Vercel Analytics:</span> To
+                monitor website performance, traffic patterns, and overall
+                application health.
               </li>
               <li>
-                <span className="font-medium">Mixpanel:</span> For feature
-                performance tracking
+                <span className="font-medium">Cloudflare Analytics:</span> For
+                insights into network traffic, security threats, and content
+                delivery performance.
               </li>
               <li>
-                <span className="font-medium">Crashlytics:</span> For crash
-                reporting and stability monitoring
+                <span className="font-medium">Supabase Logs & Metrics:</span> To
+                track database performance, API usage, and identify potential
+                issues within our backend services.
               </li>
             </ul>
           </div>
 
           <div className="pl-4 mb-4">
+            <h3 className="font-bold mb-2">Media & Content Embedding</h3>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <span className="font-medium">Spotify:</span> To provide
+                embedded music content. When you interact with or view embedded
+                Spotify players on our site, Spotify may collect data according
+                to their privacy policy.
+                <a
+                  href="https://www.spotify.com/us/legal/privacy-policy/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-indigo hover:underline"
+                >
+                  {" "}
+                  (See Spotify's Privacy Policy)
+                </a>
+              </li>
+            </ul>
+          </div>
+          {/* <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Customer Support</h3>
             <ul className="list-disc pl-5 space-y-2">
               <li>
@@ -238,7 +266,7 @@ function Privacy() {
                 authentication services
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <p className="mt-4">
             All third parties we work with are bound by strict data protection
@@ -259,7 +287,7 @@ function Privacy() {
             are the rights and options available to you:
           </p>
 
-          <div className="pl-4 mb-4">
+          {/* <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Access Your Data</h3>
             <p className="mb-2">
               You can request a copy of all the personal data we have about you.
@@ -272,7 +300,7 @@ function Privacy() {
                 days
               </li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Delete Your Data</h3>
@@ -280,7 +308,7 @@ function Privacy() {
               You can delete your account and associated data at any time:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Go to Settings &gt; Account &gt; Delete Account</li>
+              <li>Go to Settings &gt; Others &gt; Delete Account</li>
               <li>Confirm your choice (this action cannot be undone)</li>
               <li>We'll permanently delete your data within 30 days</li>
             </ul>
@@ -289,24 +317,36 @@ function Privacy() {
           <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Control Your Privacy Settings</h3>
             <p className="mb-2">
-              Customize who can contact you and how visible you are:
+              Customize who can contact you and manage your preferences for a
+              safer experience:
             </p>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Go to Settings &gt; Privacy</li>
-              <li>Adjust who can send you messages</li>
-              <li>Control read receipts and typing indicators</li>
-              <li>Manage notification preferences</li>
+              <li>
+                Go to Settings &gt; Privacy to adjust who can send you messages.
+              </li>
+              <li>
+                In Settings &gt; Privacy, you can also manage your{" "}
+                <span className="font-medium">Blocked Users list</span> (which
+                shows users you have blocked from specific chat details).
+              </li>
+              <li>
+                Manage your{" "}
+                <span className="font-medium">Hidden Words list</span> in
+                Settings &gt; Privacy, allowing you to add or remove words that
+                you wish to hide from your messages.
+              </li>
+              <li>Go to Settings &gt; Preference to manage notification preferences.</li>
             </ul>
           </div>
 
-          <div className="pl-4 mb-4">
+          {/* <div className="pl-4 mb-4">
             <h3 className="font-bold mb-2">Opt Out of Analytics</h3>
             <p className="mb-2">You can choose not to share usage data:</p>
             <ul className="list-disc pl-5 space-y-2">
               <li>Go to Settings &gt; Privacy &gt; Analytics</li>
               <li>Toggle off "Share Usage Data"</li>
             </ul>
-          </div>
+          </div> */}
 
           <div className="pl-4">
             <h3 className="font-bold mb-2">Additional Rights</h3>
@@ -564,10 +604,10 @@ function Privacy() {
                     <li>
                       Email:
                       <a
-                        href="mailto:privacy@secrely.app"
+                        href="mailto:privacy-secrely@limapp.my.id"
                         className="text-indigo hover:underline"
                       >
-                        privacy@secrely.app
+                        privacy-secrely@limapp.my.id
                       </a>
                     </li>
                     <li>Response time: Within 2 business days</li>
@@ -581,10 +621,10 @@ function Privacy() {
                     <li>
                       Email:
                       <a
-                        href="mailto:dpo@secrely.app"
+                        href="mailto:dpo-secrely@limapp.my.id"
                         className="text-indigo hover:underline"
                       >
-                        dpo@secrely.app
+                        dpo-secrely@limapp.my.id
                       </a>
                     </li>
                   </ul>
@@ -595,11 +635,11 @@ function Privacy() {
                   <address className="not-italic pl-5">
                     Secrely Privacy Team
                     <br />
-                    123 Privacy Way
+                    Jl Kasmat Lahay
                     <br />
-                    Gorontalo, CA 94107
+                    Gorontalo
                     <br />
-                    Indonesia
+                    Indonesian
                   </address>
                 </div>
 
