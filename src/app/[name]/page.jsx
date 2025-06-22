@@ -251,7 +251,7 @@ export default function Header() {
   };
 
   // Emoji functionality
-  const emojis = ["😊", "❤️", "👍", "🎉", "🙌", "✨", "🔥", "💯", "🤔", "😂"];
+  const emojis = ["🙌", "❤️", "😊", "🎉", "👍", "✨", "🔥", "💯", "🤔", "😂"];
   const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
 
   const handleEmojiClick = () => {
@@ -539,7 +539,7 @@ export default function Header() {
                         Izinkan penerima membalas
                       </label>
                       <p className="text-xs text-richGray-700 mt-1">
-                        Mereka dapat membalas Anda secara anonim
+                        {name} dapat membalas Anda secara anonim
                       </p>
                     </div>
                     <div className="relative inline-block w-12 align-middle select-none">
@@ -700,6 +700,12 @@ export default function Header() {
 
             <form id="login-form" onSubmit={handleLogin}>
               <div className="mb-4">
+                <p>
+                  Kirim pesan dengan nyaman, {name} tidak akan mengetahui
+                  identitas Anda.
+                </p>
+              </div>
+              <div className="mb-4">
                 <label
                   htmlFor="email"
                   className="block font-medium text-richGray-800 mb-2"
@@ -775,14 +781,14 @@ export default function Header() {
                 )}
               </button>
 
-              <div className="mt-6 text-center text-sm text-richGray-700">
-                <p>
-                  Belum punya akun?
-                  <a href="#" className="text-indigo hover:underline">
-                    Daftar
-                  </a>
-                </p>
-              </div>
+               <div className="mt-6 text-center text-sm text-richGray-700">
+        <p>
+          Belum punya akun?
+          <a href="/download-app" className="text-indigo hover:underline"> {/* Ubah href sesuai link download aplikasi Anda */}
+            Unduh Aplikasinya
+          </a>
+        </p>
+      </div>
             </form>
           </div>
         </div>
