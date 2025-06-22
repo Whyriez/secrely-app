@@ -29,13 +29,13 @@ function Hero() {
                   <div className="h-6 w-6 rounded-full bg-green-400 flex items-center justify-center text-white text-xs">
                     ✓
                   </div>
-                  <span className="ml-2 text-sm">No sign-up required</span>
+                  <span className="ml-2 text-sm">Send/Receive Anonymous Messages</span>
                 </div>
                 <div className="flex items-center">
                   <div className="h-6 w-6 rounded-full bg-green-400 flex items-center justify-center text-white text-xs">
                     ✓
                   </div>
-                  <span className="ml-2 text-sm">100% anonymous</span>
+                  <span className="ml-2 text-sm">Your Identity Stays Hidden</span>
                 </div>
               </div>
             </div>
