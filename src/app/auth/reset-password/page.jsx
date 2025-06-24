@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -11,7 +11,6 @@ const supabase = createClient(
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -20,80 +19,70 @@ export default function ResetPasswordPage() {
   const [success, setSuccess] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  useEffect(() => {
-    const handlePasswordResetFlow = async () => {
-      setError(null);
-      let accessToken = null;
-      let refreshToken = null;
-      let type = null;
+useEffect(() => {
+  const handlePasswordResetFlow = async () => {
+    setError(null);
+    let accessToken = null;
+    let refreshToken = null;
+    let type = null;
 
-      if (typeof window !== "undefined" && window.location.hash) {
-        const hashParams = new URLSearchParams(
-          window.location.hash.substring(1)
-        );
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      const query = new URLSearchParams(window.location.search);
 
+      // Jika hash (#access_token...) masih ada
+      if (hash) {
+        const hashParams = new URLSearchParams(hash.substring(1));
         accessToken = hashParams.get("access_token");
         refreshToken = hashParams.get("refresh_token");
         type = hashParams.get("type");
 
-        // Convert to query param
-        const queryParams = new URLSearchParams();
-        queryParams.set("access_token", accessToken);
-        queryParams.set("refresh_token", refreshToken);
-        queryParams.set("type", type);
+        // Rewrite URL ke query string agar lebih clean
+        const newQuery = new URLSearchParams({
+          access_token: accessToken ?? "",
+          refresh_token: refreshToken ?? "",
+          type: type ?? "",
+        });
 
-        const cleanUrl = `${window.location.origin}${
-          window.location.pathname
-        }?${queryParams.toString()}`;
+        const cleanUrl = `${window.location.origin}${window.location.pathname}?${newQuery.toString()}`;
         window.history.replaceState(null, "", cleanUrl);
+      } else {
+        // Ambil dari query param jika tidak ada hash
+        accessToken = query.get("access_token");
+        refreshToken = query.get("refresh_token");
+        type = query.get("type");
       }
 
       if (accessToken && refreshToken && type === "recovery") {
         try {
-          const { data: sessionData, error: sessionError } =
-            await supabase.auth.setSession({
-              access_token: accessToken,
-              refresh_token: refreshToken,
-            });
+          const { error: sessionError } = await supabase.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken,
+          });
 
           if (sessionError) {
             console.error("Error setting session:", sessionError);
-            setError(
-              "Gagal memverifikasi link reset kata sandi. Link mungkin sudah kedaluwarsa atau tidak valid."
-            );
+            setError("Link tidak valid atau sudah kedaluwarsa.");
             setLoading(false);
             return;
           }
 
           setIsFormVisible(true);
-          setLoading(false);
         } catch (e) {
-          console.error("Exception setting session:", e);
-          setError("Terjadi kesalahan saat memproses link. Silakan coba lagi.");
-          setLoading(false);
+          console.error("Exception:", e);
+          setError("Terjadi kesalahan. Silakan coba lagi.");
         }
-      } else if (type === "recovery") {
-        setError(
-          "Link reset kata sandi tidak valid atau sudah digunakan. Silakan minta link reset baru."
-        );
-        setLoading(false);
       } else {
-        setError(
-          "Halaman ini hanya dapat diakses melalui link reset kata sandi dari email."
-        );
-        setLoading(false);
+        setError("Link reset tidak valid. Silakan minta ulang.");
       }
-    };
 
-    if (searchParams.toString() && loading) {
-      handlePasswordResetFlow();
-    } else if (!searchParams.toString() && loading) {
-      setError(
-        "Halaman ini hanya dapat diakses melalui link reset kata sandi dari email."
-      );
       setLoading(false);
     }
-  }, [searchParams, loading]);
+  };
+
+  handlePasswordResetFlow();
+}, []);
+
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
