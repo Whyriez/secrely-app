@@ -335,7 +335,10 @@ function Privacy() {
                 Settings &gt; Privacy, allowing you to add or remove words that
                 you wish to hide from your messages.
               </li>
-              <li>Go to Settings &gt; Preference to manage notification preferences.</li>
+              <li>
+                Go to Settings &gt; Preference to manage notification
+                preferences.
+              </li>
             </ul>
           </div>
 
@@ -361,6 +364,59 @@ function Privacy() {
               <li>Right to data portability</li>
             </ul>
           </div>
+        </>
+      ),
+    },
+    {
+      title: "Child Safety & CSAE Protection Policy",
+      iconPath:
+        "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+      content: (
+        <>
+          <p className="mb-4">
+            At Secrely, we have zero tolerance for child sexual abuse and
+            exploitation (CSAE). We are committed to protecting children and
+            young users on our platform through the following actions:
+          </p>
+
+          <ul className="list-disc pl-5 space-y-2 mb-4">
+            <li>
+              <span className="font-medium">Content Moderation:</span> We use a
+              combination of automated tools and manual review to detect and
+              remove any content that may involve or promote child exploitation.
+            </li>
+            <li>
+              <span className="font-medium">Reporting Tools:</span> Users can
+              report messages or accounts suspected of abuse, which are reviewed
+              promptly.
+            </li>
+            <li>
+              <span className="font-medium">Immediate Action:</span> Accounts
+              found violating our child safety policies are immediately
+              suspended and investigated.
+            </li>
+            <li>
+              <span className="font-medium">Law Enforcement Cooperation:</span>{" "}
+              We fully cooperate with law enforcement and relevant child
+              protection authorities where appropriate.
+            </li>
+            <li>
+              <span className="font-medium">User Controls:</span> We provide
+              features such as message filters, block/report tools, and privacy
+              settings to help users protect themselves.
+            </li>
+          </ul>
+
+          <p>
+            If you encounter suspicious or harmful behavior, please report it
+            immediately to{" "}
+            <a
+              href="mailto:abuse-secrely@limapp.my.id"
+              className="text-indigo hover:underline"
+            >
+              abuse-secrely@limapp.my.id
+            </a>
+          </p>
         </>
       ),
     },
