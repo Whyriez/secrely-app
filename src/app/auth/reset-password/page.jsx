@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -9,8 +9,10 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-export default function ResetPasswordPage() {
+// Separate component that uses useSearchParams
+function ResetPasswordForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -26,64 +28,73 @@ export default function ResetPasswordPage() {
       let refreshToken = null;
       let type = null;
 
-      if (typeof window !== "undefined") {
-        setTimeout(() => {
-          const hash = window.location.hash;
-          const query = new URLSearchParams(window.location.search);
+      if (typeof window !== "undefined" && window.location.hash) {
+        const hashParams = new URLSearchParams(
+          window.location.hash.substring(1)
+        );
 
-          if (hash) {
-            const hashParams = new URLSearchParams(hash.substring(1));
-            accessToken = hashParams.get("access_token");
-            refreshToken = hashParams.get("refresh_token");
-            type = hashParams.get("type");
+        accessToken = hashParams.get("access_token");
+        refreshToken = hashParams.get("refresh_token");
+        type = hashParams.get("type");
 
-            if (accessToken && refreshToken && type === "recovery") {
-              const newQuery = new URLSearchParams({
-                access_token,
-                refresh_token,
-                type,
-              });
+        // Convert to query param
+        const queryParams = new URLSearchParams();
+        queryParams.set("access_token", accessToken);
+        queryParams.set("refresh_token", refreshToken);
+        queryParams.set("type", type);
 
-              const cleanUrl = `${window.location.origin}${
-                window.location.pathname
-              }?${newQuery.toString()}`;
-              window.history.replaceState(null, "", cleanUrl);
-            } else {
-              setError("Link reset tidak valid atau sudah digunakan.");
-              setLoading(false);
-            }
-          } else {
-            // fallback: ambil dari search params
-            accessToken = query.get("access_token");
-            refreshToken = query.get("refresh_token");
-            type = query.get("type");
-          }
+        const cleanUrl = `${window.location.origin}${
+          window.location.pathname
+        }?${queryParams.toString()}`;
+        window.history.replaceState(null, "", cleanUrl);
+      }
 
-          if (accessToken && refreshToken && type === "recovery") {
-            supabase.auth
-              .setSession({
-                access_token: accessToken,
-                refresh_token: refreshToken,
-              })
-              .then(({ error: sessionError }) => {
-                if (sessionError) {
-                  console.error("Error setting session:", sessionError);
-                  setError("Link tidak valid atau sudah kedaluwarsa.");
-                } else {
-                  setIsFormVisible(true);
-                }
-                setLoading(false);
-              });
-          } else {
-            setError("Link reset tidak valid. Silakan minta ulang.");
+      if (accessToken && refreshToken && type === "recovery") {
+        try {
+          const { data: sessionData, error: sessionError } =
+            await supabase.auth.setSession({
+              access_token: accessToken,
+              refresh_token: refreshToken,
+            });
+
+          if (sessionError) {
+            console.error("Error setting session:", sessionError);
+            setError(
+              "Gagal memverifikasi link reset kata sandi. Link mungkin sudah kedaluwarsa atau tidak valid."
+            );
             setLoading(false);
+            return;
           }
-        }, 100); // Delay 100ms
+
+          setIsFormVisible(true);
+          setLoading(false);
+        } catch (e) {
+          console.error("Exception setting session:", e);
+          setError("Terjadi kesalahan saat memproses link. Silakan coba lagi.");
+          setLoading(false);
+        }
+      } else if (type === "recovery") {
+        setError(
+          "Link reset kata sandi tidak valid atau sudah digunakan. Silakan minta link reset baru."
+        );
+        setLoading(false);
+      } else {
+        setError(
+          "Halaman ini hanya dapat diakses melalui link reset kata sandi dari email."
+        );
+        setLoading(false);
       }
     };
 
-    handlePasswordResetFlow();
-  }, []);
+    if (searchParams.toString() && loading) {
+      handlePasswordResetFlow();
+    } else if (!searchParams.toString() && loading) {
+      setError(
+        "Halaman ini hanya dapat diakses melalui link reset kata sandi dari email."
+      );
+      setLoading(false);
+    }
+  }, [searchParams, loading]);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -116,7 +127,7 @@ export default function ResetPasswordPage() {
         e.message || "Gagal mengatur ulang kata sandi. Silakan coba lagi."
       );
     } finally {
-      setLoading(false); // Selesai loading
+      setLoading(false);
     }
   };
 
@@ -159,12 +170,12 @@ export default function ResetPasswordPage() {
             Terjadi Kesalahan 😔
           </h2>
           <p className="text-red-700 mb-6">{error}</p>
-          {/* <button
+          <button
             onClick={() => router.push("/forgot-password")}
             className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full"
           >
             Minta Link Baru
-          </button> */}
+          </button>
         </div>
       </div>
     );
@@ -199,7 +210,7 @@ export default function ResetPasswordPage() {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               required
-              minLength={6} // Sesuaikan dengan kebijakan password Supabase Anda
+              minLength={6}
             />
           </div>
 
@@ -258,5 +269,23 @@ export default function ResetPasswordPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+// Loading component for Suspense fallback
+function ResetPasswordLoading() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <p>Memuat...</p>
+    </div>
+  );
+}
+
+// Main component wrapped with Suspense
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<ResetPasswordLoading />}>
+      <ResetPasswordForm />
+    </Suspense>
   );
 }
