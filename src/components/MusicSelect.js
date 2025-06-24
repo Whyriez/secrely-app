@@ -133,7 +133,7 @@ export default function MusicSelect({ value, onChange }) {
         onInputChange={handleInputChange}
         onMenuScrollToBottom={handleMenuScrollToBottom}
         isLoading={isLoading}
-        placeholder="🎵 Pilih Musik"
+        placeholder="🎵 Select Music"
         menuPortalTarget={
           typeof window !== "undefined" ? document.body : undefined
         }
