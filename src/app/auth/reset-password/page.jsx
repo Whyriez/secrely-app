@@ -19,70 +19,71 @@ export default function ResetPasswordPage() {
   const [success, setSuccess] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-useEffect(() => {
-  const handlePasswordResetFlow = async () => {
-    setError(null);
-    let accessToken = null;
-    let refreshToken = null;
-    let type = null;
+  useEffect(() => {
+    const handlePasswordResetFlow = async () => {
+      setError(null);
+      let accessToken = null;
+      let refreshToken = null;
+      let type = null;
 
-    if (typeof window !== "undefined") {
-      const hash = window.location.hash;
-      const query = new URLSearchParams(window.location.search);
+      if (typeof window !== "undefined") {
+        setTimeout(() => {
+          const hash = window.location.hash;
+          const query = new URLSearchParams(window.location.search);
 
-      // Jika hash (#access_token...) masih ada
-      if (hash) {
-        const hashParams = new URLSearchParams(hash.substring(1));
-        accessToken = hashParams.get("access_token");
-        refreshToken = hashParams.get("refresh_token");
-        type = hashParams.get("type");
+          if (hash) {
+            const hashParams = new URLSearchParams(hash.substring(1));
+            accessToken = hashParams.get("access_token");
+            refreshToken = hashParams.get("refresh_token");
+            type = hashParams.get("type");
 
-        // Rewrite URL ke query string agar lebih clean
-        const newQuery = new URLSearchParams({
-          access_token: accessToken ?? "",
-          refresh_token: refreshToken ?? "",
-          type: type ?? "",
-        });
+            if (accessToken && refreshToken && type === "recovery") {
+              const newQuery = new URLSearchParams({
+                access_token,
+                refresh_token,
+                type,
+              });
 
-        const cleanUrl = `${window.location.origin}${window.location.pathname}?${newQuery.toString()}`;
-        window.history.replaceState(null, "", cleanUrl);
-      } else {
-        // Ambil dari query param jika tidak ada hash
-        accessToken = query.get("access_token");
-        refreshToken = query.get("refresh_token");
-        type = query.get("type");
-      }
-
-      if (accessToken && refreshToken && type === "recovery") {
-        try {
-          const { error: sessionError } = await supabase.auth.setSession({
-            access_token: accessToken,
-            refresh_token: refreshToken,
-          });
-
-          if (sessionError) {
-            console.error("Error setting session:", sessionError);
-            setError("Link tidak valid atau sudah kedaluwarsa.");
-            setLoading(false);
-            return;
+              const cleanUrl = `${window.location.origin}${
+                window.location.pathname
+              }?${newQuery.toString()}`;
+              window.history.replaceState(null, "", cleanUrl);
+            } else {
+              setError("Link reset tidak valid atau sudah digunakan.");
+              setLoading(false);
+            }
+          } else {
+            // fallback: ambil dari search params
+            accessToken = query.get("access_token");
+            refreshToken = query.get("refresh_token");
+            type = query.get("type");
           }
 
-          setIsFormVisible(true);
-        } catch (e) {
-          console.error("Exception:", e);
-          setError("Terjadi kesalahan. Silakan coba lagi.");
-        }
-      } else {
-        setError("Link reset tidak valid. Silakan minta ulang.");
+          if (accessToken && refreshToken && type === "recovery") {
+            supabase.auth
+              .setSession({
+                access_token: accessToken,
+                refresh_token: refreshToken,
+              })
+              .then(({ error: sessionError }) => {
+                if (sessionError) {
+                  console.error("Error setting session:", sessionError);
+                  setError("Link tidak valid atau sudah kedaluwarsa.");
+                } else {
+                  setIsFormVisible(true);
+                }
+                setLoading(false);
+              });
+          } else {
+            setError("Link reset tidak valid. Silakan minta ulang.");
+            setLoading(false);
+          }
+        }, 100); // Delay 100ms
       }
+    };
 
-      setLoading(false);
-    }
-  };
-
-  handlePasswordResetFlow();
-}, []);
-
+    handlePasswordResetFlow();
+  }, []);
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
@@ -158,12 +159,12 @@ useEffect(() => {
             Terjadi Kesalahan 😔
           </h2>
           <p className="text-red-700 mb-6">{error}</p>
-          <button
+          {/* <button
             onClick={() => router.push("/forgot-password")}
             className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full"
           >
             Minta Link Baru
-          </button>
+          </button> */}
         </div>
       </div>
     );
