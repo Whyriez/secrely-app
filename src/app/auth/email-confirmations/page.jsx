@@ -27,7 +27,6 @@ function EmailConfirmationForm() {
       let type = null;
       let tokenHash = null;
 
-      // Check for tokens in URL hash (from email link)
       if (typeof window !== "undefined" && window.location.hash) {
         const hashParams = new URLSearchParams(
           window.location.hash.substring(1)
@@ -197,12 +196,12 @@ function EmailConfirmationForm() {
               )}
             </p>
           </div>
-          <button
+          {/* <button
             onClick={() => router.push("/login")}
             className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full mb-3"
           >
             Go to Login
-          </button>
+          </button> */}
           <button
             onClick={() => router.push("/")}
             className="text-richGray-600 hover:text-richGray-800 font-medium"
