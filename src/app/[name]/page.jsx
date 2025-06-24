@@ -27,7 +27,9 @@ export default function Header() {
 
   const [isAllowReply, setIsAllowReply] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // New state for success modal
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [isErrorMessage, setIsErrorMessage] = useState("");
 
   const [selectedMusic, setSelectedMusic] = useState(null);
 
@@ -48,7 +50,6 @@ export default function Header() {
   const [senderFingerprint, setSenderFingerprint] = useState(null);
   const [isFingerprintLoading, setIsFingerprintLoading] = useState(true);
 
-  // Ref for the message input to easily append emojis
   const messageInputRef = useRef(null);
 
   const handleCheckboxChange = (e) => {
@@ -61,7 +62,7 @@ export default function Header() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
     setIsLoginLoading(true);
     try {
       const res = await fetch(
@@ -81,12 +82,11 @@ export default function Header() {
       setAuthToken(data.token);
       setUser({ userId: data.userId, email: data.email, name: data.name });
       setIsLoggedIn(true);
-      alert("Login berhasil!");
       setIsModalOpen(false);
       setIsAllowReply(true);
     } catch (error) {
-      console.error("Login gagal:", error);
-      alert(error.message || "Email atau password salah!");
+      setIsErrorModalOpen(true);
+      setIsErrorMessage("Wrong email or password!");
     } finally {
       setIsLoginLoading(false);
     }
@@ -98,17 +98,17 @@ export default function Header() {
       setUser(null);
       setIsLoggedIn(false);
       setIsAllowReply(false);
-      alert("Logout berhasil!");
     } catch (error) {
-      console.error("Gagal logout:", error);
-      alert("Terjadi kesalahan saat logout.");
+      setIsErrorModalOpen(true);
+      setIsErrorMessage("An error occurred while logging out.");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message.trim()) {
-      alert("Pesan tidak boleh kosong.");
+      setIsErrorModalOpen(true);
+      setIsErrorMessage("Message cannot be empty.");
       return;
     }
 
@@ -118,13 +118,16 @@ export default function Header() {
     // }
 
     if (!header?.id) {
-      alert("Header belum tersedia.");
+      setIsErrorModalOpen(true);
+      setIsErrorMessage("Header not available yet.");
       return;
     }
 
     if (!recipientPublicKey) {
-      alert("Kunci publik penerima tidak tersedia. Mohon coba lagi.");
-      console.error("Recipient public key is missing.");
+      setIsErrorModalOpen(true);
+      setIsErrorMessage(
+        "The recipient's public key is not available. Please try again."
+      );
       return;
     }
 
@@ -184,7 +187,7 @@ export default function Header() {
           iv: ivBase64,
           isEncrypted: true,
           canReply: isAllowReply,
-          senderId: isAllowReply && isLoggedIn ? user.userId : null, // Only send senderId if logged in and allowed to reply
+          senderId: isAllowReply && isLoggedIn ? user.userId : null,
           senderFingerprint: senderFingerprint,
         }),
       });
@@ -192,15 +195,14 @@ export default function Header() {
       console.log(res);
       if (!res.ok) {
         const errorData = await res.json();
-        let errorMessage = "Terjadi kesalahan saat mengirim pesan.";
+        let errorMessage = "An error occurred while sending the message.";
 
         if (res.status === 403) {
-          errorMessage =
-            errorData.message || "Anda diblokir oleh pengguna ini.";
+          errorMessage = errorData.message || "You are blocked by this user.";
         } else if (res.status === 400) {
-          errorMessage = errorData.message || "Permintaan tidak valid.";
+          errorMessage = errorData.message || "Invalid request.";
         } else if (res.status === 404) {
-          errorMessage = errorData.message || "Penerima tidak ditemukan.";
+          errorMessage = errorData.message || "Recipient not found.";
         }
 
         throw new Error(errorMessage);
@@ -217,8 +219,8 @@ export default function Header() {
           },
           body: JSON.stringify({
             token: header.token,
-            title: "Pesan Baru!",
-            body: "Ada pesan masuk buat kamu!",
+            title: "New Message!",
+            body: "There's an incoming message for you!",
             data: {
               type: "refresh",
             },
@@ -232,8 +234,8 @@ export default function Header() {
       setSelectedMusic(null); // reset music
       setIsAllowReply(false); // reset toggle
     } catch (err) {
-      console.error(err);
-      alert(err.message);
+      setIsErrorModalOpen(true);
+      setIsErrorMessage(err.message);
     } finally {
       setIsSending(false);
     }
@@ -248,6 +250,10 @@ export default function Header() {
 
   const closeSuccessModal = () => {
     setIsSuccessModalOpen(false);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
   };
 
   // Emoji functionality
@@ -265,24 +271,20 @@ export default function Header() {
     emojiElement.style.bottom = "100px";
     document.body.appendChild(emojiElement);
 
-    // Insert emoji into textarea
     if (messageInputRef.current) {
       const start = messageInputRef.current.selectionStart;
       const end = messageInputRef.current.selectionEnd;
       setMessage(
         (prev) => prev.substring(0, start) + newEmoji + prev.substring(end)
       );
-      // Manually set cursor after inserting emoji
       setTimeout(() => {
         messageInputRef.current.selectionStart =
           messageInputRef.current.selectionEnd = start + newEmoji.length;
       }, 0);
     }
 
-    // Update emoji index
     setCurrentEmojiIndex((prevIndex) => (prevIndex + 1) % emojis.length);
 
-    // Remove emoji element after animation
     setTimeout(() => {
       document.body.removeChild(emojiElement);
     }, 3000);
@@ -338,9 +340,7 @@ export default function Header() {
         const fp = await load();
         const result = await fp.get();
         setSenderFingerprint(result.visitorId);
-        console.log("Fingerprint collected:", result.visitorId);
       } catch (error) {
-        console.error("Error collecting fingerprint:", error);
       } finally {
         setIsFingerprintLoading(false);
       }
@@ -440,11 +440,10 @@ export default function Header() {
                 </div>
                 <div>
                   <h2 className="font-space font-bold text-xl mb-2">
-                    Kirimkan Pesan Anda
+                    Send Your Message
                   </h2>
                   <p className="text-richGray-700">
-                    Gunakan kolom di bawah untuk menyampaikan pesan rahasia
-                    kepada {name}.
+                    Use the field below to send a secret message to {name}.
                   </p>
                 </div>
               </div>
@@ -459,7 +458,7 @@ export default function Header() {
                     htmlFor="message"
                     className="block font-medium text-richGray-800 mb-2"
                   >
-                    Pesan Anda
+                    Your Message
                   </label>
                   <div className="relative">
                     <textarea
@@ -485,7 +484,7 @@ export default function Header() {
                   <div className="mt-2 text-xs text-richGray-700 flex items-center">
                     <span className="mr-1">✨</span>
                     <span className="italic">
-                      Pesan ini akan dikirim secara anonim & dijamin rahasia
+                      This message will be sent anonymously & kept confidential.
                     </span>
                   </div>
                 </div>
@@ -496,7 +495,7 @@ export default function Header() {
                     htmlFor="music"
                     className="block font-medium text-richGray-800 mb-2 flex items-center"
                   >
-                    <span>Tambahkan Musik Latar Belakang (Opsional)</span>
+                    <span>Add Background Music (Optional)</span>
                   </label>
                   <div className="relative">
                     {/* Using standard select here, MusicSelect component is still available if preferred */}
@@ -536,10 +535,10 @@ export default function Header() {
                         htmlFor="anonymous-reply"
                         className="block font-medium text-richGray-800"
                       >
-                        Izinkan penerima membalas
+                        Allow recipient to reply
                       </label>
                       <p className="text-xs text-richGray-700 mt-1">
-                        {name} dapat membalas Anda secara anonim
+                        {name} can reply to you anonymously
                       </p>
                     </div>
                     <div className="relative inline-block w-12 align-middle select-none">
@@ -560,7 +559,7 @@ export default function Header() {
                   {isLoggedIn && user ? (
                     <div className="bg-indigo-100 text-indigo-700 text-sm px-4 py-2 rounded-xl flex items-center justify-between mt-4">
                       <span>
-                        🔓 Login sebagai <strong>{user.email}</strong>
+                        🔓 Login as <strong>{user.email}</strong>
                       </span>
                       <button
                         onClick={handleLogout}
@@ -572,7 +571,7 @@ export default function Header() {
                     </div>
                   ) : (
                     <div className="bg-yellow-50 text-yellow-700 text-sm px-4 py-2 rounded-xl mt-4">
-                      ⚠️ Kamu belum login. Beberapa fitur akan dibatasi.
+                      ⚠️ You are not logged in. Some features will be limited.
                     </div>
                   )}
                 </div>
@@ -607,11 +606,11 @@ export default function Header() {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                           ></path>
                         </svg>
-                        Mengirim...
+                        Send...
                       </>
                     ) : (
                       <>
-                        Kirim Pesan Sekarang
+                        Send Message Now
                         <span className="ml-2">🚀</span>
                       </>
                     )}
@@ -626,7 +625,7 @@ export default function Header() {
               <div className="relative z-10">
                 <h3 className="font-space font-bold text-xl mb-4 flex items-center">
                   <span className="mr-2">🔒</span>
-                  <span>Privasi Anda Penting</span>
+                  <span>Your Privacy Matters</span>
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
@@ -634,8 +633,8 @@ export default function Header() {
                       <span className="text-xs">✓</span>
                     </div>
                     <p className="text-richGray-700">
-                      Identitas Anda sepenuhnya terlindungi saat mengirim pesan
-                      anonim
+                      Your identity is completely protected when sending
+                      anonymous messages.
                     </p>
                   </li>
                   <li className="flex items-start">
@@ -643,7 +642,7 @@ export default function Header() {
                       <span className="text-xs">✓</span>
                     </div>
                     <p className="text-richGray-700">
-                      Pesan dienkripsi ujung ke ujung untuk keamanan maksimum
+                      Messages are end-to-end encrypted for maximum security.
                     </p>
                   </li>
                   <li className="flex items-start">
@@ -651,9 +650,8 @@ export default function Header() {
                       <span className="text-xs">✓</span>
                     </div>
                     <p className="text-richGray-700">
-                      Kami menjaga platform tetap aman. Untuk mencegah pesan
-                      mengganggu, kami menggunakan informasi teknis perangkat
-                      Anda secara anonim.
+                      We keep the platform secure. To prevent annoying messages,
+                      we use your device's technical information anonymously.
                     </p>
                   </li>
                 </ul>
@@ -674,7 +672,7 @@ export default function Header() {
             <div className="flex justify-between items-center mb-6">
               <h2 className="font-space font-bold text-2xl flex items-center">
                 <span className="mr-2">🔐</span>
-                <span>Login untuk menerima balasan</span>
+                <span>Login to receive replies</span>
               </h2>
               <button
                 id="close-modal"
@@ -701,8 +699,7 @@ export default function Header() {
             <form id="login-form" onSubmit={handleLogin}>
               <div className="mb-4">
                 <p>
-                  Kirim pesan dengan nyaman, {name} tidak akan mengetahui
-                  identitas Anda.
+                  Send messages comfortably, {name} will not know your identity.
                 </p>
               </div>
               <div className="mb-4">
@@ -739,11 +736,11 @@ export default function Header() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <div className="mt-2 text-right">
+                {/* <div className="mt-2 text-right">
                   <a href="#" className="text-sm text-indigo hover:underline">
                     Lupa kata sandi?
                   </a>
-                </div>
+                </div> */}
               </div>
 
               <button
@@ -774,21 +771,26 @@ export default function Header() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    Masuk...
+                    Sign in...
                   </>
                 ) : (
-                  <span>Masuk</span>
+                  <span>Sign in</span>
                 )}
               </button>
 
-               <div className="mt-6 text-center text-sm text-richGray-700">
-        <p>
-          Belum punya akun?
-          <a href="/download-app" className="text-indigo hover:underline"> {/* Ubah href sesuai link download aplikasi Anda */}
-            Unduh Aplikasinya
-          </a>
-        </p>
-      </div>
+              <div className="mt-6 text-center text-sm text-richGray-700">
+                <p>
+                  Don't have an account yet?
+                  <a
+                    href="/download-app"
+                    className="text-indigo hover:underline"
+                  >
+                    {" "}
+                    {/* Ubah href sesuai link download aplikasi Anda */}
+                    Download the App
+                  </a>
+                </p>
+              </div>
             </form>
           </div>
         </div>
@@ -808,17 +810,40 @@ export default function Header() {
               <span className="text-4xl">✨</span>
             </div>
             <h2 className="font-space font-bold text-2xl mb-4">
-              Pesan Terkirim!
+              Message Sent!
             </h2>
             <p className="text-richGray-700 mb-6">
-              Pesan anonim Anda telah berhasil terkirim ke @{name}.
+              Your anonymous message has been successfully sent to @{name}.
             </p>
             <button
               id="close-success"
               className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full flex items-center justify-center"
               onClick={closeSuccessModal}
             >
-              <span>Kirim Pesan Lain</span>
+              <span>Send Another Message</span>
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="error-modal"
+          className={`modal-overlay fixed inset-0 z-50 flex items-center justify-center p-6 ${
+            isErrorModalOpen ? "active" : ""
+          }`}
+          onClick={(e) => e.target.id === "error-modal" && closeErrorModal()}
+        >
+          <div className="modal-container glass-card rounded-3xl p-8 w-full max-w-md text-center">
+            <div className="h-20 w-20 rounded-full bg-indigo/10 flex items-center justify-center mx-auto mb-6 floating">
+              <span className="text-4xl">✨</span>
+            </div>
+            <h2 className="font-space font-bold text-2xl mb-4">Error!</h2>
+            <p className="text-richGray-700 mb-6">{isErrorMessage}</p>
+            <button
+              id="close-success"
+              className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full flex items-center justify-center"
+              onClick={closeErrorModal}
+            >
+              <span>Ok</span>
             </button>
           </div>
         </div>

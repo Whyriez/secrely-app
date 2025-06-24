@@ -60,7 +60,7 @@ function ResetPasswordForm() {
           if (sessionError) {
             console.error("Error setting session:", sessionError);
             setError(
-              "Gagal memverifikasi link reset kata sandi. Link mungkin sudah kedaluwarsa atau tidak valid."
+              "Failed to verify password reset link. The link may be expired or invalid."
             );
             setLoading(false);
             return;
@@ -70,17 +70,19 @@ function ResetPasswordForm() {
           setLoading(false);
         } catch (e) {
           console.error("Exception setting session:", e);
-          setError("Terjadi kesalahan saat memproses link. Silakan coba lagi.");
+          setError(
+            "An error occurred while processing the link. Please try again."
+          );
           setLoading(false);
         }
       } else if (type === "recovery") {
         setError(
-          "Link reset kata sandi tidak valid atau sudah digunakan. Silakan minta link reset baru."
+          "The password reset link is invalid or has been used. Please request a new reset link."
         );
         setLoading(false);
       } else {
         setError(
-          "Halaman ini hanya dapat diakses melalui link reset kata sandi dari email."
+          "This page can only be accessed via the password reset link from email."
         );
         setLoading(false);
       }
@@ -101,12 +103,12 @@ function ResetPasswordForm() {
     setError(null);
 
     if (newPassword !== confirmPassword) {
-      setError("Kata sandi baru tidak cocok. Mohon periksa kembali.");
+      setError("New password does not match. Please check again.");
       return;
     }
 
     if (newPassword.length < 6) {
-      setError("Kata sandi minimal harus 6 karakter.");
+      setError("Password must be at least 6 characters.");
       return;
     }
 
@@ -123,9 +125,7 @@ function ResetPasswordForm() {
       setSuccess(true);
     } catch (e) {
       console.error("Error resetting password:", e);
-      setError(
-        e.message || "Gagal mengatur ulang kata sandi. Silakan coba lagi."
-      );
+      setError(e.message || "Failed to reset password. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -145,11 +145,11 @@ function ResetPasswordForm() {
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
         <div className="glass-card rounded-3xl p-8 w-full max-w-md text-center">
           <h2 className="font-space font-bold text-2xl mb-4">
-            Kata Sandi Berhasil Direset! 🎉
+            Password Reset Successfully! 🎉
           </h2>
           <p className="text-richGray-700 mb-6">
-            Kata sandi Anda telah berhasil diperbarui. Silakan login dengan kata
-            sandi baru Anda.
+            Your password has been successfully updated. Please login with your
+            new password.
           </p>
           {/* <button
             onClick={() => router.push("/login")}
@@ -167,15 +167,15 @@ function ResetPasswordForm() {
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
         <div className="glass-card rounded-3xl p-8 w-full max-w-md text-center">
           <h2 className="font-space font-bold text-2xl mb-4">
-            Terjadi Kesalahan 😔
+            There is an error 😔
           </h2>
           <p className="text-red-700 mb-6">{error}</p>
-          <button
+          {/* <button
             onClick={() => router.push("/forgot-password")}
             className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full"
           >
             Minta Link Baru
-          </button>
+          </button> */}
         </div>
       </div>
     );
@@ -185,7 +185,7 @@ function ResetPasswordForm() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="glass-card rounded-3xl p-8 w-full max-w-md">
         <h2 className="font-space font-bold text-2xl mb-6 text-center">
-          Atur Ulang Kata Sandi
+          Reset Password
         </h2>
 
         {error && (
@@ -200,7 +200,7 @@ function ResetPasswordForm() {
               htmlFor="new-password"
               className="block font-medium text-richGray-800 mb-2"
             >
-              Kata Sandi Baru
+              New Password
             </label>
             <input
               type="password"
@@ -219,7 +219,7 @@ function ResetPasswordForm() {
               htmlFor="confirm-password"
               className="block font-medium text-richGray-800 mb-2"
             >
-              Konfirmasi Kata Sandi Baru
+              Confirm New Password
             </label>
             <input
               type="password"
@@ -260,10 +260,10 @@ function ResetPasswordForm() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Mengatur ulang...
+                Resetting...
               </>
             ) : (
-              <span>Atur Ulang Kata Sandi</span>
+              <span>Reset Password</span>
             )}
           </button>
         </form>
@@ -276,7 +276,7 @@ function ResetPasswordForm() {
 function ResetPasswordLoading() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <p>Memuat...</p>
+      <p>Load...</p>
     </div>
   );
 }
