@@ -58,7 +58,7 @@ function Cta() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <span className="ml-2 text-sm font-medium">100% anonymous</span>
+              <span className="ml-2 text-sm font-medium">99% anonymous</span>
             </div>
 
             {/* Item 3 */}
