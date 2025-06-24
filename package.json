@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.2",
+    "@supabase/supabase-js": "^2.50.0",
     "firebase": "^11.6.0",
     "lodash": "^4.17.21",
     "next": "15.2.4",
