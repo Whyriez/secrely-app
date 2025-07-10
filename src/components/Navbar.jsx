@@ -5,17 +5,17 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-export const navItems = [
-  { name: t("home"), href: "/" },
-  { name: t("howItWorks"), href: "/#how-it-works" },
-  { name: t("testimonials"), href: "/#testimonials" },
-  { name: t("privacyPolicy"), href: "/privacy" },
-  { name: t("termsOfUse"), href: "/term-of-use" },
-  { name: t("faq"), href: "/faq" },
-];
-
 export default function Navbar() {
   const t = useTranslations("Navbar");
+
+  const navItems = [
+    { name: t("home"), href: "/" },
+    { name: t("howItWorks"), href: "/#how-it-works" },
+    { name: t("testimonials"), href: "/#testimonials" },
+    { name: t("privacyPolicy"), href: "/privacy" },
+    { name: t("termsOfUse"), href: "/term-of-use" },
+    { name: t("faq"), href: "/faq" },
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -35,7 +35,7 @@ export default function Navbar() {
             rect.bottom >= window.innerHeight * 0.2
           ) {
             currentActiveHash = `#${sectionId}`;
-            break; 
+            break;
           }
         }
       }
@@ -80,10 +80,11 @@ export default function Navbar() {
     <nav className="glass-card fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center">
       <div className="flex items-center">
         <Image
-        src={"/Logo-circular.png"}
-        width={50}
-        height={50}
-        alt="Logo Secrely" />
+          src={"/Logo-circular.png"}
+          width={50}
+          height={50}
+          alt="Logo Secrely"
+        />
         {/* <div className="h-10 w-10 rounded-xl bg-indigo flex items-center justify-center text-white font-bold text-xl">
           S
         </div> */}
