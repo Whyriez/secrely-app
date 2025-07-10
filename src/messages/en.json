@@ -1,4 +1,12 @@
 {
+  "Navbar": {
+    "home": "Home",
+    "howItWorks": "How It Works",
+    "testimonials": "Testimonials",
+    "privacyPolicy": "Privacy",
+    "termsOfUse": "Terms of Use",
+    "faq": "FAQ"
+  },
    "Hero": {
     "heading": "Say Everything",
     "heading1": "Stay Anonymous",

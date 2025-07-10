@@ -3,17 +3,20 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 export const navItems = [
-  { name: "Home", href: "/" },
-  { name: "How It Works", href: "/#how-it-works" },
-  { name: "Testimonials", href: "/#testimonials" },
-  { name: "Privacy", href: "/privacy" },
-  { name: "Term Of Use", href: "/term-of-use" },
-  { name: "FAQ", href: "/faq" },
+  { name: t("home"), href: "/" },
+  { name: t("howItWorks"), href: "/#how-it-works" },
+  { name: t("testimonials"), href: "/#testimonials" },
+  { name: t("privacyPolicy"), href: "/privacy" },
+  { name: t("termsOfUse"), href: "/term-of-use" },
+  { name: t("faq"), href: "/faq" },
 ];
 
 export default function Navbar() {
+  const t = useTranslations("Navbar");
+
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");

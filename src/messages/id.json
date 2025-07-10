@@ -1,4 +1,12 @@
 {
+  "Navbar": {
+    "home": "Beranda",
+    "howItWorks": "Cara Kerja",
+    "testimonials": "Testimoni",
+    "privacyPolicy": "Privasi",
+    "termsOfUse": "Ketentuan Penggunaan",
+    "faq": "FAQ"
+  },
   "Hero": {
     "heading": "Katakan Segalanya",
     "heading1": "Tetap Anonim",
