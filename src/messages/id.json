@@ -1,0 +1,672 @@
+{
+  "Hero": {
+    "heading": "Katakan Segalanya",
+    "heading1": "Tetap Anonim",
+    "subheading": "Pengakuan, pujian, rahasia... semua dalam satu tautan.",
+    "buttonCreateLink": "Buat Tautan Anonim Anda",
+    "feature1": "Kirim/Terima Pesan Anonim",
+    "feature2": "Identitas Anda Tetap Tersembunyi",
+    "section1Title": "Saya selalu mengagumi kreativitas Anda dan bagaimana Anda tidak takut menjadi diri sendiri. Anda menginspirasi saya lebih dari yang Anda tahu!",
+    "section1Time": "2 menit lalu",
+    "sectionButton": "Balas",
+    "section2Title": "Presentasi Anda kemarin luar biasa! Anda terlihat sangat percaya diri. Ada kiat?",
+    "section2Time": "5 menit lalu",
+    "experienceTitle1": "Rasakan",
+    "experienceTitle2": "Keajaiban",
+    "experienceDescription": "Lihat bagaimana Secrely mengubah pesan anonim menjadi koneksi yang bermakna.",
+    "card1Title": "Profil Secrely Anda",
+    "card1Name": "Sarah",
+    "card1Description": "Kirimkan saya pesan anonim! Saya berjanji akan membalas yang menarik 😊",
+    "card1Progress": "75% selesai",
+    "card1Button": "Sesuaikan Profil Anda",
+    "card2Title": "Bagikan Tautan Anda",
+    "card2InputValue": "secrely.app/sarah",
+    "card2ButtonCopy": "Salin",
+    "card2ButtonShare": "Bagikan Tautan Anda"
+  },
+  "HowItWork": {
+    "titlePart1": "Bagaimana",
+    "titlePart2": "Bekerja",
+    "appName": "Secrely",
+    "description": "Tiga langkah sederhana untuk mulai menerima pesan anonim.",
+    "step1Title": "Bagikan Tautan Anda",
+    "step1Description": "Buat tautan Secrely unik Anda dan bagikan di profil sosial atau dengan teman-teman Anda.",
+    "step2Title": "Terima Pesan",
+    "step2Description": "Dapatkan pesan jujur dan anonim dari teman, pengikut, atau siapa pun dengan tautan Anda.",
+    "step3Title": "Balas Secara Anonim",
+    "step3Description": "Pilih untuk membalas pesan sambil menjaga kedua belah pihak anonim dan aman."
+  },
+  "Testimonials": {
+    "sectionTitlePart1": "Orang-orang menyukai kejujuran.",
+    "sectionTitlePart2": "Meskipun itu anonim.",
+    "sectionDescription": "Lihat apa yang dikatakan pengguna kami tentang pengalaman Secrely mereka.",
+    "card1": {
+      "name": "Jamie K.",
+      "initials": "JK",
+      "occupation": "Mahasiswa",
+      "quote": "Saya terkejut melihat berapa banyak teman sekelas saya yang sebenarnya mengagumi proyek seni saya. Saya tidak akan pernah tahu tanpa Secrely!"
+    },
+    "card2": {
+      "name": "Morgan T.",
+      "initials": "MT",
+      "occupation": "Pembuat Konten",
+      "quote": "Sebagai seorang kreator, saya mendapatkan umpan balik jujur tentang video saya yang mungkin terlalu malu untuk diucapkan secara publik. Ini sangat membantu saya meningkatkan diri!"
+    },
+    "card3": {
+      "name": "Alex R.",
+      "initials": "AR",
+      "occupation": "Guru",
+      "quote": "Siswa-siswa saya menggunakan ini untuk memberikan umpan balik anonim tentang pelajaran saya. Ini sangat membuka mata dan membantu saya menjadi guru yang lebih baik."
+    }
+  },
+  "MobilePreview": {
+    "titlePart1": "Rasakan",
+    "titlePart2": "Di Mana Saja",
+    "appName": "Secrely",
+    "description": "Desain mobile-first kami berfungsi dengan indah di perangkat apa pun."
+  },
+  "CtaSection": {
+    "title": "Siap mendengar apa pendapat mereka tentang Anda?",
+    "description": "Bergabunglah dengan lebih dari 1 juta pengguna yang menemukan pemikiran jujur dan membangun koneksi yang lebih dalam.",
+    "buttonText": "Mulai Terima Pesan Sekarang",
+    "stat1": "1 juta+ pesan terkirim",
+    "stat2": "99% anonim",
+    "stat3": "Dukungan 24/7"
+  },
+  "PrivacyPolicy": {
+    "heroSection": {
+      "title": "Privasi Anda Penting",
+      "description": "Kami menangani data Anda dengan serius. Berikut adalah cara kami melindunginya."
+    },
+    "whatYouNeedToKnow": {
+      "title": "Yang Perlu Anda Ketahui",
+      "endToEndPrivate": {
+        "title": "Terenkripsi Ujung-ke-Ujung Privat",
+        "description": "Pesan Anda dienkripsi dan privat antara Anda dan penerima Anda."
+      },
+      "noDataSelling": {
+        "title": "Tidak Ada Penjualan Data",
+        "description": "Kami tidak pernah menjual data pribadi Anda kepada pihak ketiga. Tidak akan pernah."
+      },
+      "youAreInControl": {
+        "title": "Anda Memegang Kendali",
+        "description": "Anda mengontrol visibilitas Anda dan dapat menghapus data Anda kapan saja."
+      }
+    },
+    "accordionContent": {
+      "item0": {
+        "title": "Data Apa yang Kami Kumpulkan",
+        "iconPath": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+        "intro": "Untuk memberikan Anda pengalaman terbaik di Secrely, kami mengumpulkan informasi tertentu. Berikut adalah apa yang kami kumpulkan:",
+        "sections": {
+          "accountInfo": {
+            "title": "Informasi Akun",
+            "items": [
+              "Nama pengguna atau nama tampilan (yang bisa anonim)",
+              "Alamat email (untuk pemulihan akun dan notifikasi)",
+              "Kata sandi (disimpan sebagai nilai hash oleh Supabase)"
+            ]
+          },
+          "messageContent": {
+            "title": "Konten Pesan",
+            "items": [
+              "Konten pesan yang Anda kirim dan terima",
+              "Stempel waktu kapan pesan dikirim",
+              "Tanda terima dibaca"
+            ]
+          },
+          "deviceInfo": {
+            "title": "Informasi Perangkat",
+            "items": [
+              "Sidik jari perangkat (untuk deteksi spam dan pemblokiran pengguna)",
+              "Sistem operasi",
+              "Versi aplikasi"
+            ]
+          },
+          "usageInfo": {
+            "title": "Informasi Penggunaan",
+            "items": [
+              "Bagaimana Anda berinteraksi dengan aplikasi (fitur yang digunakan, waktu yang dihabiskan)",
+              "Laporan kesalahan",
+              "Analisis kinerja"
+            ]
+          }
+        }
+      },
+      "item1": {
+        "title": "Bagaimana Data Anda Digunakan",
+        "iconPath": "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z",
+        "intro": "Kami menggunakan data Anda untuk tujuan berikut:",
+        "sections": {
+          "provideService": {
+            "title": "Untuk Menyediakan Layanan Kami",
+            "items": [
+              "Mengirim pesan antar pengguna",
+              "Mempertahankan akun dan preferensi Anda",
+              "Mengaktifkan fitur pesan anonim",
+              "Memberikan dukungan pelanggan"
+            ]
+          },
+          "improveService": {
+            "title": "Untuk Meningkatkan Layanan Kami",
+            "items": [
+              "Menganalisis bagaimana pengguna berinteraksi dengan fitur",
+              "Mengidentifikasi dan memperbaiki bug",
+              "Mengembangkan fitur baru berdasarkan perilaku pengguna",
+              "Mengoptimalkan kinerja aplikasi"
+            ]
+          },
+          "keepSafe": {
+            "title": "Untuk Menjaga Keamanan Anda",
+            "items": [
+              "Mendeteksi dan mencegah penyalahgunaan atau pelanggaran persyaratan kami",
+              "Mengidentifikasi dan mengatasi ancaman keamanan",
+              "Mematuhi kewajiban hukum"
+            ]
+          },
+          "communicate": {
+            "title": "Untuk Berkomunikasi dengan Anda",
+            "items": [
+              "Mengirim pembaruan penting tentang layanan",
+              "Memberi tahu Anda tentang fitur baru (jika Anda ikut serta)",
+              "Menanggapi pertanyaan Anda"
+            ]
+          }
+        }
+      },
+      "item2": {
+        "title": "Layanan Pihak Ketiga",
+        "iconPath": "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+        "intro": "Kami bermitra dengan pihak ketiga tepercaya untuk membantu menyediakan dan meningkatkan layanan kami. Berikut adalah jenis pihak ketiga yang bekerja sama dengan kami:",
+        "sections": {
+          "cloudInfrastructure": {
+            "title": "Infrastruktur Cloud",
+            "supabase": {
+              "name": "Supabase:",
+              "description": "Untuk penyimpanan data dan otentikasi yang aman"
+            },
+            "vercel": {
+              "name": "Vercel:",
+              "description": "Untuk hosting server dan pengiriman konten"
+            },
+            "cloudflare": {
+              "name": "Cloudflare:",
+              "description": "Untuk kinerja web, keamanan, dan untuk memfasilitasi koneksi WebSocket yang aman, meningkatkan stabilitas dan kecepatan fitur real-time kami."
+            }
+          },
+          "analytics": {
+            "title": "Analitik",
+            "vercelAnalytics": {
+              "name": "Vercel Analytics:",
+              "description": "Untuk memantau kinerja situs web, pola lalu lintas, dan kesehatan aplikasi secara keseluruhan."
+            },
+            "cloudflareAnalytics": {
+              "name": "Cloudflare Analytics:",
+              "description": "Untuk wawasan tentang lalu lintas jaringan, ancaman keamanan, dan kinerja pengiriman konten."
+            },
+            "supabaseLogsMetrics": {
+              "name": "Supabase Logs & Metrik:",
+              "description": "Untuk melacak kinerja database, penggunaan API, dan mengidentifikasi potensi masalah dalam layanan backend kami."
+            }
+          },
+          "mediaEmbedding": {
+            "title": "Penyematan Media & Konten",
+            "spotify": {
+              "name": "Spotify:",
+              "description": "Untuk menyediakan konten musik tersemat. Saat Anda berinteraksi dengan atau melihat pemutar Spotify yang tersemat di situs kami, Spotify dapat mengumpulkan data sesuai dengan kebijakan privasi mereka.",
+              "policyLinkText": "(Lihat Kebijakan Privasi Spotify)"
+            }
+          }
+        },
+        "footer": "Semua pihak ketiga yang kami ajak bekerja sama terikat oleh perjanjian perlindungan data yang ketat dan dipilih dengan cermat untuk memastikan mereka mempertahankan standar privasi yang tinggi."
+      },
+      "item3": {
+        "title": "Hak & Opsi Kontrol Anda",
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        "intro": "Di Secrely, kami percaya Anda harus memiliki kendali atas data Anda. Berikut adalah hak dan opsi yang tersedia untuk Anda:",
+        "sections": {
+          "deleteData": {
+            "title": "Hapus Data Anda",
+            "description": "Anda dapat menghapus akun dan data terkait Anda kapan saja:",
+            "steps": [
+              "Buka Pengaturan > Lainnya > Hapus Akun",
+              "Konfirmasi pilihan Anda (tindakan ini tidak dapat dibatalkan)",
+              "Kami akan menghapus data Anda secara permanen dalam waktu 30 hari"
+            ]
+          },
+          "privacySettings": {
+            "title": "Kontrol Pengaturan Privasi Anda",
+            "description": "Sesuaikan siapa yang dapat menghubungi Anda dan kelola preferensi Anda untuk pengalaman yang lebih aman:",
+            "items": [
+              "Buka Pengaturan > Privasi untuk menyesuaikan siapa yang dapat mengirimi Anda pesan.",
+              "Di Pengaturan > Privasi, Anda juga dapat mengelola <span class=\"font-medium\">daftar Pengguna yang Diblokir</span> (yang menampilkan pengguna yang telah Anda blokir dari detail obrolan tertentu).",
+              "Kelola <span class=\"font-medium\">daftar Kata Tersembunyi</span> Anda di Pengaturan > Privasi, memungkinkan Anda untuk menambah atau menghapus kata-kata yang ingin Anda sembunyikan dari pesan Anda.",
+              "Buka Pengaturan > Preferensi untuk mengelola preferensi notifikasi."
+            ]
+          },
+          "additionalRights": {
+            "title": "Hak Tambahan",
+            "description": "Tergantung pada lokasi Anda, Anda mungkin memiliki hak tambahan berdasarkan hukum setempat (seperti GDPR atau CCPA):",
+            "items": [
+              "Hak untuk koreksi data yang tidak akurat",
+              "Hak untuk pembatasan pemrosesan",
+              "Hak untuk menolak pemrosesan",
+              "Hak untuk portabilitas data"
+            ]
+          }
+        }
+      },
+      "item4": {
+        "title": "Kebijakan Keamanan Anak & Perlindungan CSAE",
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        "intro": "Di Secrely, kami memiliki nol toleransi terhadap pelecehan dan eksploitasi seksual anak (CSAE). Kami berkomitmen untuk melindungi anak-anak dan pengguna muda di platform kami melalui tindakan berikut:",
+        "items": [
+          {
+            "title": "Moderasi Konten:",
+            "description": "Kami menggunakan kombinasi alat otomatis dan tinjauan manual untuk mendeteksi dan menghapus konten apa pun yang mungkin melibatkan atau mempromosikan eksploitasi anak."
+          },
+          {
+            "title": "Alat Pelaporan:",
+            "description": "Pengguna dapat melaporkan pesan atau akun yang dicurigai melakukan penyalahgunaan, yang akan ditinjau dengan segera."
+          },
+          {
+            "title": "Tindakan Segera:",
+            "description": "Akun yang ditemukan melanggar kebijakan keamanan anak kami akan segera ditangguhkan dan diselidiki."
+          },
+          {
+            "title": "Kerja Sama Penegakan Hukum:",
+            "description": "Kami sepenuhnya bekerja sama dengan penegak hukum dan otoritas perlindungan anak yang relevan jika sesuai."
+          },
+          {
+            "title": "Kontrol Pengguna:",
+            "description": "Kami menyediakan fitur-fitur seperti filter pesan, alat blokir/lapor, dan pengaturan privasi untuk membantu pengguna melindungi diri mereka sendiri."
+          }
+        ],
+        "contactPrompt": "Jika Anda menemukan perilaku yang mencurigakan atau berbahaya, harap segera laporkan ke",
+        "contactEmail": "abuse-secrely@limapp.my.id"
+      }
+    },
+    "contactSection": {
+      "title": "Kontak untuk Pertanyaan Privasi",
+      "intro": "Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan mengenai privasi Anda atau kebijakan ini, kami siap membantu:",
+      "privacyTeam": {
+        "title": "Hubungi Tim Privasi Kami",
+        "email": "privacy-secrely@limapp.my.id",
+        "responseTime": "Waktu respons: Dalam 2 hari kerja"
+      },
+      "dpo": {
+        "title": "Petugas Perlindungan Data",
+        "name": "Alim Suma",
+        "email": "dpo-secrely@limapp.my.id"
+      },
+      "mailingAddress": {
+        "title": "Alamat Surat",
+        "line1": "Tim Privasi Secrely",
+        "line2": "Jl Kasmat Lahay",
+        "line3": "Gorontalo",
+        "line4": "Indonesia"
+      },
+      "policyUpdates": {
+        "title": "Pembaruan Kebijakan",
+        "text": "Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Kami akan memberitahu Anda tentang setiap perubahan dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir Diperbarui\". Untuk perubahan signifikan, kami akan memberikan pemberitahuan yang lebih menonjol atau notifikasi email.",
+        "lastUpdated": "Terakhir Diperbarui: 20 Juni 2025"
+      }
+    }
+  },
+  "TermOfUse": {
+    "pageTitle": "Ketentuan Penggunaan",
+    "pageSubtitle": "Dengan menggunakan Secrely, Anda menyetujui ketentuan berikut.",
+    "lastUpdated": "Terakhir Diperbarui: 15 Juni 2023",
+    "contentsTitle": "Isi",
+    "stillHaveQuestions": "Masih ada pertanyaan?",
+    "questionsHelp": "Tim kami siap membantu Anda memahami ketentuan dan kebijakan kami.",
+    "contactSupport": "Hubungi Dukungan",
+    "simpleTerms": "Secara sederhana:",
+    "section1": {
+      "title": "Penerimaan Ketentuan",
+      "content1": "Selamat datang di Secrely! Ketentuan Layanan ini (\"Ketentuan\") mengatur penggunaan aplikasi, situs web, dan layanan Secrely Anda (secara kolektif, \"Layanan\"). Harap baca Ketentuan ini dengan cermat sebelum menggunakan Layanan kami.",
+      "content2": "Dengan mengakses atau menggunakan Secrely, Anda setuju untuk terikat oleh Ketentuan ini. Jika Anda tidak setuju dengan bagian mana pun dari Ketentuan, Anda mungkin tidak dapat mengakses Layanan.",
+      "content3": "Ketentuan ini berlaku untuk semua pengunjung, pengguna, dan pihak lain yang mengakses atau menggunakan Layanan. Dengan membuat akun atau menggunakan bagian apa pun dari Layanan, Anda membuat perjanjian hukum dengan Secrely.",
+      "simpleContent": "Dengan menggunakan aplikasi kami, Anda setuju untuk mengikuti aturan-aturan ini. Jika Anda tidak setuju, mohon jangan gunakan Secrely."
+    },
+    "section2": {
+      "title": "Penggunaan Layanan",
+      "subtitle1": "2.1 Pendaftaran Akun",
+      "content1": "Untuk menggunakan fitur tertentu dari Layanan, Anda mungkin perlu membuat akun. Anda setuju untuk memberikan informasi yang akurat, terkini, dan lengkap selama proses pendaftaran dan untuk memperbarui informasi tersebut agar tetap akurat, terkini, dan lengkap.",
+      "subtitle2": "2.2 Keamanan Akun",
+      "content2": "Anda bertanggung jawab untuk menjaga kata sandi yang Anda gunakan untuk mengakses Layanan dan untuk setiap aktivitas atau tindakan di bawah kata sandi Anda. Kami menganjurkan Anda untuk menggunakan kata sandi \"kuat\" (kata sandi yang menggunakan kombinasi huruf besar dan kecil, angka, dan simbol) dengan akun Anda.",
+      "subtitle3": "2.3 Batasan Usia",
+      "content3": "Anda harus berusia minimal 13 tahun untuk menggunakan Layanan. Dengan menggunakan Layanan, Anda menyatakan dan menjamin bahwa Anda berusia di atas 13 tahun. Jika Anda berusia di bawah 18 tahun, Anda harus mendapatkan izin orang tua atau wali Anda untuk menggunakan Layanan.",
+      "subtitle4": "2.4 Ketersediaan Layanan",
+      "content4": "Kami berusaha untuk menjaga Layanan tetap berjalan; namun, semua layanan online mengalami gangguan dan pemadaman sesekali, dan Secrely tidak terkecuali. Kami tidak bertanggung jawab atas gangguan atau kerugian yang mungkin Anda derita akibatnya. Kami menganjurkan Anda untuk menyimpan salinan konten penting Anda.",
+      "simpleContent": "Jaga informasi akun Anda tetap akurat dan kata sandi Anda aman. Anda harus berusia minimal 13 tahun untuk menggunakan Secrely, dan jika Anda berusia di bawah 18 tahun, dapatkan izin orang tua Anda."
+    },
+    "section3": {
+      "title": "Konten Pengguna & Anonimitas",
+      "subtitle1": "3.1 Konten Anda",
+      "content1": "Layanan kami memungkinkan Anda untuk memposting, menautkan, menyimpan, berbagi, dan dengan cara lain menyediakan informasi, teks, atau materi (\"Konten\") tertentu. Anda bertanggung jawab atas Konten yang Anda posting di atau melalui Layanan, termasuk legalitas, keandalan, dan kesesuaiannya.",
+      "subtitle2": "3.2 Lisensi Konten",
+      "content2": "Dengan memposting Konten di atau melalui Layanan, Anda memberikan kami hak untuk menggunakan, memodifikasi, menampilkan secara publik, mereproduksi, dan mendistribusikan Konten tersebut di dan melalui Layanan. Anda mempertahankan setiap dan semua hak Anda atas Konten apa pun yang Anda kirimkan, posting, atau tampilkan di atau melalui Layanan dan Anda bertanggung jawab untuk melindungi hak-hak tersebut.",
+      "subtitle3": "3.3 Fitur Anonimitas",
+      "content3": "Secrely menyediakan fitur yang memungkinkan pengguna untuk mengirim dan menerima pesan anonim. Meskipun kami mengambil langkah-langkah untuk menjaga anonimitas seperti yang dijelaskan dalam fitur kami, kami tidak dapat menjamin anonimitas absolut. Batasan teknis, persyaratan hukum, dan faktor-faktor lain dapat membatasi kemampuan kami untuk memastikan anonimitas lengkap.",
+      "subtitle4": "3.4 Penghapusan Konten",
+      "content4": "Kami berhak menghapus Konten apa pun dari Layanan kapan saja, dengan alasan apa pun (termasuk, namun tidak terbatas pada, jika seseorang mengklaim Anda tidak memiliki Konten atau Konten melanggar Ketentuan ini), tanpa pemberitahuan sebelumnya.",
+      "simpleContent": "Anda memiliki konten Anda, tetapi kami dapat menampilkannya melalui layanan kami. Meskipun kami berusaha menjaga fitur anonim agar benar-benar anonim, kami tidak dapat menjamin anonimitas sempurna dalam semua keadaan."
+    },
+    "section4": {
+      "title": "Perilaku Terlarang",
+      "content1": "Anda setuju untuk tidak menggunakan Layanan untuk:",
+      "listItem1": "Melecehkan, membully, mengintimidasi, atau menyakiti pengguna lain",
+      "listItem2": "Memposting atau membagikan konten yang ilegal, menipu, memfitnah, cabul, pornografi, atau tidak menyenangkan lainnya",
+      "listItem3": "Menyamar sebagai orang atau entitas apa pun, atau secara salah menyatakan atau menyalahartikan afiliasi Anda dengan orang atau entitas",
+      "listItem4": "Mengganggu atau mengacaukan Layanan atau server atau jaringan yang terhubung ke Layanan",
+      "listItem5": "Mencoba mendapatkan akses tidak sah ke bagian Layanan yang dibatasi",
+      "listItem6": "Menggunakan Layanan untuk tujuan ilegal apa pun, atau melanggar hukum lokal, negara bagian, nasional, atau internasional",
+      "listItem7": "Mengumpulkan atau menyimpan data pribadi tentang pengguna lain tanpa persetujuan mereka",
+      "listItem8": "Mempromosikan atau mengaktifkan aktivitas ilegal",
+      "listItem9": "Mengeksploitasi Layanan untuk tujuan komersial tanpa persetujuan tertulis kami",
+      "listItem10": "Mendistribusikan malware, spyware, atau kode berbahaya lainnya",
+      "content2": "Pelanggaran larangan ini dapat mengakibatkan penghentian akses Anda ke Layanan, dan Anda dapat dilaporkan kepada pihak berwenang penegak hukum.",
+      "simpleContent": "Jangan gunakan Secrely untuk menyakiti orang lain, melanggar hukum, atau mengganggu layanan kami. Hormati dan gunakan platform secara bertanggung jawab."
+    },
+    "section5": {
+      "title": "Penghentian Akun",
+      "subtitle1": "5.1 Penghentian oleh Anda",
+      "content1": "Anda dapat menghapus akun Anda kapan saja dengan mengikuti instruksi di aplikasi atau dengan menghubungi tim dukungan kami. Setelah dihapus, profil Anda dan informasi pribadi lainnya akan dihapus dari tampilan. Kami dapat menyimpan informasi tertentu sebagaimana diwajibkan oleh hukum atau untuk tujuan bisnis yang sah.",
+      "subtitle2": "5.2 Penghentian oleh Kami",
+      "content2": "Kami dapat menghentikan atau menangguhkan akun Anda segera, tanpa pemberitahuan sebelumnya atau kewajiban, dengan alasan apa pun, termasuk tanpa batasan jika Anda melanggar Ketentuan. Setelah penghentian, hak Anda untuk menggunakan Layanan akan segera berakhir.",
+      "subtitle3": "5.3 Efek Penghentian",
+      "content3": "Semua ketentuan dari Ketentuan yang berdasarkan sifatnya harus tetap berlaku setelah penghentian, termasuk, tanpa batasan, ketentuan kepemilikan, penolakan jaminan, ganti rugi, dan batasan tanggung jawab.",
+      "simpleContent": "Anda dapat menghapus akun Anda kapan saja. Kami juga dapat menghentikan akun Anda jika Anda melanggar ketentuan ini. Bagaimanapun, beberapa data mungkin akan tetap disimpan sebagaimana diwajibkan oleh hukum."
+    },
+    "section6": {
+      "title": "Modifikasi Ketentuan",
+      "content1": "Kami berhak, atas kebijakan tunggal kami, untuk memodifikasi atau mengganti Ketentuan ini kapan saja. Jika revisi bersifat material, kami akan mencoba memberikan pemberitahuan setidaknya 30 hari sebelum ketentuan baru berlaku. Apa yang merupakan perubahan material akan ditentukan atas kebijakan tunggal kami.",
+      "content2": "Dengan terus mengakses atau menggunakan Layanan kami setelah revisi tersebut berlaku, Anda setuju untuk terikat oleh ketentuan yang direvisi. Jika Anda tidak setuju dengan ketentuan baru, harap berhenti menggunakan Layanan.",
+      "simpleContent": "Kami mungkin akan memperbarui ketentuan ini sewaktu-waktu. Jika kami membuat perubahan besar, kami akan memberitahu Anda sebelumnya. Dengan terus menggunakan Secrely setelah perubahan, Anda setuju dengan ketentuan baru."
+    },
+    "section7": {
+      "title": "Penafian & Batasan",
+      "subtitle1": "7.1 Penafian Jaminan",
+      "content1": "LAYANAN DIBERIKAN ATAS DASAR \"SEBAGAIMANA ADANYA\" DAN \"SEBAGAIMANA TERSEDIA\". SECRELY DAN AFILIASINYA, PEMASOK, DAN MITRANYA SECARA TEGAS MENOLAK SEMUA JAMINAN DALAM BENTUK APA PUN, BAIK TERSURAT MAUPUN TERSIRAT, TERMASUK NAMUN TIDAK TERBATAS PADA JAMINAN TERSIRAT ATAS DAGANG, KESESUAIAN UNTUK TUJUAN TERTENTU, DAN NON-PELANGGARAN HAK.",
+      "content2": "SECRELY TIDAK MEMBERIKAN JAMINAN BAHWA (i) LAYANAN AKAN MEMENUHI PERSYARATAN ANDA, (ii) LAYANAN AKAN TIDAK TERGANGGU, TEPAT WAKTU, AMAN, ATAU BEBAS DARI KESALAHAN, ATAU (iii) KUALITAS PRODUK, LAYANAN, INFORMASI, ATAU MATERI LAINNYA YANG DIBELI ATAU DIPEROLEH OLEH ANDA MELALUI LAYANAN AKAN MEMENUHI HARAPAN ANDA.",
+      "subtitle2": "7.2 Batasan Tanggung Jawab",
+      "content3": "SEJAUH DIIZINKAN OLEH HUKUM YANG BERLAKU, DALAM KEADAAN APAPUN SECRELY, AFILIASINYA, AGEN, DIREKTUR, KARYAWAN, PEMASOK ATAU PEMBERI LISENSI TIDAK BERTANGGUNG JAWAB ATAS KERUGIAN TIDAK LANGSUNG, HUKUMAN, INSIDENTAL, KHUSUS, KONSEKUENSIAL ATAU TELADAN, TERMASUK TANPA BATASAN KERUGIAN ATAS HILANGNYA KEUNTUNGAN, NIAT BAIK, PENGGUNAAN, DATA ATAU KERUGIAN TIDAK BERWUJUD LAINNYA, YANG TIMBUL DARI PENGGUNAAN, ATAU KETIDAKMAMPUAN MENGGUNAKAN, LAYANAN INI.",
+      "content4": "DALAM KEADAAN APAPUN SECRELY TIDAK BERTANGGUNG JAWAB ATAS KERUSAKAN, KEHILANGAN ATAU CEDERA AKIBAT PERETASAN, PERUSAKAN ATAU AKSES TIDAK SAH LAINNYA ATAU PENGGUNAAN LAYANAN ATAU AKUN ANDA ATAU INFORMASI YANG TERKANDUNG DI DALAMNYA.",
+      "subtitle3": "7.3 Ganti Rugi",
+      "content5": "Anda setuju untuk membela, mengganti rugi, dan membebaskan Secrely serta penerima lisensi dan pemberi lisensinya, dan karyawan, kontraktor, agen, pejabat, dan direktur mereka, dari dan terhadap setiap dan semua klaim, kerusakan, kewajiban, kerugian, kewajiban, biaya atau utang, dan pengeluaran (termasuk namun tidak terbatas pada biaya pengacara), yang diakibatkan oleh atau timbul dari (i) penggunaan dan akses Anda terhadap Layanan, atau (ii) pelanggaran Ketentuan ini.",
+      "simpleContent": "Kami menyediakan Secrely \"apa adanya\" tanpa jaminan apa pun. Kami tidak bertanggung jawab atas kerusakan yang mungkin terjadi dari penggunaan layanan kami. Ini adalah bahasa hukum standar yang pada dasarnya mengatakan Anda menggunakan aplikasi ini dengan risiko Anda sendiri."
+    },
+    "section8": {
+      "title": "Hubungi Kami",
+      "content1": "Jika Anda memiliki pertanyaan tentang Ketentuan ini, silakan hubungi kami:",
+      "emailLabel": "Email",
+      "address": "Alamat: Secrely Legal Department, Jl Kasmat Lahay, Gorontalo, Indonesia",
+      "simpleContent": "Ada pertanyaan? Kami siap membantu! Hubungi tim kami menggunakan informasi kontak di atas."
+    }
+  },
+  "Faq": {
+    "header": {
+      "emoji": "👋",
+      "title": "Butuh Bantuan? Kami Siap Membantu.",
+      "description": "Berikut adalah jawaban atas pertanyaan yang paling sering diajukan pengguna kami. Masih penasaran? Hubungi kami!"
+    },
+    "categories": {
+      "allQuestions": "Semua Pertanyaan",
+      "general": "Umum",
+      "privacy": "Privasi",
+      "features": "Fitur",
+      "technical": "Teknis",
+      "account": "Akun"
+    },
+    "questions": {
+      "whatIsSecrely": {
+        "emoji": "❓",
+        "title": "Apa itu Secrely?",
+        "content1": "Secrely adalah aplikasi pesan anonim generasi berikutnya yang memberdayakan koneksi Anda belum pernah ada sebelumnya. Lupakan DM dasar – Secrely memberi Anda tautan pribadi yang unik. Bagikan di mana saja, dan biarkan siapa pun mengirimi Anda pesan rahasia, anonim langsung ke kotak masuk Anda.",
+        "content2": "Namun, di sinilah yang menjadi sangat menarik: Jika Anda tertarik dengan pesan anonim, dan pengirim telah mengaktifkan balasan, Anda dapat masuk ke obrolan pribadi dan anonim langsung di dalam aplikasi. Ini berarti Anda dapat menyelami percakapan yang lebih bermakna, menjelajahi koneksi baru, atau mendapatkan umpan balik yang jujur, semuanya sambil mempertahankan kendali penuh atas identitas Anda sampai Anda memilih untuk mengungkapkannya.",
+        "content3": "Secrely memungkinkan Anda untuk:",
+        "listItem1": {
+          "bold": "Menerima pesan anonim:",
+          "text": "Dapatkan pemikiran, pujian, atau pertanyaan tanpa filter melalui tautan pribadi unik Anda."
+        },
+        "listItem2": {
+          "bold": "Terlibat secara anonim:",
+          "text": "Jika diizinkan oleh pengirim, ubah pesan anonim yang menarik menjadi percakapan anonim pribadi secara real-time."
+        },
+        "listItem3": {
+          "bold": "Kontrol pengungkapan Anda:",
+          "text": "Identitas Anda tetap rahasia sampai Anda memutuskan untuk menunjukkannya."
+        },
+        "listItem4": {
+          "bold": "Terhubung secara autentik:",
+          "text": "Rasakan interaksi yang lebih dalam, bebas dari tekanan identitas."
+        },
+        "content4": "Ini bukan hanya perpesanan; ini adalah cara baru untuk terhubung, menjelajah, dan mengekspresikan diri Anda dengan kebebasan sejati."
+      },
+      "isMyIdentityAnonymous": {
+        "emoji": "👤",
+        "title": "Apakah identitas saya anonim?",
+        "content1": "Ya, identitas Anda secara otomatis anonim saat Anda mengirim pesan di Secrely. Desain inti kami memastikan bahwa ketika Anda mengirim pesan melalui tautan unik pengguna, identitas Anda tidak akan diungkapkan kepada penerima.",
+        "content2": "Secrely dibangun berdasarkan prinsip anonimitas:",
+        "listItem1": {
+          "bold": "Tidak ada informasi identitas:",
+          "text": "Penerima tidak akan melihat nama, gambar profil, atau detail pribadi Anda."
+        },
+        "listItem2": {
+          "bold": "Fokus pada pesan:",
+          "text": "Percakapan murni berpusat pada konten, memungkinkan interaksi yang tidak disaring dan autentik."
+        },
+        "listItem3": {
+          "bold": "Privasi berdasarkan desain:",
+          "text": "Sistem kami dirancang untuk melindungi identitas Anda sejak Anda mengirim pesan."
+        },
+        "content3": "Meskipun kami berkomitmen untuk menjaga anonimitas Anda, kami selalu menyarankan pengguna untuk memperhatikan informasi yang mereka pilih untuk dibagikan dalam pesan mereka, karena tidak ada sistem digital yang dapat menjamin privasi yang benar-benar tanpa cela terhadap pengungkapan diri."
+      },
+      "canIControlWhoSendsMessages": {
+        "emoji": "🔒",
+        "title": "Bisakah saya mengontrol siapa yang mengirim saya pesan?",
+        "content1": "Ya, Anda memiliki kendali atas siapa yang dapat mengirimi Anda pesan dan bagaimana Anda mengelola komunikasi yang tidak diinginkan di Secrely.",
+        "content2": "Meskipun Anda tidak mengatur mode pra-persetujuan yang terperinci, Anda dapat mengelola pesan masuk Anda secara efektif:",
+        "listItem1": {
+          "bold": "Nonaktifkan tautan anonim Anda:",
+          "text": "Anda dapat menonaktifkan tautan Secrely unik Anda kapan saja jika Anda ingin berhenti menerima pesan anonim baru."
+        },
+        "listItem2": {
+          "bold": "Laporkan & Blokir pengirim yang tidak diinginkan:",
+          "text": "Jika Anda menerima pesan yang berisi bahasa kasar atau apa pun yang tidak pantas, Anda dapat dengan mudah melaporkan pengirim. Setelah dilaporkan, Anda juga memiliki opsi untuk memblokir mereka, mencegah mereka mengirimkan pesan lebih lanjut sampai Anda memilih untuk membuka blokirnya."
+        },
+        "content3": "Anda dapat mengelola daftar pengguna yang diblokir di Pengaturan > Privasi. Ini memberdayakan Anda untuk menjaga pengalaman yang nyaman dan aman di Secrely."
+      },
+      "canIReplyToMessages": {
+        "emoji": "📬",
+        "title": "Bisakah saya membalas pesan?",
+        "content1": "Ya, Anda dapat memulai percakapan dua arah di Secrely, asalkan pengirim telah mengaktifkan opsi balasan untuk pesan anonim mereka.",
+        "content2": "Saat Anda menerima pesan:",
+        "listItem1": {
+          "bold": "Periksa opsi balasan:",
+          "text": "Tidak semua pesan anonim dirancang untuk balasan segera. Jika pengirim telah mengaktifkannya, Anda akan melihat opsi untuk memulai balasan obrolan."
+        },
+        "listItem2": {
+          "bold": "Terlibat secara anonim:",
+          "text": "Jika opsi balasan tersedia, Anda dapat membalas, dan percakapan akan berlanjut sebagai obrolan anonim, menjaga privasi Anda."
+        },
+        "listItem3": {
+          "bold": "Pengungkapan Identitas Opsional:",
+          "text": "Dalam obrolan anonim yang sedang berlangsung, Anda memiliki pilihan untuk mengungkapkan identitas Anda kepada pihak lain kapan saja, jika Anda merasa nyaman melakukannya."
+        },
+        "listItem4": {
+          "bold": "Kelola pesan yang tidak diinginkan:",
+          "text": "Anda selalu memiliki opsi untuk tidak membalas dan mengarsipkan percakapan, atau memblokir pengirim jika Anda tidak ingin menerima pesan lebih lanjut dari mereka."
+        },
+        "content3": "Ini memastikan bahwa sementara Anda dapat terlibat dalam percakapan yang lebih dalam, tingkat interaksi awalnya diatur oleh pengirim, memberi mereka kendali atas jangkauan anonim mereka."
+      },
+      "howDoIReportAbuse": {
+        "emoji": "🚫",
+        "title": "Bagaimana cara melaporkan penyalahgunaan?",
+        "content1": "Kami menanggapi penyalahgunaan dengan serius dan memiliki kebijakan tanpa toleransi untuk pelecehan, ancaman, dan konten yang tidak pantas. Untuk melaporkan penyalahgunaan:",
+        "step1": "Buka percakapan dengan pesan yang bermasalah",
+        "step2": "Ketuk tiga titik (⋮) di pojok kanan atas",
+        "step3": "Pilih \"Laporkan\" dari menu",
+        "step4": "Pilih alasan pelaporan dan berikan detail tambahan",
+        "step5": "Kirim laporan Anda",
+        "content2": "Tim kepercayaan dan keamanan kami meninjau semua laporan dalam waktu 24 jam. Anda juga dapat memblokir pengguna segera untuk mencegah kontak lebih lanjut.",
+        "note": {
+          "bold": "Catatan:",
+          "text": "Bahkan untuk pesan anonim, kami menyimpan catatan terenkripsi yang dapat digunakan untuk mengidentifikasi dan memblokir pengguna yang melanggar pedoman komunitas kami. Keamanan Anda adalah prioritas kami."
+        }
+      },
+      "isThisAvailableOnAndroidIos": {
+        "emoji": "📱",
+        "title": "Apakah ini tersedia di Android/iOS?",
+        "content1": "Ya! Secrely tersedia di kedua platform seluler utama:",
+        "platform1": {
+          "bold": "iOS:",
+          "text": "Versi iOS untuk iPhone dan iPad saat ini sedang dalam pengembangan dan akan segera tersedia di App Store. Nantikan pembaruannya!"
+        },
+        "platform2": {
+          "bold": "Android:",
+          "text": "Tersedia di Google Play Store untuk perangkat yang menjalankan Android 7.0 atau lebih baru"
+        },
+        "content2": "Kami juga memiliki versi web di app.secrely.com yang berfungsi di sebagian besar browser modern, memungkinkan Anda untuk mengakses pesan Anda dari komputer Anda."
+      },
+      "howDoICreateAnAccount": {
+        "emoji": "🔑",
+        "title": "Bagaimana cara membuat akun?",
+        "content1": "Membuat akun Secrely cepat dan mudah:",
+        "step1": "Unduh aplikasi dari Google Play",
+        "step2": "Buka aplikasi dan ketuk \"Daftar\"",
+        "step3": "Masukkan alamat email Anda untuk verifikasi",
+        "step4": "Buat nama pengguna dan kata sandi",
+        "step5": "Verifikasi email Anda dengan kode yang kami kirimkan",
+        "content2": "Itu saja! Anda dapat mulai menggunakan Secrely segera setelah verifikasi. Akun Anda bisa sedetail atau seminimal yang Anda inginkan, tergantung pada bagaimana Anda ingin tampil di mata orang lain."
+      },
+      "whatMessageTypesDoesSecrelySupport": {
+        "emoji": "💬",
+        "title": "Jenis pesan apa yang didukung Secrely?",
+        "content1": "Secrely mendukung berbagai jenis pesan untuk membuat percakapan Anda menarik:",
+        "type1": {
+          "bold": "Untuk Pesan Anonim Masuk (Kotak Masuk):",
+          "subType1": {
+            "bold": "Pesan teks:",
+            "text": "Teks standar dengan dukungan emoji."
+          },
+          "subType2": {
+            "bold": "Musik:",
+            "text": "Pesan anonim dapat menyertakan konten musik tersemat."
+          }
+        },
+        "type2": {
+          "bold": "Untuk Obrolan Anonim (Percakapan dua arah):",
+          "subType1": {
+            "bold": "Pesan teks:",
+            "text": "Teks standar dengan dukungan emoji, memungkinkan dialog yang lancar."
+          }
+        },
+        "note": {
+          "bold": "Catatan Penting:",
+          "text": "Jenis konten yang dapat Anda kirim saat memulai pesan anonim (melalui tautan) menentukan apa yang diterima penerima di kotak masuk mereka. Jika obrolan anonim dibuat, komunikasi dalam obrolan tersebut sebagian besar berbasis teks dengan dukungan emoji untuk memastikan dialog yang terfokus dan pribadi."
+        }
+      },
+      "howSecureAreMyMessages": {
+        "emoji": "🔐",
+        "title": "Seberapa aman pesan saya?",
+        "content1": "Keamanan adalah prioritas utama di Secrely. Berikut adalah cara kami melindungi pesan Anda:",
+        "listItem1": {
+          "bold": "Enkripsi ujung-ke-ujung:",
+          "text": "Semua pesan dienkripsi sehingga hanya Anda dan penerima yang dapat membacanya"
+        },
+        "listItem2": {
+          "bold": "Penyimpanan pesan terenkripsi:",
+          "text": "Pesan disimpan dengan aman di database kami dalam format terenkripsi. Ini berarti meskipun ada akses tidak sah ke database kami, konten pesan Anda akan tetap tidak terbaca."
+        },
+        "listItem3": {
+          "bold": "Penyimpanan Laporan Penyalahgunaan:",
+          "text": "Pesan yang dilaporkan karena penyalahgunaan dapat disimpan sementara dalam keadaan terenkripsi untuk ditinjau oleh tim kepercayaan dan keamanan kami, sesuai dengan Ketentuan Penggunaan kami."
+        },
+        "securityTip": {
+          "bold": "Tip Keamanan:",
+          "text": "Meskipun kami menerapkan langkah-langkah keamanan yang kuat, ingatlah bahwa penerima pesan Anda masih dapat membagikan kontennya melalui cara lain. Selalu perhatikan apa yang Anda kirim, bahkan dalam percakapan yang \"aman\"."
+        },
+        "content2": "Kami berkomitmen untuk terus meningkatkan langkah-langkah keamanan kami untuk menyediakan lingkungan perpesanan yang aman dan pribadi."
+      },
+      "isSecrelyFreeToUse": {
+        "emoji": "💰",
+        "title": "Apakah Secrely gratis untuk digunakan?",
+        "content1": "Ya! Secrely menawarkan opsi gratis dan premium:",
+        "freePlan": {
+          "title": "Paket Gratis",
+          "listItem1": {
+            "bold": "Pesan anonim tanpa batas:",
+            "text": "Anda dapat mengirim dan menerima pesan anonim melalui tautan tanpa batas."
+          },
+          "listItem2": {
+            "bold": "Batas Bintang Harian:",
+            "text": "Anda menerima 50 \"Bintang\" setiap hari, yang diatur ulang setiap 24 jam.",
+            "subListItem1": "Setiap gelembung pesan dalam obrolan berharga 1 Bintang.",
+            "subListItem2": "Membalas pesan kotak masuk anonim untuk membuat ruang obrolan baru berharga 5 Bintang."
+          },
+          "listItem3": {
+            "bold": "Batasan Obrolan:",
+            "text": "Setelah Bintang harian Anda habis, Anda tidak akan dapat memulai ruang obrolan baru atau mengirim pesan lebih lanjut di obrolan yang ada sampai Bintang diatur ulang keesokan harinya."
+          },
+          "listItem4": "Fitur anonimitas dasar",
+          "listItem5": "Berbagi media dasar"
+        },
+        "premiumPlan": {
+          "title": "Secrely Premium",
+          "content": "Kami secara aktif mengerjakan versi premium Secrely yang akan menawarkan fitur yang ditingkatkan dan menghapus batasan Bintang harian untuk pengalaman komunikasi yang lebih lancar. Nantikan pembaruan tentang peluncurannya!"
+        },
+        "content2": "Kami percaya privasi harus dapat diakses oleh semua orang, itulah sebabnya paket gratis kami mencakup fitur-fitur penting. Paket Premium yang akan datang akan menambahkan kenyamanan ekstra dan opsi penyesuaian bagi mereka yang menginginkannya."
+      }
+    },
+    "stillHaveQuestions": {
+      "title": "Masih ada pertanyaan?",
+      "description": "Kami siap membantu! Tim dukungan kami siap menjawab pertanyaan apa pun yang mungkin Anda miliki tentang Secrely.",
+      "contactButton": "Hubungi Dukungan"
+    }
+  },
+  "SendMessagePage": {
+    "title": "Kirim Pesan Anda",
+    "description": "Gunakan kolom di bawah untuk mengirim pesan rahasia ke {name}.",
+    "yourMessageLabel": "Pesan Anda",
+    "yourMessagePlaceholder": "Tulis pesan rahasia Anda di sini...",
+    "anonymousNote": "Pesan ini akan dikirim secara anonim & dirahasiakan.",
+    "musicLabel": "Tambahkan Musik Latar (Opsional)",
+    "allowReplyLabel": "Izinkan penerima untuk membalas",
+    "allowReplyNote": "{name} dapat membalas Anda secara anonim",
+    "loggedInAs": "🔓 Masuk sebagai <strong>{email}</strong>",
+    "logoutButton": "Keluar",
+    "notLoggedInWarning": "⚠️ Anda belum masuk. Beberapa fitur akan dibatasi.",
+    "sendButton": "Kirim Pesan Sekarang",
+    "sendButtonLoading": "Mengirim...",
+    "privacyTitle": "Privasi Anda Penting",
+    "privacyBullet1": "Identitas Anda sepenuhnya dilindungi saat mengirim pesan anonim.",
+    "privacyBullet2": "Pesan dienkripsi ujung-ke-ujung untuk keamanan maksimum.",
+    "privacyBullet3": "Kami menjaga platform tetap aman. Untuk mencegah pesan yang mengganggu, kami menggunakan informasi teknis perangkat Anda secara anonim.",
+    "loginTitle": "Masuk untuk menerima balasan",
+    "loginNote": "Kirim pesan dengan nyaman, {name} tidak akan mengetahui identitas Anda.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "email@anda.com",
+    "passwordLabel": "Kata Sandi",
+    "passwordPlaceholder": "••••••••",
+    "loginSubmit": "Masuk",
+    "loginSubmitLoading": "Masuk...",
+    "downloadPrompt": "Belum punya akun?",
+    "downloadLink": "Unduh Aplikasi",
+    "successTitle": "Pesan Terkirim!",
+    "successDescription": "Pesan anonim Anda telah berhasil dikirim ke @{name}.",
+    "sendAnother": "Kirim Pesan Lain",
+    "errorTitle": "Kesalahan!",
+    "errorOk": "Oke",
+    "errorLogin": "Email atau kata sandi salah!",
+    "errorLogout": "Terjadi kesalahan saat keluar.",
+    "errorEmptyMessage": "Pesan tidak boleh kosong.",
+    "errorNoHeader": "Header belum tersedia.",
+    "errorNoPublicKey": "Kunci publik penerima tidak tersedia. Silakan coba lagi.",
+    "errorBlocked": "Anda diblokir oleh pengguna ini.",
+    "errorInvalid": "Permintaan tidak valid.",
+    "errorNotFound": "Penerima tidak ditemukan.",
+    "errorGeneric": "Terjadi kesalahan saat mengirim pesan."
+  }
+}

@@ -1,21 +1,20 @@
-'use client'
+"use client";
 
-import React from 'react'
+import React from "react";
+import { useTranslations } from "use-intl";
 
 function Cta() {
+  const t = useTranslations("CtaSection");
   return (
     <section className="py-20 px-6 md:px-12 lg:px-24 relative bg-gradient-to-b from-indigo/5 to-softPink/20">
       <div className="max-w-3xl mx-auto text-center">
         <div className="scroll-reveal">
           <h2 className="font-space font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-            Ready to hear what they think about you?
+            {t("title")}
           </h2>
-          <p className="text-richGray-700 text-lg mb-8">
-            Join over 1 million users discovering honest thoughts and building
-            deeper connections.
-          </p>
+          <p className="text-richGray-700 text-lg mb-8">{t("description")}</p>
           <button className="neo-button text-white px-10 py-4 rounded-xl font-bold text-lg mx-auto">
-            Start Receiving Messages Now
+            {t("buttonText")}
             <span className="ml-2">→</span>
           </button>
 
@@ -38,7 +37,7 @@ function Cta() {
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </div>
-              <span className="ml-2 text-sm font-medium">1M+ messages sent</span>
+              <span className="ml-2 text-sm font-medium">{t("stat1")}</span>
             </div>
 
             {/* Item 2 */}
@@ -58,7 +57,7 @@ function Cta() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
-              <span className="ml-2 text-sm font-medium">99% anonymous</span>
+              <span className="ml-2 text-sm font-medium">{t("stat2")}</span>
             </div>
 
             {/* Item 3 */}
@@ -80,13 +79,13 @@ function Cta() {
                   <path d="M12 16h.01" />
                 </svg>
               </div>
-              <span className="ml-2 text-sm font-medium">24/7 support</span>
+              <span className="ml-2 text-sm font-medium">{t("stat3")}</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Cta
+export default Cta;

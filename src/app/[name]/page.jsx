@@ -11,6 +11,7 @@ import {
   removeAuthToken,
   setAuthToken,
 } from "../../helper/localStorage";
+import { useTranslations } from "next-intl";
 const MusicSelect = dynamic(() => import("../../components/MusicSelect"), {
   ssr: false,
   loading: () => (
@@ -24,6 +25,7 @@ const MusicSelect = dynamic(() => import("../../components/MusicSelect"), {
 export default function Header() {
   const { name } = useParams();
   const router = useRouter();
+  const t = useTranslations("SendMessagePage");
 
   const [isAllowReply, setIsAllowReply] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,7 +35,7 @@ export default function Header() {
 
   const [selectedMusic, setSelectedMusic] = useState(null);
 
-  const [user, setUser] = useState(null); // Changed initial state to null for consistency
+  const [user, setUser] = useState(null); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -86,7 +88,7 @@ export default function Header() {
       setIsAllowReply(true);
     } catch (error) {
       setIsErrorModalOpen(true);
-      setIsErrorMessage("Wrong email or password!");
+      setIsErrorMessage(t("errorLogin"));
     } finally {
       setIsLoginLoading(false);
     }
@@ -100,7 +102,7 @@ export default function Header() {
       setIsAllowReply(false);
     } catch (error) {
       setIsErrorModalOpen(true);
-      setIsErrorMessage("An error occurred while logging out.");
+      setIsErrorMessage(t("errorLogout"));
     }
   };
 
@@ -108,25 +110,20 @@ export default function Header() {
     e.preventDefault();
     if (!message.trim()) {
       setIsErrorModalOpen(true);
-      setIsErrorMessage("Message cannot be empty.");
+      setIsErrorMessage(t("errorEmptyMessage"));
       return;
     }
 
-    // if (!selectedMusic?.value) { // This check was in old JSX, but HTML doesn't force music. Made it optional based on HTML.
-    //   alert("Music tidak boleh kosong.");
-    //   return;
-    // }
-
     if (!header?.id) {
       setIsErrorModalOpen(true);
-      setIsErrorMessage("Header not available yet.");
+      setIsErrorMessage(t("errorNoHeader"));
       return;
     }
 
     if (!recipientPublicKey) {
       setIsErrorModalOpen(true);
       setIsErrorMessage(
-        "The recipient's public key is not available. Please try again."
+        t("errorNoPublicKey")
       );
       return;
     }
@@ -195,14 +192,14 @@ export default function Header() {
       console.log(res);
       if (!res.ok) {
         const errorData = await res.json();
-        let errorMessage = "An error occurred while sending the message.";
+        let errorMessage = t("errorGeneric");
 
         if (res.status === 403) {
-          errorMessage = errorData.message || "You are blocked by this user.";
+          errorMessage = t("errorBlocked");
         } else if (res.status === 400) {
-          errorMessage = errorData.message || "Invalid request.";
+          errorMessage = t("errorInvalid");
         } else if (res.status === 404) {
-          errorMessage = errorData.message || "Recipient not found.";
+          errorMessage = t("Recipient not found.");
         }
 
         throw new Error(errorMessage);
@@ -228,11 +225,10 @@ export default function Header() {
         }
       );
 
-      // alert("Pesan berhasil dikirim!"); // Replaced with success modal
-      setIsSuccessModalOpen(true); // Show success modal
-      setMessage(""); // reset pesan
-      setSelectedMusic(null); // reset music
-      setIsAllowReply(false); // reset toggle
+      setIsSuccessModalOpen(true);
+      setMessage(""); 
+      setSelectedMusic(null);
+      setIsAllowReply(false);
     } catch (err) {
       setIsErrorModalOpen(true);
       setIsErrorMessage(err.message);
@@ -243,7 +239,7 @@ export default function Header() {
 
   const closeLoginModal = () => {
     setIsModalOpen(false);
-    setIsAllowReply(false); // Reset the toggle if modal is closed without logging in
+    setIsAllowReply(false); 
     setEmail("");
     setPassword("");
   };
@@ -256,14 +252,12 @@ export default function Header() {
     setIsErrorModalOpen(false);
   };
 
-  // Emoji functionality
   const emojis = ["🙌", "❤️", "😊", "🎉", "👍", "✨", "🔥", "💯", "🤔", "😂"];
   const [currentEmojiIndex, setCurrentEmojiIndex] = useState(0);
 
   const handleEmojiClick = () => {
     const newEmoji = emojis[currentEmojiIndex];
 
-    // Create floating emoji
     const emojiElement = document.createElement("div");
     emojiElement.className = "emoji-float-form";
     emojiElement.textContent = newEmoji;
@@ -424,7 +418,7 @@ export default function Header() {
                         @{name}
                       </h1>
                       <p className="text-richGray-700 text-lg">
-                        {header.text || "Kalian mau tanya apa sama aku?"}
+                        {header.text || "Ask me anything!"}
                       </p>
                     </div>
                   </div>
@@ -440,10 +434,10 @@ export default function Header() {
                 </div>
                 <div>
                   <h2 className="font-space font-bold text-xl mb-2">
-                    Send Your Message
+                    {t("title")}
                   </h2>
                   <p className="text-richGray-700">
-                    Use the field below to send a secret message to {name}.
+                    {t("description", { name })}
                   </p>
                 </div>
               </div>
@@ -458,14 +452,14 @@ export default function Header() {
                     htmlFor="message"
                     className="block font-medium text-richGray-800 mb-2"
                   >
-                    Your Message
+                    {t("yourMessageLabel")}
                   </label>
                   <div className="relative">
                     <textarea
                       id="message"
                       rows="5"
                       className="glass-input w-full !border !border-gray-200 rounded-2xl px-4 py-3 text-richGray-800 focus:outline-none resize-none"
-                      placeholder="Tulis pesan rahasiamu di sini..."
+                      placeholder={t("yourMessagePlaceholder")}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       ref={messageInputRef}
@@ -483,9 +477,7 @@ export default function Header() {
                   </div>
                   <div className="mt-2 text-xs text-richGray-700 flex items-center">
                     <span className="mr-1">✨</span>
-                    <span className="italic">
-                      This message will be sent anonymously & kept confidential.
-                    </span>
+                    <span className="italic">{t("anonymousNote")}</span>
                   </div>
                 </div>
 
@@ -495,7 +487,7 @@ export default function Header() {
                     htmlFor="music"
                     className="block font-medium text-richGray-800 mb-2 flex items-center"
                   >
-                    <span>Add Background Music (Optional)</span>
+                    <span>{t("musicLabel")}</span>
                   </label>
                   <div className="relative">
                     {/* Using standard select here, MusicSelect component is still available if preferred */}
@@ -535,10 +527,10 @@ export default function Header() {
                         htmlFor="anonymous-reply"
                         className="block font-medium text-richGray-800"
                       >
-                        Allow recipient to reply
+                        {t("allowReplyLabel")}
                       </label>
                       <p className="text-xs text-richGray-700 mt-1">
-                        {name} can reply to you anonymously
+                        {t("allowReplyNote", { name })}
                       </p>
                     </div>
                     <div className="relative inline-block w-12 align-middle select-none">
@@ -566,12 +558,12 @@ export default function Header() {
                         type="button"
                         className="ml-4 text-xs px-2 py-1 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition"
                       >
-                        Logout
+                        {t("logoutButton")}
                       </button>
                     </div>
                   ) : (
                     <div className="bg-yellow-50 text-yellow-700 text-sm px-4 py-2 rounded-xl mt-4">
-                      ⚠️ You are not logged in. Some features will be limited.
+                      {t("notLoggedInWarning")}
                     </div>
                   )}
                 </div>
@@ -606,11 +598,11 @@ export default function Header() {
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                           ></path>
                         </svg>
-                        Send...
+                        {t("sendButtonLoading")}
                       </>
                     ) : (
                       <>
-                        Send Message Now
+                        {t("sendButton")}
                         <span className="ml-2">🚀</span>
                       </>
                     )}
@@ -625,34 +617,26 @@ export default function Header() {
               <div className="relative z-10">
                 <h3 className="font-space font-bold text-xl mb-4 flex items-center">
                   <span className="mr-2">🔒</span>
-                  <span>Your Privacy Matters</span>
+                  <span>{t("privacyTitle")}</span>
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <div className="h-6 w-6 rounded-full bg-indigo/10 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                       <span className="text-xs">✓</span>
                     </div>
-                    <p className="text-richGray-700">
-                      Your identity is completely protected when sending
-                      anonymous messages.
-                    </p>
+                    <p className="text-richGray-700">{t("privacyBullet1")}</p>
                   </li>
                   <li className="flex items-start">
                     <div className="h-6 w-6 rounded-full bg-indigo/10 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                       <span className="text-xs">✓</span>
                     </div>
-                    <p className="text-richGray-700">
-                      Messages are end-to-end encrypted for maximum security.
-                    </p>
+                    <p className="text-richGray-700">{t("privacyBullet2")}</p>
                   </li>
                   <li className="flex items-start">
                     <div className="h-6 w-6 rounded-full bg-indigo/10 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
                       <span className="text-xs">✓</span>
                     </div>
-                    <p className="text-richGray-700">
-                      We keep the platform secure. To prevent annoying messages,
-                      we use your device's technical information anonymously.
-                    </p>
+                    <p className="text-richGray-700">{t("privacyBullet3")}</p>
                   </li>
                 </ul>
               </div>
@@ -672,7 +656,7 @@ export default function Header() {
             <div className="flex justify-between items-center mb-6">
               <h2 className="font-space font-bold text-2xl flex items-center">
                 <span className="mr-2">🔐</span>
-                <span>Login to receive replies</span>
+                <span>{t("loginTitle")}</span>
               </h2>
               <button
                 id="close-modal"
@@ -698,22 +682,20 @@ export default function Header() {
 
             <form id="login-form" onSubmit={handleLogin}>
               <div className="mb-4">
-                <p>
-                  Send messages comfortably, {name} will not know your identity.
-                </p>
+                <p>{t("loginNote", { name })}</p>
               </div>
               <div className="mb-4">
                 <label
                   htmlFor="email"
                   className="block font-medium text-richGray-800 mb-2"
                 >
-                  Email
+                  {t("emailLabel")}
                 </label>
                 <input
                   type="email"
                   id="email"
                   className="glass-input w-full rounded-xl px-4 py-3 text-richGray-800 focus:outline-none"
-                  placeholder="your@email.com"
+                  placeholder={t("emailPlaceholder")}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -725,13 +707,13 @@ export default function Header() {
                   htmlFor="password"
                   className="block font-medium text-richGray-800 mb-2"
                 >
-                  Password
+                  {t("passwordLabel")}
                 </label>
                 <input
                   type="password"
                   id="password"
                   className="glass-input w-full rounded-xl px-4 py-3 text-richGray-800 focus:outline-none"
-                  placeholder="••••••••"
+                  placeholder={t("passwordPlaceholder")}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -771,23 +753,21 @@ export default function Header() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    Sign in...
+                    {t("loginSubmitLoading")}
                   </>
                 ) : (
-                  <span>Sign in</span>
+                  <span>{t("loginSubmit")}</span>
                 )}
               </button>
 
               <div className="mt-6 text-center text-sm text-richGray-700">
                 <p>
-                  Don't have an account yet?
+                  {t("downloadPrompt")} {""}
                   <a
                     href="/download-app"
                     className="text-indigo hover:underline"
                   >
-                    {" "}
-                    {/* Ubah href sesuai link download aplikasi Anda */}
-                    Download the App
+                    {t("downloadLink")}
                   </a>
                 </p>
               </div>
@@ -810,17 +790,17 @@ export default function Header() {
               <span className="text-4xl">✨</span>
             </div>
             <h2 className="font-space font-bold text-2xl mb-4">
-              Message Sent!
+              {t("successTitle")}
             </h2>
             <p className="text-richGray-700 mb-6">
-              Your anonymous message has been successfully sent to @{name}.
+              {t("successDescription", { name })}
             </p>
             <button
               id="close-success"
               className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full flex items-center justify-center"
               onClick={closeSuccessModal}
             >
-              <span>Send Another Message</span>
+              <span>{t("sendAnother")}</span>
             </button>
           </div>
         </div>
@@ -836,14 +816,16 @@ export default function Header() {
             <div className="h-20 w-20 rounded-full bg-indigo/10 flex items-center justify-center mx-auto mb-6 floating">
               <span className="text-4xl">✨</span>
             </div>
-            <h2 className="font-space font-bold text-2xl mb-4">Error!</h2>
+            <h2 className="font-space font-bold text-2xl mb-4">
+              {t("errorTitle")}
+            </h2>
             <p className="text-richGray-700 mb-6">{isErrorMessage}</p>
             <button
               id="close-success"
               className="neo-button text-white px-6 py-3 rounded-xl font-bold w-full flex items-center justify-center"
               onClick={closeErrorModal}
             >
-              <span>Ok</span>
+              <span>{t("errorOk")}</span>
             </button>
           </div>
         </div>

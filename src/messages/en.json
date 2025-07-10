@@ -1,0 +1,680 @@
+{
+   "Hero": {
+    "heading": "Say Everything",
+    "heading1": "Stay Anonymous",
+    "subheading": "Confessions, compliments, secrets... all in one link.",
+    "buttonCreateLink": "Create Your Anonymous Link",
+    "feature1": "Send/Receive Anonymous Messages",
+    "feature2": "Your Identity Stays Hidden",
+    "section1Title": "I've always admired your creativity and how you're not afraid to be yourself. You inspire me more than you know!",
+    "section1Time": "2m ago",
+    "sectionButton": "Reply",
+    "section2Title": "Your presentation yesterday was amazing! You seemed so confident. Any tips?",
+    "section2Time": "5m ago",
+    "experienceTitle1": "Experience the",
+    "experienceTitle2": "Magic",
+    "experienceDescription": "See how Secrely transforms anonymous messaging into meaningful connections.",
+    "card1Title": "Your Secrely Profile",
+    "card1Name": "Sarah",
+    "card1Description": "Send me anonymous messages! I promise to reply to the interesting ones 😊",
+    "card1Progress": "75% complete",
+    "card1Button": "Customize Your Profile",
+    "card2Title": "Share Your Link",
+    "card2InputValue": "secrely.app/sarah",
+    "card2ButtonCopy": "Copy",
+    "card2ButtonShare": "Share Your Link"
+  },
+  "HowItWork": {
+    "titlePart1": "How",
+    "titlePart2": "Works",
+    "appName": "Secrely",
+    "description": "Three simple steps to start receiving anonymous messages.",
+    "step1Title": "Share Your Link",
+    "step1Description": "Create your unique Secrely link and share it on your social profiles or with friends.",
+    "step2Title": "Receive Messages",
+    "step2Description": "Get honest, anonymous messages from friends, followers, or anyone with your link.",
+    "step3Title": "Reply Anonymously",
+    "step3Description": "Choose to reply to messages while keeping both sides anonymous and safe."
+  },
+  "Testimonials": {
+    "sectionTitlePart1": "People love honesty.",
+    "sectionTitlePart2": "Even when it's anonymous.",
+    "sectionDescription": "See what our users are saying about their Secrely experience.",
+    "card1": {
+      "name": "Jamie K.",
+      "initials": "JK",
+      "occupation": "Student",
+      "quote": "I was surprised by how many of my classmates actually admired my art projects. I never would have known without Secrely!"
+    },
+    "card2": {
+      "name": "Morgan T.",
+      "initials": "MT",
+      "occupation": "Content Creator",
+      "quote": "As a creator, I get honest feedback about my videos that people might be too shy to say publicly. It's helped me improve so much!"
+    },
+    "card3": {
+      "name": "Alex R.",
+      "initials": "AR",
+      "occupation": "Teacher",
+      "quote": "My students use this to give me anonymous feedback on my lessons. It's been eye-opening and helped me become a better teacher."
+    }
+  },
+   "MobilePreview": {
+    "titlePart1": "Experience",
+    "titlePart2": "Everywhere",
+    "appName": "Secrely",
+    "description": "Our mobile-first design works beautifully on any device."
+  },
+  "CtaSection": {
+    "title": "Ready to hear what they think about you?",
+    "description": "Join over 1 million users discovering honest thoughts and building deeper connections.",
+    "buttonText": "Start Receiving Messages Now",
+    "stat1": "1M+ messages sent",
+    "stat2": "99% anonymous",
+    "stat3": "24/7 support"
+  },
+  "PrivacyPolicy": {
+    "heroSection": {
+      "title": "Your Privacy Matters",
+      "description": "We take your data seriously. Here's how we protect it."
+    },
+    "whatYouNeedToKnow": {
+      "title": "What You Need to Know",
+      "endToEndPrivate": {
+        "title": "End-to-End Private",
+        "description": "Your messages are encrypted and private between you and your recipients."
+      },
+      "noDataSelling": {
+        "title": "No Data Selling",
+        "description": "We never sell your personal data to third parties. Ever."
+      },
+      "youAreInControl": {
+        "title": "You're In Control",
+        "description": "You control your visibility and can delete your data at any time."
+      }
+    },
+    "accordionContent": {
+      "item0": {
+        "title": "What Data We Collect",
+        "iconPath": "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+        "intro": "To provide you with the best experience on Secrely, we collect certain information. Here's what we collect:",
+        "sections": {
+          "accountInfo": {
+            "title": "Account Information",
+            "items": [
+              "Username or display name (which can be anonymous)",
+              "Email address (for account recovery and notifications)",
+              "Password (stored as a hashed value by Supabase)"
+            ]
+          },
+          "messageContent": {
+            "title": "Message Content",
+            "items": [
+              "The content of messages you send and receive",
+              "Timestamps of when messages are sent",
+              "Read receipts"
+            ]
+          },
+          "deviceInfo": {
+            "title": "Device Information",
+            "items": [
+              "Device fingerprint (for spam detection and user blocking)",
+              "Operating system",
+              "App version"
+            ]
+          },
+          "usageInfo": {
+            "title": "Usage Information",
+            "items": [
+              "How you interact with the app (features used, time spent)",
+              "Error reports",
+              "Performance analytics"
+            ]
+          }
+        }
+      },
+      "item1": {
+        "title": "How Your Data Is Used",
+        "iconPath": "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z",
+        "intro": "We use your data for the following purposes:",
+        "sections": {
+          "provideService": {
+            "title": "To Provide Our Service",
+            "items": [
+              "Delivering messages between users",
+              "Maintaining your account and preferences",
+              "Enabling the anonymous messaging features",
+              "Providing customer support"
+            ]
+          },
+          "improveService": {
+            "title": "To Improve Our Service",
+            "items": [
+              "Analyzing how users interact with features",
+              "Identifying and fixing bugs",
+              "Developing new features based on user behavior",
+              "Optimizing app performance"
+            ]
+          },
+          "keepSafe": {
+            "title": "To Keep You Safe",
+            "items": [
+              "Detecting and preventing abuse or violations of our terms",
+              "Identifying and addressing security threats",
+              "Complying with legal obligations"
+            ]
+          },
+          "communicate": {
+            "title": "To Communicate With You",
+            "items": [
+              "Sending important updates about the service",
+              "Notifying you about new features (if you opt in)",
+              "Responding to your inquiries"
+            ]
+          }
+        }
+      },
+      "item2": {
+        "title": "Third-Party Services",
+        "iconPath": "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
+        "intro": "We partner with trusted third parties to help provide and improve our service. Here are the types of third parties we work with:",
+        "sections": {
+          "cloudInfrastructure": {
+            "title": "Cloud Infrastructure",
+            "supabase": {
+              "name": "Supabase:",
+              "description": "For secure data storage and authentication"
+            },
+            "vercel": {
+              "name": "Vercel:",
+              "description": "For server hosting and content delivery"
+            },
+            "cloudflare": {
+              "name": "Cloudflare:",
+              "description": "For web performance, security, and to facilitate secure WebSocket connections, enhancing the stability and speed of our real-time features."
+            }
+          },
+          "analytics": {
+            "title": "Analytics",
+            "vercelAnalytics": {
+              "name": "Vercel Analytics:",
+              "description": "To monitor website performance, traffic patterns, and overall application health."
+            },
+            "cloudflareAnalytics": {
+              "name": "Cloudflare Analytics:",
+              "description": "For insights into network traffic, security threats, and content delivery performance."
+            },
+            "supabaseLogsMetrics": {
+              "name": "Supabase Logs & Metrics:",
+              "description": "To track database performance, API usage, and identify potential issues within our backend services."
+            }
+          },
+          "mediaEmbedding": {
+            "title": "Media & Content Embedding",
+            "spotify": {
+              "name": "Spotify:",
+              "description": "To provide embedded music content. When you interact with or view embedded Spotify players on our site, Spotify may collect data according to their privacy policy.",
+              "policyLinkText": "(See Spotify's Privacy Policy)"
+            }
+          }
+        },
+        "footer": "All third parties we work with are bound by strict data protection agreements and are carefully selected to ensure they maintain high privacy standards."
+      },
+      "item3": {
+        "title": "Your Rights & Control Options",
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        "intro": "At Secrely, we believe you should have control over your data. Here are the rights and options available to you:",
+        "sections": {
+          "deleteData": {
+            "title": "Delete Your Data",
+            "description": "You can delete your account and associated data at any time:",
+            "steps": [
+              "Go to Settings > Others > Delete Account",
+              "Confirm your choice (this action cannot be undone)",
+              "We'll permanently delete your data within 30 days"
+            ]
+          },
+          "privacySettings": {
+            "title": "Control Your Privacy Settings",
+            "description": "Customize who can contact you and manage your preferences for a safer experience:",
+            "items": [
+              "Go to Settings > Privacy to adjust who can send you messages.",
+              "In Settings > Privacy, you can also manage your <span class=\"font-medium\">Blocked Users list</span> (which shows users you have blocked from specific chat details).",
+              "Manage your <span class=\"font-medium\">Hidden Words list</span> in Settings > Privacy, allowing you to add or remove words that you wish to hide from your messages.",
+              "Go to Settings > Preference to manage notification preferences."
+            ]
+          },
+          "additionalRights": {
+            "title": "Additional Rights",
+            "description": "Depending on your location, you may have additional rights under local laws (such as GDPR or CCPA):",
+            "items": [
+              "Right to correction of inaccurate data",
+              "Right to restriction of processing",
+              "Right to object to processing",
+              "Right to data portability"
+            ]
+          }
+        }
+      },
+      "item4": {
+        "title": "Child Safety & CSAE Protection Policy",
+        "iconPath": "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
+        "intro": "At Secrely, we have zero tolerance for child sexual abuse and exploitation (CSAE). We are committed to protecting children and young users on our platform through the following actions:",
+        "items": [
+          {
+            "title": "Content Moderation:",
+            "description": "We use a combination of automated tools and manual review to detect and remove any content that may involve or promote child exploitation."
+          },
+          {
+            "title": "Reporting Tools:",
+            "description": "Users can report messages or accounts suspected of abuse, which are reviewed promptly."
+          },
+          {
+            "title": "Immediate Action:",
+            "description": "Accounts found violating our child safety policies are immediately suspended and investigated."
+          },
+          {
+            "title": "Law Enforcement Cooperation:",
+            "description": "We fully cooperate with law enforcement and relevant child protection authorities where appropriate."
+          },
+          {
+            "title": "User Controls:",
+            "description": "We provide features such as message filters, block/report tools, and privacy settings to help users protect themselves."
+          }
+        ],
+        "contactPrompt": "If you encounter suspicious or harmful behavior, please report it immediately to",
+        "contactEmail": "abuse-secrely@limapp.my.id"
+      }
+    },
+    "contactSection": {
+      "title": "Contact for Privacy Inquiries",
+      "intro": "If you have any questions, concerns, or requests regarding your privacy or this policy, we're here to help:",
+      "privacyTeam": {
+        "title": "Contact Our Privacy Team",
+        "email": "privacy-secrely@limapp.my.id",
+        "responseTime": "Response time: Within 2 business days"
+      },
+      "dpo": {
+        "title": "Data Protection Officer",
+        "name": "Alim Suma",
+        "email": "dpo-secrely@limapp.my.id"
+      },
+      "mailingAddress": {
+        "title": "Mailing Address",
+        "line1": "Secrely Privacy Team",
+        "line2": "Jl Kasmat Lahay",
+        "line3": "Gorontalo",
+        "line4": "Indonesian"
+      },
+      "policyUpdates": {
+        "title": "Policy Updates",
+        "text": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date. For significant changes, we will provide a more prominent notice or email notification.",
+        "lastUpdated": "Last Updated: June 20, 2025"
+      }
+    }
+  },
+  "TermOfUse": {
+    "pageTitle": "Terms of Use",
+    "pageSubtitle": "By using Secrely, you agree to the following terms.",
+    "lastUpdated": "Last Updated: June 15, 2023",
+    "contentsTitle": "Contents",
+    "stillHaveQuestions": "Still have questions?",
+    "questionsHelp": "Our team is here to help you understand our terms and policies.",
+    "contactSupport": "Contact Support",
+    "simpleTerms": "In simple terms:",
+    
+    "section1": {
+      "title": "Acceptance of Terms",
+      "content1": "Welcome to Secrely! These Terms of Service (\"Terms\") govern your use of the Secrely application, website, and services (collectively, the \"Service\"). Please read these Terms carefully before using our Service.",
+      "content2": "By accessing or using Secrely, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access the Service.",
+      "content3": "These Terms apply to all visitors, users, and others who access or use the Service. By creating an account or using any part of the Service, you're entering into a legal agreement with Secrely.",
+      "simpleContent": "By using our app, you're agreeing to follow these rules. If you don't agree, please don't use Secrely."
+    },
+    
+    "section2": {
+      "title": "Use of the Service",
+      "subtitle1": "2.1 Account Registration",
+      "content1": "To use certain features of the Service, you may need to create an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete.",
+      "subtitle2": "2.2 Account Security",
+      "content2": "You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password. We encourage you to use \"strong\" passwords (passwords that use a combination of upper and lower case letters, numbers, and symbols) with your account.",
+      "subtitle3": "2.3 Age Restrictions",
+      "content3": "You must be at least 13 years old to use the Service. By using the Service, you represent and warrant that you are over the age of 13. If you are under 18, you must have your parent or guardian's permission to use the Service.",
+      "subtitle4": "2.4 Service Availability",
+      "content4": "We strive to keep the Service up and running; however, all online services experience occasional disruptions and outages, and Secrely is no exception. We're not liable for any disruption or loss you may suffer as a result. We encourage you to maintain copies of your important content.",
+      "simpleContent": "Keep your account info accurate and your password secure. You must be at least 13 years old to use Secrely, and if you're under 18, get your parent's permission."
+    },
+    
+    "section3": {
+      "title": "User Content & Anonymity",
+      "subtitle1": "3.1 Your Content",
+      "content1": "Our Service allows you to post, link, store, share and otherwise make available certain information, text, or other material (\"Content\"). You are responsible for the Content that you post on or through the Service, including its legality, reliability, and appropriateness.",
+      "subtitle2": "3.2 Content License",
+      "content2": "By posting Content on or through the Service, you grant us the right to use, modify, publicly perform, publicly display, reproduce, and distribute such Content on and through the Service. You retain any and all of your rights to any Content you submit, post, or display on or through the Service and you are responsible for protecting those rights.",
+      "subtitle3": "3.3 Anonymity Features",
+      "content3": "Secrely provides features that allow users to send and receive anonymous messages. While we take steps to maintain anonymity as described in our features, we cannot guarantee absolute anonymity. Technical limitations, legal requirements, and other factors may limit our ability to ensure complete anonymity.",
+      "subtitle4": "3.4 Content Removal",
+      "content4": "We reserve the right to remove any Content from the Service at any time, for any reason (including, but not limited to, if someone claims you don't own the Content or the Content violates these Terms), without prior notice.",
+      "simpleContent": "You own your content, but we can display it through our service. While we try to keep anonymous features truly anonymous, we can't guarantee perfect anonymity in all circumstances."
+    },
+    
+    "section4": {
+      "title": "Prohibited Conduct",
+      "content1": "You agree not to use the Service to:",
+      "listItem1": "Harass, bully, intimidate, or harm any other user",
+      "listItem2": "Post or share content that is illegal, fraudulent, defamatory, obscene, pornographic, or otherwise objectionable",
+      "listItem3": "Impersonate any person or entity, or falsely state or misrepresent your affiliation with a person or entity",
+      "listItem4": "Interfere with or disrupt the Service or servers or networks connected to the Service",
+      "listItem5": "Attempt to gain unauthorized access to parts of the Service that are restricted",
+      "listItem6": "Use the Service for any illegal purpose, or in violation of any local, state, national, or international law",
+      "listItem7": "Collect or store personal data about other users without their consent",
+      "listItem8": "Promote or enable illegal activities",
+      "listItem9": "Exploit the Service for commercial purposes without our express consent",
+      "listItem10": "Distribute malware, spyware, or other harmful code",
+      "content2": "Violation of these prohibitions may result in termination of your access to the Service, and you may be reported to law enforcement authorities.",
+      "simpleContent": "Don't use Secrely to harm others, break the law, or mess with our service. Be respectful and use the platform responsibly."
+    },
+    
+    "section5": {
+      "title": "Account Termination",
+      "subtitle1": "5.1 Termination by You",
+      "content1": "You may delete your account at any time by following the instructions in the app or by contacting our support team. Upon deletion, your profile and other personal information will be removed from view. We may retain certain information as required by law or for legitimate business purposes.",
+      "subtitle2": "5.2 Termination by Us",
+      "content2": "We may terminate or suspend your account immediately, without prior notice or liability, for any reason, including without limitation if you breach the Terms. Upon termination, your right to use the Service will immediately cease.",
+      "subtitle3": "5.3 Effects of Termination",
+      "content3": "All provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.",
+      "simpleContent": "You can delete your account anytime. We can also terminate your account if you violate these terms. Either way, some data might be retained as required by law."
+    },
+    
+    "section6": {
+      "title": "Modifications to Terms",
+      "content1": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.",
+      "content2": "By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.",
+      "simpleContent": "We might update these terms sometimes. If we make big changes, we'll let you know in advance. By continuing to use Secrely after changes, you're agreeing to the new terms."
+    },
+    
+    "section7": {
+      "title": "Disclaimers & Limitations",
+      "subtitle1": "7.1 Disclaimer of Warranties",
+      "content1": "THE SERVICE IS PROVIDED ON AN \"AS IS\" AND \"AS AVAILABLE\" BASIS. SECRELY AND ITS AFFILIATES, SUPPLIERS AND PARTNERS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.",
+      "content2": "SECRELY MAKES NO WARRANTY THAT (i) THE SERVICE WILL MEET YOUR REQUIREMENTS, (ii) THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE, OR (iii) THE QUALITY OF ANY PRODUCTS, SERVICES, INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY YOU THROUGH THE SERVICE WILL MEET YOUR EXPECTATIONS.",
+      "subtitle2": "7.2 Limitation of Liability",
+      "content3": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL SECRELY, ITS AFFILIATES, AGENTS, DIRECTORS, EMPLOYEES, SUPPLIERS OR LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THIS SERVICE.",
+      "content4": "UNDER NO CIRCUMSTANCES WILL SECRELY BE RESPONSIBLE FOR ANY DAMAGE, LOSS OR INJURY RESULTING FROM HACKING, TAMPERING OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICE OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.",
+      "subtitle3": "7.3 Indemnification",
+      "content5": "You agree to defend, indemnify and hold harmless Secrely and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of (i) your use and access of the Service, or (ii) a breach of these Terms.",
+      "simpleContent": "We provide Secrely \"as is\" without any warranties. We're not responsible for damages that might occur from using our service. This is standard legal language that basically says you use the app at your own risk."
+    },
+    
+    "section8": {
+      "title": "Contact Us",
+      "content1": "If you have any questions about these Terms, please contact us:",
+      "emailLabel": "Email",
+      "address": "Address: Secrely Legal Department, Jl Kasmat Lahay, Gorontalo, Indonesian",
+      "simpleContent": "Have questions? We're here to help! Reach out to our team using the contact information above."
+    }
+  },
+  "Faq": {
+    "header": {
+      "emoji": "👋",
+      "title": "Need Help? We've Got You.",
+      "description": "Here are answers to the most common questions our users ask. Still curious? Reach out!"
+    },
+    "categories": {
+      "allQuestions": "All Questions",
+      "general": "General",
+      "privacy": "Privacy",
+      "features": "Features",
+      "technical": "Technical",
+      "account": "Account"
+    },
+    "questions": {
+      "whatIsSecrely": {
+        "emoji": "❓",
+        "title": "What is Secrely?",
+        "content1": "Secrely is the next-gen anonymous messaging app that empowers your connections like never before. Forget basic DMs – Secrely provides you with a unique, personal link. Share it anywhere, and let anyone send you secret, anonymous messages directly to your inbox.",
+        "content2": "But here's where it gets truly interesting: If you're intrigued by an anonymous message, and the sender has enabled replies, you can step into a private, anonymous chat right within the app. This means you can dive deeper into meaningful conversations, explore new connections, or get honest feedback, all while maintaining full control over your identity until you choose to reveal it.",
+        "content3": "Secrely lets you:",
+        "listItem1": {
+          "bold": "Receive anonymous messages:",
+          "text": "Get unfiltered thoughts, compliments, or questions via your unique personal link."
+        },
+        "listItem2": {
+          "bold": "Engage anonymously:",
+          "text": "If allowed by the sender, transform intriguing anonymous messages into real-time, private, anonymous conversations."
+        },
+        "listItem3": {
+          "bold": "Control your reveal:",
+          "text": "Your identity stays secret until you decide to show it."
+        },
+        "listItem4": {
+          "bold": "Connect authentically:",
+          "text": "Experience deeper interactions, free from the pressures of identity."
+        },
+        "content4": "It's not just messaging; it's a new way to connect, explore, and express yourself with genuine freedom."
+      },
+      "isMyIdentityAnonymous": {
+        "emoji": "👤",
+        "title": "Is my identity anonymous?",
+        "content1": "Yes, your identity is automatically anonymous when you send messages on Secrely. Our core design ensures that when you send a message through a user's unique link, your identity is not revealed to the recipient.",
+        "content2": "Secrely is built around the principle of anonymity:",
+        "listItem1": {
+          "bold": "No identifying information:",
+          "text": "Recipients will not see your name, profile picture, or any personal details."
+        },
+        "listItem2": {
+          "bold": "Focus on the message:",
+          "text": "The conversation is centered purely on the content, allowing for unfiltered and authentic interactions."
+        },
+        "listItem3": {
+          "bold": "Privacy by design:",
+          "text": "Our system is engineered to protect your identity from the moment you send a message."
+        },
+        "content3": "While we are committed to maintaining your anonymity, we always advise users to be mindful of the information they choose to share within their messages, as no digital system can guarantee absolute foolproof privacy against self-disclosure."
+      },
+      "canIControlWhoSendsMessages": {
+        "emoji": "🔒",
+        "title": "Can I control who sends me messages?",
+        "content1": "Yes, you have control over who can send you messages and how you manage unwanted communication on Secrely.",
+        "content2": "While you don't set granular pre-approval modes, you can manage your incoming messages effectively:",
+        "listItem1": {
+          "bold": "Disable your anonymous link:",
+          "text": "You can deactivate your unique Secrely link at any time if you wish to stop receiving any new anonymous messages."
+        },
+        "listItem2": {
+          "bold": "Report & Block unwanted senders:",
+          "text": "If you receive messages containing harsh language or anything inappropriate, you can easily report the sender. Once reported, you also have the option to block them, preventing them from sending you any further messages until you choose to unblock them."
+        },
+        "content3": "You can manage your blocked users list in Settings > Privacy. This empowers you to maintain a comfortable and safe experience on Secrely."
+      },
+      "canIReplyToMessages": {
+        "emoji": "📬",
+        "title": "Can I reply to messages?",
+        "content1": "Yes, you can initiate a two-way conversation on Secrely, provided the sender has enabled the reply option for their anonymous message.",
+        "content2": "When you receive a message:",
+        "listItem1": {
+          "bold": "Check for reply option:",
+          "text": "Not all anonymous messages are designed for immediate replies. If the sender has enabled it, you will see an option to start reply a chat."
+        },
+        "listItem2": {
+          "bold": "Engage anonymously:",
+          "text": "If the reply option is available, you can respond, and the conversation will continue as an anonymous chat, maintaining your privacy."
+        },
+        "listItem3": {
+          "bold": "Optional Identity Reveal:",
+          "text": "Within an ongoing anonymous chat, you have the choice to reveal your identity to the other party at any point, should you feel comfortable doing so."
+        },
+        "listItem4": {
+          "bold": "Manage unwanted messages:",
+          "text": "You always have the option to choose not to reply and archive the conversation, or block the sender if you do not wish to receive further messages from them."
+        },
+        "content3": "This ensures that while you can engage in deeper conversations, the level of interaction is initially set by the sender, giving them control over their anonymous outreach."
+      },
+      "howDoIReportAbuse": {
+        "emoji": "🚫",
+        "title": "How do I report abuse?",
+        "content1": "We take abuse seriously and have a zero-tolerance policy for harassment, threats, and inappropriate content. To report abuse:",
+        "step1": "Open the conversation with the problematic message",
+        "step2": "Tap the three dots (⋮) in the top right corner",
+        "step3": "Select \"Report\" from the menu",
+        "step4": "Choose the reason for reporting and provide any additional details",
+        "step5": "Submit your report",
+        "content2": "Our trust and safety team reviews all reports within 24 hours. You can also block users immediately to prevent further contact.",
+        "note": {
+          "bold": "Note:",
+          "text": "Even for anonymous messages, we maintain encrypted records that can be used to identify and ban users who violate our community guidelines. Your safety is our priority."
+        }
+      },
+      "isThisAvailableOnAndroidIos": {
+        "emoji": "📱",
+        "title": "Is this available on Android/iOS?",
+        "content1": "Yes! Secrely is available on both major mobile platforms:",
+        "platform1": {
+          "bold": "iOS:",
+          "text": "The iOS version for iPhone and iPad is currently under development and will be available on the App Store soon. Stay tuned for updates!"
+        },
+        "platform2": {
+          "bold": "Android:",
+          "text": "Available on Google Play Store for devices running Android 7.0 or later"
+        },
+        "content2": "We also have a web version at app.secrely.com that works on most modern browsers, allowing you to access your messages from your computer."
+      },
+      "howDoICreateAnAccount": {
+        "emoji": "🔑",
+        "title": "How do I create an account?",
+        "content1": "Creating a Secrely account is quick and easy:",
+        "step1": "Download the app from the Google Play",
+        "step2": "Open the app and tap \"Sign Up\"",
+        "step3": "Enter your email address for verification",
+        "step4": "Create a username and password",
+        "step5": "Verify your email with the code we send",
+        "content2": "That's it! You can start using Secrely immediately after verification. Your account can be as detailed or as minimal as you prefer, depending on how you want to appear to others."
+      },
+      "whatMessageTypesDoesSecrelySupport": {
+        "emoji": "💬",
+        "title": "What message types does Secrely support?",
+        "content1": "Secrely supports a variety of message types to make your conversations engaging:",
+        "type1": {
+          "bold": "For Incoming Anonymous Messages (Inbox):",
+          "subType1": {
+            "bold": "Text messages:",
+            "text": "Standard text with support for emojis."
+          },
+          "subType2": {
+            "bold": "Music:",
+            "text": "Anonymous messages can include embedded music content."
+          }
+        },
+        "type2": {
+          "bold": "For Anonymous Chats (Two-way conversations):",
+          "subType1": {
+            "bold": "Text messages:",
+            "text": "Standard text with support for emojis, enabling fluid dialogue."
+          }
+        },
+        "note": {
+          "bold": "Important Note:",
+          "text": "The type of content you can send when initiating an anonymous message (via a link) determines what the recipient receives in their inbox. If an anonymous chat is established, communication within that chat is primarily text-based with emoji support to ensure a focused and private dialogue."
+        }
+      },
+      "howSecureAreMyMessages": {
+        "emoji": "🔐",
+        "title": "How secure are my messages?",
+        "content1": "Security is a top priority at Secrely. Here's how we protect your messages:",
+        "listItem1": {
+          "bold": "End-to-end encryption:",
+          "text": "All messages are encrypted so only you and the recipient can read them"
+        },
+        "listItem2": {
+          "bold": "Encrypted message storage:",
+          "text": "Messages are securely stored in our database in an encrypted format. This means even if there were unauthorized access to our database, the content of your messages would remain unreadable."
+        },
+        "listItem3": {
+          "bold": "Abuse Reporting Retention:",
+          "text": "Messages reported for abuse may be retained temporarily in an encrypted state for review by our trust and safety team, in accordance with our Terms of Use."
+        },
+        "securityTip": {
+          "bold": "Security Tip:",
+          "text": "While we implement strong security measures, remember that the recipient of your messages could still share their content through other means. Always be mindful of what you send, even in \"secure\" conversations."
+        },
+        "content2": "We are committed to continuously improving our security measures to provide a safe and private messaging environment."
+      },
+      "isSecrelyFreeToUse": {
+        "emoji": "💰",
+        "title": "Is Secrely free to use?",
+        "content1": "Yes! Secrely offers both free and premium options:",
+        "freePlan": {
+          "title": "Free Plan",
+          "listItem1": {
+            "bold": "Unlimited anonymous messages:",
+            "text": "You can send and receive anonymous messages via links without limit."
+          },
+          "listItem2": {
+            "bold": "Daily Star Limit:",
+            "text": "You receive 50 \"Stars\" daily, which reset every 24 hours.",
+            "subListItem1": "Each message bubble in a chat costs 1 Star.",
+            "subListItem2": "Replying to an anonymous inbox message to create a new chat room costs 5 Stars."
+          },
+          "listItem3": {
+            "bold": "Chatting Limitations:",
+            "text": "Once your daily Stars are depleted, you won't be able to start new chat rooms or send further messages in existing chats until the Stars reset the next day."
+          },
+          "listItem4": "Basic anonymity features",
+          "listItem5": "Basic media sharing"
+        },
+        "premiumPlan": {
+          "title": "Secrely Premium",
+          "content": "We are actively working on a premium version of Secrely that will offer enhanced features and remove daily Star limitations for an even more seamless communication experience. Stay tuned for updates on its launch!"
+        },
+        "content2": "We believe privacy should be accessible to everyone, which is why our free plan includes essential features. The upcoming Premium plan will add extra convenience and customization options for those who desire them."
+      }
+    },
+    "stillHaveQuestions": {
+      "title": "Still have questions?",
+      "description": "We're here to help! Our support team is ready to answer any questions you might have about Secrely.",
+      "contactButton": "Contact Support"
+    }
+  },
+  "SendMessagePage": {
+    "title": "Send Your Message",
+    "description": "Use the field below to send a secret message to {name}.",
+    "yourMessageLabel": "Your Message",
+    "yourMessagePlaceholder": "Write your secret message here...",
+    "anonymousNote": "This message will be sent anonymously & kept confidential.",
+    "musicLabel": "Add Background Music (Optional)",
+    "allowReplyLabel": "Allow recipient to reply",
+    "allowReplyNote": "{name} can reply to you anonymously",
+    "loggedInAs": "🔓 Login as <strong>{email}</strong>",
+    "logoutButton": "Logout",
+    "notLoggedInWarning": "⚠️ You are not logged in. Some features will be limited.",
+    "sendButton": "Send Message Now",
+    "sendButtonLoading": "Send...",
+    "privacyTitle": "Your Privacy Matters",
+    "privacyBullet1": "Your identity is completely protected when sending anonymous messages.",
+    "privacyBullet2": "Messages are end-to-end encrypted for maximum security.",
+    "privacyBullet3": "We keep the platform secure. To prevent annoying messages, we use your device's technical information anonymously.",
+    "loginTitle": "Login to receive replies",
+    "loginNote": "Send messages comfortably, {name} will not know your identity.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "loginSubmit": "Sign in",
+    "loginSubmitLoading": "Sign in...",
+    "downloadPrompt": "Don't have an account yet?",
+    "downloadLink": "Download the App",
+    "successTitle": "Message Sent!",
+    "successDescription": "Your anonymous message has been successfully sent to @{name}.",
+    "sendAnother": "Send Another Message",
+    "errorTitle": "Error!",
+    "errorOk": "Ok",
+    "errorLogin": "Wrong email or password!",
+    "errorLogout": "An error occurred while logging out.",
+    "errorEmptyMessage": "Message cannot be empty.",
+    "errorNoHeader": "Header not available yet.",
+    "errorNoPublicKey": "The recipient's public key is not available. Please try again.",
+    "errorBlocked": "You are blocked by this user.",
+    "errorInvalid": "Invalid request.",
+    "errorNotFound": "Recipient not found.",
+    "errorGeneric": "An error occurred while sending the message."
+  }
+}

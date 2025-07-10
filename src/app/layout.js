@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { getLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,9 +20,10 @@ export const metadata = {
   description: "Get Your Secrets Out of Your Head and Into a Secure Place",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const locale = await getLocale();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,7 +36,7 @@ export default function RootLayout({ children }) {
         <meta property="og:url" content="https://secrely-app.vercel.app" />
       </head>
       <body className={`${inter.variable} ${space.variable} antialiased`}>
-        {children}
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

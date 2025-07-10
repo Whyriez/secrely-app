@@ -2,8 +2,11 @@
 "use client";
 import React, { useEffect } from "react";
 import "@/app/globals.css";
+import { useTranslations } from "next-intl";
 
 export default function TermOfUse() {
+  const t = useTranslations("TermOfUse");
+
   useEffect(() => {
     const sectionHeaders = document.querySelectorAll(".section-header");
 
@@ -56,13 +59,9 @@ export default function TermOfUse() {
         const targetElement = document.querySelector(targetId);
 
         if (targetElement) {
-          // Cari .section-header di dalam target
           const header = targetElement.querySelector(".section-header");
-
-          // Scroll ke header atau ke elemen utama jika header tidak ditemukan
           const scrollTarget = header || targetElement;
 
-          // Ambil posisi aktual header terhadap page, bukan parent-nya
           const yOffset = -120;
           const y =
             scrollTarget.getBoundingClientRect().top +
@@ -90,7 +89,7 @@ export default function TermOfUse() {
         if (!header) return;
 
         const rect = header.getBoundingClientRect();
-        const distance = Math.abs(rect.top - 130); // 130 = jarak offset
+        const distance = Math.abs(rect.top - 130);
 
         if (distance < closestDistance) {
           closestDistance = distance;
@@ -137,293 +136,134 @@ export default function TermOfUse() {
   const termsData = [
     {
       id: "section-1",
-      title: "Acceptance of Terms",
+      title: t("section1.title"),
       content: (
         <>
-          <p className="mb-4">
-            Welcome to Secrely! These Terms of Service ("Terms") govern your use
-            of the Secrely application, website, and services (collectively, the
-            "Service"). Please read these Terms carefully before using our
-            Service.
-          </p>
-
-          <p className="mb-4">
-            By accessing or using Secrely, you agree to be bound by these Terms.
-            If you disagree with any part of the Terms, you may not access the
-            Service.
-          </p>
-
+          <p className="mb-4">{t("section1.content1")}</p>
+          <p className="mb-4">{t("section1.content2")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">✨</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  By using our app, you're agreeing to follow these rules. If
-                  you don't agree, please don't use Secrely.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section1.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <p>
-            These Terms apply to all visitors, users, and others who access or
-            use the Service. By creating an account or using any part of the
-            Service, you're entering into a legal agreement with Secrely.
-          </p>
+          <p>{t("section1.content3")}</p>
         </>
       ),
     },
     {
       id: "section-2",
-      title: "Use of the Service",
+      title: t("section2.title"),
       content: (
         <>
-          <h3 className="font-bold text-lg mb-3">2.1 Account Registration</h3>
-          <p className="mb-4">
-            To use certain features of the Service, you may need to create an
-            account. You agree to provide accurate, current, and complete
-            information during the registration process and to update such
-            information to keep it accurate, current, and complete.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">2.2 Account Security</h3>
-          <p className="mb-4">
-            You are responsible for safeguarding the password that you use to
-            access the Service and for any activities or actions under your
-            password. We encourage you to use "strong" passwords (passwords that
-            use a combination of upper and lower case letters, numbers, and
-            symbols) with your account.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">2.3 Age Restrictions</h3>
-          <p className="mb-4">
-            You must be at least 13 years old to use the Service. By using the
-            Service, you represent and warrant that you are over the age of 13.
-            If you are under 18, you must have your parent or guardian's
-            permission to use the Service.
-          </p>
-
+          <h3 className="font-bold text-lg mb-3">{t("section2.subtitle1")}</h3>
+          <p className="mb-4">{t("section2.content1")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section2.subtitle2")}</h3>
+          <p className="mb-4">{t("section2.content2")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section2.subtitle3")}</h3>
+          <p className="mb-4">{t("section2.content3")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">🔑</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  Keep your account info accurate and your password secure. You
-                  must be at least 13 years old to use Secrely, and if you're
-                  under 18, get your parent's permission.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section2.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <h3 className="font-bold text-lg mb-3">2.4 Service Availability</h3>
-          <p>
-            We strive to keep the Service up and running; however, all online
-            services experience occasional disruptions and outages, and Secrely
-            is no exception. We're not liable for any disruption or loss you may
-            suffer as a result. We encourage you to maintain copies of your
-            important content.
-          </p>
+          <h3 className="font-bold text-lg mb-3">{t("section2.subtitle4")}</h3>
+          <p>{t("section2.content4")}</p>
         </>
       ),
     },
     {
       id: "section-3",
-      title: "User Content & Anonymity",
+      title: t("section3.title"),
       content: (
         <>
-          <h3 className="font-bold text-lg mb-3">3.1 Your Content</h3>
-          <p className="mb-4">
-            Our Service allows you to post, link, store, share and otherwise
-            make available certain information, text, or other
-            material ("Content"). You are responsible for the Content that you
-            post on or through the Service, including its legality, reliability,
-            and appropriateness.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">3.2 Content License</h3>
-          <p className="mb-4">
-            By posting Content on or through the Service, you grant us the right
-            to use, modify, publicly perform, publicly display, reproduce, and
-            distribute such Content on and through the Service. You retain any
-            and all of your rights to any Content you submit, post, or display
-            on or through the Service and you are responsible for protecting
-            those rights.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">3.3 Anonymity Features</h3>
-          <p className="mb-4">
-            Secrely provides features that allow users to send and receive
-            anonymous messages. While we take steps to maintain anonymity as
-            described in our features, we cannot guarantee absolute anonymity.
-            Technical limitations, legal requirements, and other factors may
-            limit our ability to ensure complete anonymity.
-          </p>
-
+          <h3 className="font-bold text-lg mb-3">{t("section3.subtitle1")}</h3>
+          <p className="mb-4">{t("section3.content1")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section3.subtitle2")}</h3>
+          <p className="mb-4">{t("section3.content2")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section3.subtitle3")}</h3>
+          <p className="mb-4">{t("section3.content3")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">🔒</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  You own your content, but we can display it through our
-                  service. While we try to keep anonymous features truly
-                  anonymous, we can't guarantee perfect anonymity in all
-                  circumstances.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section3.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <h3 className="font-bold text-lg mb-3">3.4 Content Removal</h3>
-          <p>
-            We reserve the right to remove any Content from the Service at any
-            time, for any reason (including, but not limited to, if someone
-            claims you don't own the Content or the Content violates these
-            Terms), without prior notice.
-          </p>
+          <h3 className="font-bold text-lg mb-3">{t("section3.subtitle4")}</h3>
+          <p>{t("section3.content4")}</p>
         </>
       ),
     },
     {
       id: "section-4",
-      title: "Prohibited Conduct",
+      title: t("section4.title"),
       content: (
         <>
-          <p className="mb-4">You agree not to use the Service to:</p>
-
+          <p className="mb-4">{t("section4.content1")}</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Harass, bully, intimidate, or harm any other user</li>
-            <li>
-              Post or share content that is illegal, fraudulent, defamatory,
-              obscene, pornographic, or otherwise objectionable
-            </li>
-            <li>
-              Impersonate any person or entity, or falsely state or misrepresent
-              your affiliation with a person or entity
-            </li>
-            <li>
-              Interfere with or disrupt the Service or servers or networks
-              connected to the Service
-            </li>
-            <li>
-              Attempt to gain unauthorized access to parts of the Service that
-              are restricted
-            </li>
-            <li>
-              Use the Service for any illegal purpose, or in violation of any
-              local, state, national, or international law
-            </li>
-            <li>
-              Collect or store personal data about other users without their
-              consent
-            </li>
-            <li>Promote or enable illegal activities</li>
-            <li>
-              Exploit the Service for commercial purposes without our express
-              consent
-            </li>
-            <li>Distribute malware, spyware, or other harmful code</li>
+            {Array(10).fill().map((_, i) => (
+              <li key={i}>{t(`section4.listItem${i+1}`)}</li>
+            ))}
           </ul>
-
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">🚫</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  Don't use Secrely to harm others, break the law, or mess with
-                  our service. Be respectful and use the platform responsibly.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section4.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <p>
-            Violation of these prohibitions may result in termination of your
-            access to the Service, and you may be reported to law enforcement
-            authorities.
-          </p>
+          <p>{t("section4.content2")}</p>
         </>
       ),
     },
     {
       id: "section-5",
-      title: "Account Termination",
+      title: t("section5.title"),
       content: (
         <>
-          <h3 className="font-bold text-lg mb-3">5.1 Termination by You</h3>
-          <p className="mb-4">
-            You may delete your account at any time by following the
-            instructions in the app or by contacting our support team. Upon
-            deletion, your profile and other personal information will be
-            removed from view. We may retain certain information as required by
-            law or for legitimate business purposes.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">5.2 Termination by Us</h3>
-          <p className="mb-4">
-            We may terminate or suspend your account immediately, without prior
-            notice or liability, for any reason, including without limitation if
-            you breach the Terms. Upon termination, your right to use the
-            Service will immediately cease.
-          </p>
-
+          <h3 className="font-bold text-lg mb-3">{t("section5.subtitle1")}</h3>
+          <p className="mb-4">{t("section5.content1")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section5.subtitle2")}</h3>
+          <p className="mb-4">{t("section5.content2")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">🔄</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  You can delete your account anytime. We can also terminate
-                  your account if you violate these terms. Either way, some data
-                  might be retained as required by law.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section5.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <h3 className="font-bold text-lg mb-3">5.3 Effects of Termination</h3>
-          <p>
-            All provisions of the Terms which by their nature should survive
-            termination shall survive termination, including, without
-            limitation, ownership provisions, warranty disclaimers, indemnity,
-            and limitations of liability.
-          </p>
+          <h3 className="font-bold text-lg mb-3">{t("section5.subtitle3")}</h3>
+          <p>{t("section5.content3")}</p>
         </>
       ),
     },
     {
       id: "section-6",
-      title: "Modifications to Terms",
+      title: t("section6.title"),
       content: (
         <>
-          <p className="mb-4">
-            We reserve the right, at our sole discretion, to modify or replace
-            these Terms at any time. If a revision is material, we will try to
-            provide at least 30 days' notice prior to any new terms taking
-            effect. What constitutes a material change will be determined at our
-            sole discretion.
-          </p>
-
-          <p className="mb-4">
-            By continuing to access or use our Service after those revisions
-            become effective, you agree to be bound by the revised terms. If you
-            do not agree to the new terms, please stop using the Service.
-          </p>
-
+          <p className="mb-4">{t("section6.content1")}</p>
+          <p className="mb-4">{t("section6.content2")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">📝</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  We might update these terms sometimes. If we make big changes,
-                  we'll let you know in advance. By continuing to use Secrely
-                  after changes, you're agreeing to the new terms.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section6.simpleContent")}</p>
               </div>
             </div>
           </div>
@@ -432,89 +272,38 @@ export default function TermOfUse() {
     },
     {
       id: "section-7",
-      title: "Disclaimers & Limitations",
+      title: t("section7.title"),
       content: (
         <>
-          <h3 className="font-bold text-lg mb-3">
-            7.1 Disclaimer of Warranties
-          </h3>
-          <p className="mb-4">
-            THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS.
-            SECRELY AND ITS AFFILIATES, SUPPLIERS AND PARTNERS EXPRESSLY
-            DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED,
-            INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
-            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
-            NON-INFRINGEMENT.
-          </p>
-
-          <p className="mb-4">
-            SECRELY MAKES NO WARRANTY THAT (i) THE SERVICE WILL MEET YOUR
-            REQUIREMENTS, (ii) THE SERVICE WILL BE UNINTERRUPTED, TIMELY,
-            SECURE, OR ERROR-FREE, OR (iii) THE QUALITY OF ANY PRODUCTS,
-            SERVICES, INFORMATION, OR OTHER MATERIAL PURCHASED OR OBTAINED BY
-            YOU THROUGH THE SERVICE WILL MEET YOUR EXPECTATIONS.
-          </p>
-
-          <h3 className="font-bold text-lg mb-3">
-            7.2 Limitation of Liability
-          </h3>
-          <p className="mb-4">
-            TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL
-            SECRELY, ITS AFFILIATES, AGENTS, DIRECTORS, EMPLOYEES, SUPPLIERS OR
-            LICENSORS BE LIABLE FOR ANY INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL,
-            CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION
-            DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE
-            LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THIS
-            SERVICE.
-          </p>
-
-          <p className="mb-4">
-            UNDER NO CIRCUMSTANCES WILL SECRELY BE RESPONSIBLE FOR ANY DAMAGE,
-            LOSS OR INJURY RESULTING FROM HACKING, TAMPERING OR OTHER
-            UNAUTHORIZED ACCESS OR USE OF THE SERVICE OR YOUR ACCOUNT OR THE
-            INFORMATION CONTAINED THEREIN.
-          </p>
-
+          <h3 className="font-bold text-lg mb-3">{t("section7.subtitle1")}</h3>
+          <p className="mb-4">{t("section7.content1")}</p>
+          <p className="mb-4">{t("section7.content2")}</p>
+          <h3 className="font-bold text-lg mb-3">{t("section7.subtitle2")}</h3>
+          <p className="mb-4">{t("section7.content3")}</p>
+          <p className="mb-4">{t("section7.content4")}</p>
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">⚖️</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  We provide Secrely "as is" without any warranties. We're not
-                  responsible for damages that might occur from using our
-                  service. This is standard legal language that basically says
-                  you use the app at your own risk.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section7.simpleContent")}</p>
               </div>
             </div>
           </div>
-
-          <h3 className="font-bold text-lg mb-3">7.3 Indemnification</h3>
-          <p>
-            You agree to defend, indemnify and hold harmless Secrely and its
-            licensee and licensors, and their employees, contractors, agents,
-            officers and directors, from and against any and all claims,
-            damages, obligations, losses, liabilities, costs or debt, and
-            expenses (including but not limited to attorney's fees), resulting
-            from or arising out of (i) your use and access of the Service, or
-            (ii) a breach of these Terms.
-          </p>
+          <h3 className="font-bold text-lg mb-3">{t("section7.subtitle3")}</h3>
+          <p>{t("section7.content5")}</p>
         </>
       ),
     },
     {
       id: "section-8",
-      title: "Contact Us",
+      title: t("section8.title"),
       content: (
         <>
-          <p className="mb-4">
-            If you have any questions about these Terms, please contact us:
-          </p>
-
+          <p className="mb-4">{t("section8.content1")}</p>
           <ul className="list-disc pl-6 space-y-2 mb-6">
             <li>
-              Email:
+              {t("section8.emailLabel")}:
               <a
                 href="mailto:legal-secrely@limapp.my.id"
                 className="text-indigo hover:underline"
@@ -522,20 +311,14 @@ export default function TermOfUse() {
                 legal-secrely@limapp.my.id
               </a>
             </li>
-            <li>
-              Address: Secrely Legal Department, Jl Kasmat Lahay, Gorontalo, Indonesian
-            </li>
+            <li>{t("section8.address")}</li>
           </ul>
-
           <div className="bg-indigo/5 rounded-xl p-6 my-4 border border-indigo/20">
             <div className="flex items-start">
               <div className="mr-3 text-xl">💬</div>
               <div>
-                <p className="font-medium">In simple terms:</p>
-                <p>
-                  Have questions? We're here to help! Reach out to our team
-                  using the contact information above.
-                </p>
+                <p className="font-medium">{t("simpleTerms")}</p>
+                <p>{t("section8.simpleContent")}</p>
               </div>
             </div>
           </div>
@@ -560,7 +343,6 @@ export default function TermOfUse() {
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo/10 to-softPink/20 z-0"></div>
               <div className="relative z-10">
                 <div className="h-20 w-20 mx-auto mb-6 rounded-full bg-indigo/10 flex items-center justify-center">
-                  {/* SVG icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-10 w-10 text-indigo terms-icon"
@@ -577,13 +359,13 @@ export default function TermOfUse() {
                   </svg>
                 </div>
                 <h1 className="font-space font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
-                  Terms of Use
+                  {t("pageTitle")}
                 </h1>
                 <p className="text-richGray-700 text-lg md:text-xl max-w-2xl mx-auto">
-                  By using Secrely, you agree to the following terms.
+                  {t("pageSubtitle")}
                 </p>
                 <p className="text-richGray-700 mt-4">
-                  Last Updated: June 15, 2023
+                  {t("lastUpdated")}
                 </p>
               </div>
             </div>
@@ -597,7 +379,7 @@ export default function TermOfUse() {
                 <div className="hidden lg:block sticky top-24">
                   <div className="glass-card rounded-2xl p-6">
                     <h3 className="font-space font-bold text-xl mb-4">
-                      Contents
+                      {t("contentsTitle")}
                     </h3>
                     <ul className="space-y-3" id="toc">
                       {termsData.map((item) => (
@@ -651,21 +433,19 @@ export default function TermOfUse() {
                   </div>
                 ))}
 
-                {/* The "Still have questions?" section can remain static or be added to termsData */}
                 <div
                   className="glass-card rounded-3xl p-8 bg-gradient-to-br from-indigo/10 to-softPink/20 scroll-reveal"
                   style={{ transitionDelay: `${termsData.length * 0.1}s` }}
                 >
                   <div className="text-center">
                     <h2 className="font-space font-bold text-2xl mb-4">
-                      Still have questions?
+                      {t("stillHaveQuestions")}
                     </h2>
                     <p className="text-richGray-700 mb-6">
-                      Our team is here to help you understand our terms and
-                      policies.
+                      {t("questionsHelp")}
                     </p>
-                    <a  href="mailto:support-secrely@limapp.my.id" className="neo-button text-white px-8 py-3 rounded-xl font-bold mx-auto">
-                      Contact Support
+                    <a href="mailto:support-secrely@limapp.my.id" className="neo-button text-white px-8 py-3 rounded-xl font-bold mx-auto">
+                      {t("contactSupport")}
                     </a>
                   </div>
                 </div>

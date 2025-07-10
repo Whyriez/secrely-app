@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 function Privacy() {
+  const t = useTranslations("PrivacyPolicy");
+
+  const accordionKeys = Object.keys(t.raw('accordionContent'));
+
   useEffect(() => {
-    // Scroll reveal
     const elements = document.querySelectorAll(".scroll-reveal");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -26,7 +30,6 @@ function Privacy() {
 
         const isOpen = content.classList.contains("active");
 
-        // Tutup semua
         document.querySelectorAll(".accordion-content").forEach((c) => {
           c.classList.remove("active");
           c.style.maxHeight = null;
@@ -35,7 +38,6 @@ function Privacy() {
           .querySelectorAll(".accordion-icon")
           .forEach((i) => i.classList.remove("active"));
 
-        // Buka jika sebelumnya belum terbuka
         if (!isOpen) {
           content.classList.add("active");
           icon.classList.add("active");
@@ -44,7 +46,6 @@ function Privacy() {
       });
     });
 
-    // Default buka pertama
     const firstAccordion = document.querySelector(".accordion-content");
     const firstIcon = document.querySelector(".accordion-icon");
     if (firstAccordion && firstIcon) {
@@ -53,7 +54,7 @@ function Privacy() {
       firstAccordion.style.maxHeight = firstAccordion.scrollHeight + "px";
     }
 
-    // Parallax effect
+    // Parallax effect (existing code)
     const handleMouseMove = (e) => {
       const elements = document.querySelectorAll(".parallax");
       const mouseX = e.clientX / window.innerWidth - 0.5;
@@ -70,357 +71,6 @@ function Privacy() {
     return () => document.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const accordionData = [
-    {
-      title: "What Data We Collect",
-      iconPath:
-        "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-      content: (
-        <>
-          <p className="mb-4">
-            To provide you with the best experience on Secrely, we collect
-            certain information. Here's what we collect:
-          </p>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Account Information</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Username or display name (which can be anonymous)</li>
-              <li>Email address (for account recovery and notifications)</li>
-              <li>Password (stored as a hashed value by Supabase)</li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Message Content</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>The content of messages you send and receive</li>
-              <li>Timestamps of when messages are sent</li>
-              <li>Read receipts</li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Device Information</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Device fingerprint (for spam detection and user blocking)</li>
-              <li>Operating system</li>
-              <li>App version</li>
-            </ul>
-          </div>
-
-          <div className="pl-4">
-            <h3 className="font-bold mb-2">Usage Information</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>How you interact with the app (features used, time spent)</li>
-              <li>Error reports</li>
-              <li>Performance analytics</li>
-            </ul>
-          </div>
-        </>
-      ),
-    },
-    {
-      title: "How Your Data Is Used",
-      iconPath:
-        "M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z",
-      content: (
-        <>
-          <p className="mb-4">We use your data for the following purposes:</p>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">To Provide Our Service</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Delivering messages between users</li>
-              <li>Maintaining your account and preferences</li>
-              <li>Enabling the anonymous messaging features</li>
-              <li>Providing customer support</li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">To Improve Our Service</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Analyzing how users interact with features</li>
-              <li>Identifying and fixing bugs</li>
-              <li>Developing new features based on user behavior</li>
-              <li>Optimizing app performance</li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">To Keep You Safe</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Detecting and preventing abuse or violations of our terms</li>
-              <li>Identifying and addressing security threats</li>
-              <li>Complying with legal obligations</li>
-            </ul>
-          </div>
-
-          <div className="pl-4">
-            <h3 className="font-bold mb-2">To Communicate With You</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Sending important updates about the service</li>
-              <li>Notifying you about new features (if you opt in)</li>
-              <li>Responding to your inquiries</li>
-            </ul>
-          </div>
-        </>
-      ),
-    },
-    {
-      title: "Third-Party Services",
-      iconPath:
-        "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9",
-      content: (
-        <>
-          <p className="mb-4">
-            We partner with trusted third parties to help provide and improve
-            our service. Here are the types of third parties we work with:
-          </p>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Cloud Infrastructure</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <span className="font-medium">Supabase:</span> For secure data
-                storage and authentication
-              </li>
-              <li>
-                <span className="font-medium">Vercel:</span> For server hosting
-                and content delivery
-              </li>
-              <li>
-                <span className="font-medium">Cloudflare:</span> For web
-                performance, security, and to facilitate secure WebSocket
-                connections, enhancing the stability and speed of our real-time
-                features.
-              </li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Analytics</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <span className="font-medium">Vercel Analytics:</span> To
-                monitor website performance, traffic patterns, and overall
-                application health.
-              </li>
-              <li>
-                <span className="font-medium">Cloudflare Analytics:</span> For
-                insights into network traffic, security threats, and content
-                delivery performance.
-              </li>
-              <li>
-                <span className="font-medium">Supabase Logs & Metrics:</span> To
-                track database performance, API usage, and identify potential
-                issues within our backend services.
-              </li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Media & Content Embedding</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <span className="font-medium">Spotify:</span> To provide
-                embedded music content. When you interact with or view embedded
-                Spotify players on our site, Spotify may collect data according
-                to their privacy policy.
-                <a
-                  href="https://www.spotify.com/us/legal/privacy-policy/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-indigo hover:underline"
-                >
-                  {" "}
-                  (See Spotify's Privacy Policy)
-                </a>
-              </li>
-            </ul>
-          </div>
-          {/* <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Customer Support</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <span className="font-medium">Zendesk:</span> For managing
-                support tickets and inquiries
-              </li>
-              <li>
-                <span className="font-medium">Intercom:</span> For in-app
-                messaging and support
-              </li>
-            </ul>
-          </div>
-
-          <div className="pl-4">
-            <h3 className="font-bold mb-2">Security</h3>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                <span className="font-medium">reCAPTCHA:</span> To prevent spam
-                and abuse
-              </li>
-              <li>
-                <span className="font-medium">Auth0:</span> For secure
-                authentication services
-              </li>
-            </ul>
-          </div> */}
-
-          <p className="mt-4">
-            All third parties we work with are bound by strict data protection
-            agreements and are carefully selected to ensure they maintain high
-            privacy standards.
-          </p>
-        </>
-      ),
-    },
-    {
-      title: "Your Rights & Control Options",
-      iconPath:
-        "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-      content: (
-        <>
-          <p className="mb-4">
-            At Secrely, we believe you should have control over your data. Here
-            are the rights and options available to you:
-          </p>
-
-          {/* <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Access Your Data</h3>
-            <p className="mb-2">
-              You can request a copy of all the personal data we have about you.
-              To do this:
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Go to Settings &gt; Privacy &gt; Download My Data</li>
-              <li>
-                We'll provide your data in a machine-readable format within 30
-                days
-              </li>
-            </ul>
-          </div> */}
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Delete Your Data</h3>
-            <p className="mb-2">
-              You can delete your account and associated data at any time:
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Go to Settings &gt; Others &gt; Delete Account</li>
-              <li>Confirm your choice (this action cannot be undone)</li>
-              <li>We'll permanently delete your data within 30 days</li>
-            </ul>
-          </div>
-
-          <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Control Your Privacy Settings</h3>
-            <p className="mb-2">
-              Customize who can contact you and manage your preferences for a
-              safer experience:
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>
-                Go to Settings &gt; Privacy to adjust who can send you messages.
-              </li>
-              <li>
-                In Settings &gt; Privacy, you can also manage your{" "}
-                <span className="font-medium">Blocked Users list</span> (which
-                shows users you have blocked from specific chat details).
-              </li>
-              <li>
-                Manage your{" "}
-                <span className="font-medium">Hidden Words list</span> in
-                Settings &gt; Privacy, allowing you to add or remove words that
-                you wish to hide from your messages.
-              </li>
-              <li>
-                Go to Settings &gt; Preference to manage notification
-                preferences.
-              </li>
-            </ul>
-          </div>
-
-          {/* <div className="pl-4 mb-4">
-            <h3 className="font-bold mb-2">Opt Out of Analytics</h3>
-            <p className="mb-2">You can choose not to share usage data:</p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Go to Settings &gt; Privacy &gt; Analytics</li>
-              <li>Toggle off "Share Usage Data"</li>
-            </ul>
-          </div> */}
-
-          <div className="pl-4">
-            <h3 className="font-bold mb-2">Additional Rights</h3>
-            <p className="mb-2">
-              Depending on your location, you may have additional rights under
-              local laws (such as GDPR or CCPA):
-            </p>
-            <ul className="list-disc pl-5 space-y-2">
-              <li>Right to correction of inaccurate data</li>
-              <li>Right to restriction of processing</li>
-              <li>Right to object to processing</li>
-              <li>Right to data portability</li>
-            </ul>
-          </div>
-        </>
-      ),
-    },
-    {
-      title: "Child Safety & CSAE Protection Policy",
-      iconPath:
-        "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-      content: (
-        <>
-          <p className="mb-4">
-            At Secrely, we have zero tolerance for child sexual abuse and
-            exploitation (CSAE). We are committed to protecting children and
-            young users on our platform through the following actions:
-          </p>
-
-          <ul className="list-disc pl-5 space-y-2 mb-4">
-            <li>
-              <span className="font-medium">Content Moderation:</span> We use a
-              combination of automated tools and manual review to detect and
-              remove any content that may involve or promote child exploitation.
-            </li>
-            <li>
-              <span className="font-medium">Reporting Tools:</span> Users can
-              report messages or accounts suspected of abuse, which are reviewed
-              promptly.
-            </li>
-            <li>
-              <span className="font-medium">Immediate Action:</span> Accounts
-              found violating our child safety policies are immediately
-              suspended and investigated.
-            </li>
-            <li>
-              <span className="font-medium">Law Enforcement Cooperation:</span>{" "}
-              We fully cooperate with law enforcement and relevant child
-              protection authorities where appropriate.
-            </li>
-            <li>
-              <span className="font-medium">User Controls:</span> We provide
-              features such as message filters, block/report tools, and privacy
-              settings to help users protect themselves.
-            </li>
-          </ul>
-
-          <p>
-            If you encounter suspicious or harmful behavior, please report it
-            immediately to{" "}
-            <a
-              href="mailto:abuse-secrely@limapp.my.id"
-              className="text-indigo hover:underline"
-            >
-              abuse-secrely@limapp.my.id
-            </a>
-          </p>
-        </>
-      ),
-    },
-  ];
   return (
     <div className="font-inter text-richGray-800 overflow-hidden min-h-screen">
       <div className="page-wrapper overflow-hidden min-h-screen">
@@ -452,10 +102,10 @@ function Privacy() {
                   </svg>
                 </div>
                 <h1 className="font-space font-bold text-3xl md:text-4xl lg:text-5xl mb-4">
-                  Your Privacy Matters
+                  {t("heroSection.title")}
                 </h1>
                 <p className="text-richGray-700 text-lg md:text-xl max-w-2xl mx-auto">
-                  We take your data seriously. Here's how we protect it.
+                  {t("heroSection.description")}
                 </p>
               </div>
             </div>
@@ -466,7 +116,7 @@ function Privacy() {
           <div className="max-w-4xl mx-auto">
             <div className="glass-card rounded-3xl p-8 scroll-reveal">
               <h2 className="font-space font-bold text-2xl mb-6 text-center">
-                What You Need to Know
+                {t("whatYouNeedToKnow.title")}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="glass-card rounded-2xl p-6 text-center icon-container">
@@ -487,11 +137,10 @@ function Privacy() {
                     </svg>
                   </div>
                   <h3 className="font-space font-bold text-lg mb-2">
-                    End-to-End Private
+                    {t("whatYouNeedToKnow.endToEndPrivate.title")}
                   </h3>
                   <p className="text-richGray-700">
-                    Your messages are encrypted and private between you and your
-                    recipients.
+                    {t("whatYouNeedToKnow.endToEndPrivate.description")}
                   </p>
                 </div>
 
@@ -513,10 +162,10 @@ function Privacy() {
                     </svg>
                   </div>
                   <h3 className="font-space font-bold text-lg mb-2">
-                    No Data Selling
+                    {t("whatYouNeedToKnow.noDataSelling.title")}
                   </h3>
                   <p className="text-richGray-700">
-                    We never sell your personal data to third parties. Ever.
+                    {t("whatYouNeedToKnow.noDataSelling.description")}
                   </p>
                 </div>
 
@@ -544,11 +193,10 @@ function Privacy() {
                     </svg>
                   </div>
                   <h3 className="font-space font-bold text-lg mb-2">
-                    You're In Control
+                    {t("whatYouNeedToKnow.youAreInControl.title")}
                   </h3>
                   <p className="text-richGray-700">
-                    You control your visibility and can delete your data at any
-                    time.
+                    {t("whatYouNeedToKnow.youAreInControl.description")}
                   </p>
                 </div>
               </div>
@@ -558,58 +206,275 @@ function Privacy() {
 
         <section className="pb-20 px-6 md:px-12 lg:px-24 relative">
           <div className="max-w-4xl mx-auto">
-            {accordionData.map((item, index) => (
-              <div
-                key={index}
-                className="glass-card rounded-3xl p-8 mb-8 scroll-reveal"
-                style={{ transitionDelay: `${index * 0.1}s` }}
-              >
-                <div className="accordion-header cursor-pointer flex items-center justify-between">
-                  <div className="flex items-center">
-                    <div className="h-12 w-12 rounded-xl bg-indigo/10 flex items-center justify-center mr-4">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-indigo privacy-icon"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d={item.iconPath}
-                        />
-                      </svg>
-                    </div>
-                    <h2 className="font-space font-bold text-xl md:text-2xl">
-                      {item.title}
-                    </h2>
-                  </div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-indigo accordion-icon"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </div>
-                <div className="accordion-content mt-4 text-richGray-700 leading-relaxed">
-                  {item.content}
-                </div>
-              </div>
-            ))}
+            {/* Iterasi melalui kunci-kunci objek accordionContent */}
+            {accordionKeys.map((key, index) => {
+              const item = t.raw(`accordionContent.${key}`); // Mendapatkan seluruh objek item dari terjemahan
+              const itemTitle = item.title;
+              const itemIntro = item.intro;
+              const itemIconPath = item.iconPath;
+              const itemSections = item.sections;
+              const itemMainItems = item.items; // Untuk Child Safety Policy section
+              const itemFooter = item.footer; // Untuk Third-Party Services section
 
+              // Dapatkan konten spesifik untuk setiap akordion
+              let contentToRender;
+              if (key === 'item0') { // What Data We Collect
+                contentToRender = (
+                  <>
+                    <p className="mb-4">{itemIntro}</p>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.accountInfo.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.accountInfo.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.messageContent.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.messageContent.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.deviceInfo.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.deviceInfo.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4">
+                      <h3 className="font-bold mb-2">{itemSections.usageInfo.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.usageInfo.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                );
+              } else if (key === 'item1') { // How Your Data Is Used
+                contentToRender = (
+                  <>
+                    <p className="mb-4">{itemIntro}</p>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.provideService.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.provideService.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.improveService.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.improveService.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.keepSafe.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.keepSafe.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4">
+                      <h3 className="font-bold mb-2">{itemSections.communicate.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.communicate.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                );
+              } else if (key === 'item2') { // Third-Party Services
+                contentToRender = (
+                  <>
+                    <p className="mb-4">{itemIntro}</p>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.cloudInfrastructure.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li>
+                          <span className="font-medium">{itemSections.cloudInfrastructure.supabase.name}</span> {itemSections.cloudInfrastructure.supabase.description}
+                        </li>
+                        <li>
+                          <span className="font-medium">{itemSections.cloudInfrastructure.vercel.name}</span> {itemSections.cloudInfrastructure.vercel.description}
+                        </li>
+                        <li>
+                          <span className="font-medium">{itemSections.cloudInfrastructure.cloudflare.name}</span> {itemSections.cloudInfrastructure.cloudflare.description}
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.analytics.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li>
+                          <span className="font-medium">{itemSections.analytics.vercelAnalytics.name}</span> {itemSections.analytics.vercelAnalytics.description}
+                        </li>
+                        <li>
+                          <span className="font-medium">{itemSections.analytics.cloudflareAnalytics.name}</span> {itemSections.analytics.cloudflareAnalytics.description}
+                        </li>
+                        <li>
+                          <span className="font-medium">{itemSections.analytics.supabaseLogsMetrics.name}</span> {itemSections.analytics.supabaseLogsMetrics.description}
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.mediaEmbedding.title}</h3>
+                      <ul className="list-disc pl-5 space-y-2">
+                        <li>
+                          <span className="font-medium">{itemSections.mediaEmbedding.spotify.name}</span> {itemSections.mediaEmbedding.spotify.description}
+                          <a
+                            href="https://www.spotify.com/us/legal/privacy-policy/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-indigo hover:underline"
+                          >
+                            {" "}
+                            {itemSections.mediaEmbedding.spotify.policyLinkText}
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p className="mt-4">{itemFooter}</p>
+                  </>
+                );
+              } else if (key === 'item3') { // Your Rights & Control Options
+                contentToRender = (
+                  <>
+                    <p className="mb-4">{itemIntro}</p>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.deleteData.title}</h3>
+                      <p className="mb-2">{itemSections.deleteData.description}</p>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.deleteData.steps.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4 mb-4">
+                      <h3 className="font-bold mb-2">{itemSections.privacySettings.title}</h3>
+                      <p className="mb-2">{itemSections.privacySettings.description}</p>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.privacySettings.items.map((subItem, subIdx) => (
+                          <li key={subIdx} dangerouslySetInnerHTML={{ __html: subItem }}></li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="pl-4">
+                      <h3 className="font-bold mb-2">{itemSections.additionalRights.title}</h3>
+                      <p className="mb-2">{itemSections.additionalRights.description}</p>
+                      <ul className="list-disc pl-5 space-y-2">
+                        {itemSections.additionalRights.items.map((subItem, subIdx) => (
+                          <li key={subIdx}>{subItem}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                );
+              } else if (key === 'item4') { // Child Safety & CSAE Protection Policy
+                contentToRender = (
+                  <>
+                    <p className="mb-4">{itemIntro}</p>
+
+                    <ul className="list-disc pl-5 space-y-2 mb-4">
+                      {itemMainItems.map((subItem, subIdx) => (
+                        <li key={subIdx}>
+                          <span className="font-medium">{subItem.title}</span>{" "}
+                          {subItem.description}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <p>
+                      {item.contactPrompt}{" "}
+                      <a
+                        href="mailto:abuse-secrely@limapp.my.id"
+                        className="text-indigo hover:underline"
+                      >
+                        {item.contactEmail}
+                      </a>
+                    </p>
+                  </>
+                );
+              }
+
+              return (
+                <div
+                  key={index}
+                  className="glass-card rounded-3xl p-8 mb-8 scroll-reveal"
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
+                  <div className="accordion-header cursor-pointer flex items-center justify-between">
+                    <div className="flex items-center">
+                      <div className="h-12 w-12 rounded-xl bg-indigo/10 flex items-center justify-center mr-4">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6 text-indigo privacy-icon"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d={itemIconPath}
+                          />
+                        </svg>
+                      </div>
+                      <h2 className="font-space font-bold text-xl md:text-2xl">
+                        {itemTitle}
+                      </h2>
+                    </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 text-indigo accordion-icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                  <div className="accordion-content mt-4 text-richGray-700 leading-relaxed">
+                    {contentToRender}
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Contact for Privacy Inquiries section - dirender terpisah karena struktur berbeda */}
             <div
               className="glass-card rounded-3xl p-8 scroll-reveal"
-              style={{ transitionDelay: `${accordionData.length * 0.1}s` }}
+              style={{ transitionDelay: `${accordionKeys.length * 0.1}s` }}
             >
               <div className="accordion-header cursor-pointer flex items-center justify-between">
                 <div className="flex items-center">
@@ -630,7 +495,7 @@ function Privacy() {
                     </svg>
                   </div>
                   <h2 className="font-space font-bold text-xl md:text-2xl">
-                    Contact for Privacy Inquiries
+                    {t("contactSection.title")}
                   </h2>
                 </div>
                 <svg
@@ -649,67 +514,68 @@ function Privacy() {
                 </svg>
               </div>
               <div className="accordion-content mt-4 text-richGray-700 leading-relaxed">
-                <p className="mb-4">
-                  If you have any questions, concerns, or requests regarding
-                  your privacy or this policy, we're here to help:
-                </p>
+                <p className="mb-4">{t("contactSection.intro")}</p>
 
                 <div className="pl-4 mb-6">
-                  <h3 className="font-bold mb-2">Contact Our Privacy Team</h3>
+                  <h3 className="font-bold mb-2">{t("contactSection.privacyTeam.title")}</h3>
                   <ul className="list-disc pl-5 space-y-2">
                     <li>
-                      Email:
+                      Email:{" "}
                       <a
-                        href="mailto:privacy-secrely@limapp.my.id"
+                        href={`mailto:${t("contactSection.privacyTeam.email")}`}
                         className="text-indigo hover:underline"
                       >
-                        privacy-secrely@limapp.my.id
+                        {t("contactSection.privacyTeam.email")}
                       </a>
                     </li>
-                    <li>Response time: Within 2 business days</li>
+                    <li>{t("contactSection.privacyTeam.responseTime")}</li>
                   </ul>
                 </div>
 
                 <div className="pl-4 mb-6">
-                  <h3 className="font-bold mb-2">Data Protection Officer</h3>
+                  <h3 className="font-bold mb-2">{t("contactSection.dpo.title")}</h3>
                   <ul className="list-disc pl-5 space-y-2">
-                    <li>Name: Alim Suma</li>
+                    <li>{t("contactSection.dpo.name")}</li>
                     <li>
-                      Email:
+                      Email:{" "}
                       <a
-                        href="mailto:dpo-secrely@limapp.my.id"
+                        href={`mailto:${t("contactSection.dpo.email")}`}
                         className="text-indigo hover:underline"
                       >
-                        dpo-secrely@limapp.my.id
+                        {t("contactSection.dpo.email")}
                       </a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="pl-4 mb-6">
-                  <h3 className="font-bold mb-2">Mailing Address</h3>
+                  <h3 className="font-bold mb-2">{t("contactSection.mailingAddress.title")}</h3>
                   <address className="not-italic pl-5">
-                    Secrely Privacy Team
+                    {t("contactSection.mailingAddress.line1")}
                     <br />
-                    Jl Kasmat Lahay
+                    {t("contactSection.mailingAddress.line2")}
                     <br />
-                    Gorontalo
+                    {t("contactSection.mailingAddress.line3")}
                     <br />
-                    Indonesian
+                    {t("contactSection.mailingAddress.line4")}
                   </address>
                 </div>
 
                 <div className="bg-indigo/5 rounded-xl p-6 border border-indigo/20">
-                  <h3 className="font-bold mb-2">Policy Updates</h3>
-                  <p>
-                    We may update this Privacy Policy from time to time. We will
-                    notify you of any changes by posting the new Privacy Policy
-                    on this page and updating the "Last Updated" date. For
-                    significant changes, we will provide a more prominent notice
-                    or email notification.
-                  </p>
+                  <h3 className="font-bold mb-2">{t("contactSection.policyUpdates.title")}</h3>
+                  <p>{t("contactSection.policyUpdates.text")}</p>
                   <p className="mt-2">
-                    <strong>Last Updated:</strong> June 20, 2025
+                    <strong>
+                      {
+                        t("contactSection.policyUpdates.lastUpdated").split(
+                          ":"
+                        )[0]
+                      }
+                      :
+                    </strong>{" "}
+                    {t("contactSection.policyUpdates.lastUpdated")
+                      .split(":")[1]
+                      .trim()}
                   </p>
                 </div>
               </div>
