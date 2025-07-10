@@ -7,6 +7,11 @@
     "termsOfUse": "Ketentuan Penggunaan",
     "faq": "FAQ"
   },
+  "MusicSelect": {
+    "placeholder": "🎵 Pilih Music",
+    "noResult": "Tidak ada hasil",
+    "searchMusic": "Ketik untuk mencari musik"
+  },
   "Hero": {
     "heading": "Katakan Segalanya",
     "heading1": "Tetap Anonim",

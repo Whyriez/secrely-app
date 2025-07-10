@@ -1,12 +1,17 @@
 {
-  "Navbar": {
+   "Navbar": {
     "home": "Home",
     "howItWorks": "How It Works",
     "testimonials": "Testimonials",
     "privacyPolicy": "Privacy",
     "termsOfUse": "Terms of Use",
     "faq": "FAQ"
-  },
+   },
+   "MusicSelect": {
+    "placeholder": "🎵 Select Music",
+     "noResult": "No result",
+    "searchMusic": "Type to search for music"
+   },
    "Hero": {
     "heading": "Say Everything",
     "heading1": "Stay Anonymous",

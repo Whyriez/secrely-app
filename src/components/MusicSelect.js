@@ -6,6 +6,7 @@ import Select, { components } from "react-select";
 import useDebounce from "../hooks/useDebounce";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const CustomOption = (props) => {
   return (
@@ -48,6 +49,8 @@ const CustomSingleValue = (props) => {
 };
 
 export default function MusicSelect({ value, onChange }) {
+  const t = useTranslations("MusicSelect");
+
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -133,7 +136,7 @@ export default function MusicSelect({ value, onChange }) {
         onInputChange={handleInputChange}
         onMenuScrollToBottom={handleMenuScrollToBottom}
         isLoading={isLoading}
-        placeholder="🎵 Select Music"
+        placeholder={t("placeholder")}
         menuPortalTarget={
           typeof window !== "undefined" ? document.body : undefined
         }
@@ -143,12 +146,12 @@ export default function MusicSelect({ value, onChange }) {
           SingleValue: CustomSingleValue,
           NoOptionsMessage: () => (
             <div className="p-4 text-center text-gray-500">
-              {searchQuery ? "Tidak ada hasil" : "Ketik untuk mencari musik"}
+              {searchQuery ? t("noResult") : t("searchMusic")}
             </div>
           ),
         }}
         className="text-sm"
-        filterOption={() => true} // Disable client-side filtering
+        filterOption={() => true} 
         isSearchable={true}
         styles={{
           control: (base, state) => ({

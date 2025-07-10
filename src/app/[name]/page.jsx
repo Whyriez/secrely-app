@@ -764,8 +764,9 @@ export default function Header() {
                 <p>
                   {t("downloadPrompt")} {""}
                   <a
-                    href="/download-app"
+                    href="https://play.google.com/store/apps/details?id=com.whyriez.secrely.android"
                     className="text-indigo hover:underline"
+                    target="_blank"
                   >
                     {t("downloadLink")}
                   </a>
